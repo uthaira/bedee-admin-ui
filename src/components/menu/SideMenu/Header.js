@@ -6,10 +6,13 @@ const Header = (props) => {
   const { visible, username, role, onVisible } = props
 
   const style = visible ? {} : { display: 'none' }
+  const logo = visible ? {} : { width: '24px', height: '24px' }
   return (
     <View>
       <LogoSection onClick={onVisible}>
-        <BedeeLogo />
+        <Logo style={logo}>
+          <BedeeLogo />
+        </Logo>
         <BrandName style={style}>Bedee</BrandName>
       </LogoSection>
       <User style={style}>
@@ -33,12 +36,19 @@ const LogoSection = styled('div')({
   fontSize: '27px',
   display: 'flex',
   alignItems: 'center',
+  columnGap: '8px',
   cursor: 'pointer',
+  marginBottom: '8px',
+})
 
-  'svg': {
-    width: '65px',
-    height: '65px',
-  }
+const Logo = styled('div')({
+  width: '35px',
+  height: '35px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: '10px',
+  backgroundColor: 'white',
 })
 
 const BrandName = styled('div')({
@@ -47,7 +57,6 @@ const BrandName = styled('div')({
 
 const User = styled('div')({
   width: '100%',
-  paddingLeft: '10px',
 })
 
 const Username = styled('div')({
