@@ -14,24 +14,32 @@ import Header from './Header'
 import GroupMenu from './MenuGroup'
 
 const SideMenu = (props) => {
-  const { username, role, version, onLogout } = props
+  const { visible, username, role, version, onLogout, onVisible } = props
 
   const content = Menus.map((it, i) => {
-    return <GroupMenu item={it} key={i} />
+    return <GroupMenu item={it} visible={visible} key={i} />
   })
 
+  const style = visible ? {} : { display: 'none' }
+  const width = visible ? '280px' : '55px'
   return (
-    <View>
+    <View style={{ width }}>
       <Padding>
-        <Header username={username} role={role} />
+        <Header
+          visible={visible}
+          username={username}
+          role={role}
+          version={version} 
+          onVisible={onVisible}
+        />
         {content}
 
         <Footer>
           <Logout onClick={onLogout}>
             <LogOut />
-            <LogoutText>Logout</LogoutText>
+            <LogoutText style={style}>Logout</LogoutText>
           </Logout>
-          <Version>{version || ''}</Version>
+          <Version style={style}>{version || ''}</Version>
         </Footer>
       </Padding>
     </View>

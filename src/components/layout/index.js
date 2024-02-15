@@ -1,15 +1,39 @@
+import { useState, useEffect } from 'react'
 import { styled } from '@mui/material'
 
 import SideMenu from '../menu/SideMenu'
 
 const Layout = (props) => {
-  const { username, role, children } = props
+  const [visible, setVisible] = useState(true)
+  const { username, role, version, children } = props
+
+  useEffect(() => {
+    const value = localStorage.getItem('bedee_menu')
+    const v = value === 'none' ? false : true
+
+    setVisible(v)
+  }, [])
+
+  const onVisible = () => {
+    const v = !visible
+    localStorage.setItem('bedee_menu', v ? 'display' : 'none')
+    setVisible(v)
+  }
+
+  const width = visible ? '280px' : '55px'
+  const padding = visible ? '16px 16px 0px 296px' : '16px 16px 0px 71px'
   return (
     <View>
-      <MenuView>
-        <SideMenu username={username} role={role} />
+      <MenuView style={{ width }}>
+        <SideMenu
+          visible={visible}
+          username={username}
+          role={role}
+          version={version} 
+          onVisible={onVisible}
+        />
       </MenuView>
-      <BodyView>
+      <BodyView style={{ padding }}>
         <ContentView>
           {children}
         </ContentView>
