@@ -25,13 +25,13 @@ const GroupMenu = (props) => {
 
   return (
     <View>
-      <ListItemButton onClick={onClick}>
-        <ListItemIcon>
+      <ListButton onClick={onClick}>
+        <Icon>
           {icon}
-        </ListItemIcon>
+        </Icon>
         <ListItemText primary={title} />
         {open ? <ChevronDown /> : <ChevronUp />}
-      </ListItemButton>
+      </ListButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         {content}
       </Collapse>
@@ -47,12 +47,13 @@ const View = styled('div')({
   }
 })
 
-const Title = styled('div')({
-  width: '100%'
+const ListButton = styled(ListItemButton)({
+  width: '100%',
+  padding: '8px 0px',
 })
 
-const SubMenuView = styled('div')({
-  width: '100%'
+const Icon = styled(ListItemIcon)({
+  minWidth: '40px',
 })
 
 export default GroupMenu

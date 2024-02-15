@@ -3,11 +3,11 @@ import { styled } from '@mui/material'
 import SideMenu from '../menu/SideMenu'
 
 const Layout = (props) => {
-  const { children } = props
+  const { username, role, children } = props
   return (
     <View>
       <MenuView>
-        <SideMenu />
+        <SideMenu username={username} role={role} />
       </MenuView>
       <BodyView>
         <ContentView>

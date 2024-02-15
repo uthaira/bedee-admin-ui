@@ -1,26 +1,28 @@
-import { 
-  styled
-} from '@mui/material'
+import { styled } from '@mui/material'
+
+import BedeeLogo from '../../icon/BedeeLogo'
 
 const Header = (props) => {
+  const { username, role } = props
   return (
     <View>
       <Logo>
-        <LogoImg src="./favicon512.png" />
+        <BedeeLogo />
         <BrandName>Bedee</BrandName>
       </Logo>
       <User>
-        <Username>AAA@bedee.com</Username>
-        <RoleName>Super Admin</RoleName>
+        <Username>{username || ''}</Username>
+        <RoleName>{role || ''}</RoleName>
       </User>
     </View>
   )
 }
 
+
 const View = styled('div')({
   width: '100%',
-  paddingBottom: '16px',
-  borderBottom: '1px solid #F3F3F3',
+  paddingBottom: '24px',
+  borderBottom: '1px solid #CDE7F6',
 })
 
 const Logo = styled('div')({
@@ -28,15 +30,16 @@ const Logo = styled('div')({
   fontWeight: 700,
   fontSize: '27px',
   display: 'flex',
-})
+  alignItems: 'center',
 
-const LogoImg = styled('img')({
-  width: '40px',
-  height: '40px',
+  'svg': {
+    width: '65px',
+    height: '65px',
+  }
 })
 
 const BrandName = styled('div')({
-  width: '100%',
+  width: '75%',
 })
 
 const User = styled('div')({

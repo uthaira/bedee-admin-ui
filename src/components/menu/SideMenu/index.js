@@ -1,14 +1,21 @@
 import { styled } from '@mui/material'
 
 import DasboardIcon from '../../icon/DasboardIcon'
+import ReportIcon from '../../icon/ReportIcon'
+import Fullfill from '../../icon/Fullfill'
 import CustomerIcon from '../../icon/CustomerIcon'
-import Setting from '../../icon/Setting'
+import Marketing from '../../icon/Marketing'
 import ProviderIcon from '../../icon/ProviderIcon'
+import Issue from '../../icon/Issue'
+import Admin from '../../icon/Admin'
+import Setting from '../../icon/Setting'
 import LogOut from '../../icon/LogOut'
 import Header from './Header'
 import GroupMenu from './MenuGroup'
 
 const SideMenu = (props) => {
+  const { username, role, version, onLogout } = props
+
   const content = Menus.map((it, i) => {
     return <GroupMenu item={it} key={i} />
   })
@@ -16,15 +23,15 @@ const SideMenu = (props) => {
   return (
     <View>
       <Padding>
-        <Header />
+        <Header username={username} role={role} />
         {content}
 
         <Footer>
-          <Logout>
+          <Logout onClick={onLogout}>
             <LogOut />
             <LogoutText>Logout</LogoutText>
           </Logout>
-          <Version>1.2.5</Version>
+          <Version>{version || ''}</Version>
         </Footer>
       </Padding>
     </View>
@@ -42,14 +49,15 @@ const View = styled('div')({
 })
 
 const Padding = styled('div')({
-  padding: '10px',
+  padding: '16px',
 })
 
 const Footer = styled('div')({
-  width: '100%',
+  width: 'calc(100% - 18px)',
   position: 'absolute',
-  paddingLeft: '8px',
-  bottom: 24,
+  bottom: 0,
+  left: '18px',
+  paddingBottom: '16px',
 })
 
 const Logout = styled('div')({
@@ -95,7 +103,7 @@ const Menus = [
   },
   {
     title: 'Report',
-    icon: <Setting />,
+    icon: <ReportIcon />,
     roles: ['finance_report_view_all', 'sale_report_view_all', 'transaction_report_view_all'],
     list: [
       {
@@ -122,7 +130,7 @@ const Menus = [
   },
   {
     title: 'Fulfillment',
-    icon: <Setting />,
+    icon: <Fullfill />,
     roles: ['order_edit_all', 'order_view_intervention', 'inventory_view_all', 'inventory_view_store'],
     list: [
       {
@@ -139,7 +147,7 @@ const Menus = [
   },
   {
     title: 'Marketing',
-    icon: <Setting />,
+    icon: <Marketing />,
     roles: ['campaign_monitoring_view_all', 'campaign_monitoring_edit_all', 'coupon_code_view_all', 'coupon_code_edit_all'],
     list: [
       {
@@ -168,7 +176,7 @@ const Menus = [
   },
   {
     title: 'Catalog',
-    icon: <Setting />,
+    icon: <Marketing />,
     roles: ['campaign_monitoring_view_all', 'campaign_monitoring_edit_all', 'coupon_code_view_all', 'coupon_code_edit_all'],
     isTest: true,
     list: [
@@ -234,7 +242,7 @@ const Menus = [
   },
   {
     title: 'Refund management',
-    icon: <Setting />,
+    icon: <Issue />,
     roles: ['refund_management_view', 'refund_management_edit'],
     minActive: ['refund_management'],
     list: [
@@ -248,7 +256,7 @@ const Menus = [
   },
   {                     
     title: 'Admin',
-    icon: <Setting />,
+    icon: <Admin />,
     roles: ['product_edit_all', 'product_view_all', 'store_edit_all', 'store_view_all'],
     minActive: [],
     list: [
