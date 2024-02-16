@@ -1,4 +1,4 @@
-import Layout from "./components/layout"
+import { AdminLayout } from "./layout"
 
 const App = () => {
   const username = 'Admin@bedee.com'
@@ -7,13 +7,13 @@ const App = () => {
   const onLogout = () => {}
 
   return (
-    <Layout 
+    <AdminLayout 
       username={username}
       role={role}
       version={version}
       onLogout={onLogout}>
         Bedee Admin UI
-    </Layout>
+    </AdminLayout>
   )
 }
 
