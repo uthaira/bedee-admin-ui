@@ -32,7 +32,9 @@ const SideMenu = (props) => {
           version={version} 
           onVisible={onVisible}
         />
-        {content}
+        <MenuContent>
+          {content}
+        </MenuContent>
 
         <Footer>
           <Logout onClick={onLogout}>
@@ -60,12 +62,14 @@ const Padding = styled('div')({
   padding: '16px',
 })
 
+const MenuContent = styled('div')({
+  height: 'calc(100vh - 220px)',
+  overflow: 'scroll',
+})
+
 const Footer = styled('div')({
   width: 'calc(100% - 18px)',
-  position: 'absolute',
-  bottom: 0,
-  left: '18px',
-  paddingBottom: '16px',
+  paddingTop: '8px',
 })
 
 const Logout = styled('div')({
