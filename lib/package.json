@@ -1,6 +1,6 @@
 {
   "name": "bedee-admin-ui",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "repository": "git://github.com:uthaira/bedee-admin-ui.git",
   "main": "index.js",
   "dependencies": {
