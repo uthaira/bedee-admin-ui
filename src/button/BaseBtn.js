@@ -126,6 +126,7 @@ const TextStyled = styled("div")(() => ({
   minWidth: "70px",
   columnGap: "8px",
   lineHeight: "16px",
+  textTransform: 'none',
 }))
 
 
