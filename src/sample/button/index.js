@@ -60,7 +60,7 @@ const list = [
   { text: 'Size LG', size: 'lg' },
   { text: 'Size MD', size: 'md' },
   { text: 'Size SM', size: 'sm' },
-  { text: 'Loading SM', size: 'sm', loading: true },
+  { text: 'Loading SM', size: 'sm', loading: 'true' },
   { text: 'Disabled (XS)', size: 'xs', disabled: true },
 ]
 
