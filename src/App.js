@@ -3,6 +3,7 @@ import { Grid } from '@mui/material'
 import { AdminLayout } from "./layout"
 import SampleButton from "./sample/button"
 import SampleDrawer from "./sample/drawer"
+import SampleSwitch from './sample/switch'
 
 const App = () => {
   const username = 'Admin@bedee.com'
@@ -23,6 +24,10 @@ const App = () => {
 
         <Grid item xs={4}>
           <SampleDrawer />
+        </Grid>
+
+        <Grid item xs={8}>
+          <SampleSwitch />
         </Grid>
       </Grid>
     </AdminLayout>
