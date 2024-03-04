@@ -3,7 +3,6 @@
   "description": "Bedee shared UI components",
   "version": "0.1.7",
   "repository": "git://github.com:uthaira/bedee-admin-ui.git",
-  "type": "module",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types.d.ts",
