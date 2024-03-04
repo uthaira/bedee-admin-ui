@@ -6,7 +6,7 @@
   "type": "module",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/types.d.ts",
   "scripts": {
     "rollup": "rollup -c --bundleConfigAsCjs",
     "test": "jest",
@@ -48,11 +48,11 @@
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.15.9"
+    "@mui/material": "^5.15.9",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "files": [
     "/dist"
