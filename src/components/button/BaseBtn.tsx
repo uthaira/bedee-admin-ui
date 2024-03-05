@@ -1,19 +1,14 @@
-import { Button as MuiButton, ButtonProps as MuiButtonProps } from "@mui/material"
+import { Box, Button as MuiButton, ButtonProps as MuiButtonProps } from "@mui/material"
 import { styled } from "@mui/material/styles"
-
-const Color = {
-  blue: '#1E6AF6',
-  light_red: '#EA5540',
-  white: 'white',
-}
+import * as colors from "../../colors"
 
 export interface ButtonProps extends MuiButtonProps {
   bdType?: "primary" | "secondary" | "outlined" | "remove"
+  bdSize?: string
+
   icon?: JSX.Element
   text?: string
-  disabled?: boolean
   loading?: boolean
-  bdSize?: string
   width?: string
 }
 
@@ -24,34 +19,34 @@ const Button = (props: ButtonProps) => {
     switch (bdType) {
       case "secondary":
         return {
-          color: Color.blue,
-          borderColor: Color.blue,
-          backgroundColor: Color.white,
+          color: colors.primary001,
+          borderColor: colors.primary001,
+          backgroundColor: colors.white,
         }
       case "outlined":
         return {
-          color: Color.blue,
-          borderColor: Color.white,
-          backgroundColor: Color.white,
+          color: colors.primary001,
+          borderColor: colors.white,
+          backgroundColor: colors.white,
         }
       case "remove":
         return {
-          color: Color.light_red,
-          borderColor: Color.light_red,
-          backgroundColor: Color.white,
+          color: colors.error,
+          borderColor: colors.error,
+          backgroundColor: colors.white,
         }
       default:
         return {
-          color: Color.white,
-          borderColor: Color.blue,
-          backgroundColor: Color.blue,
+          color: colors.white,
+          borderColor: colors.primary001,
+          backgroundColor: colors.primary001,
         }
     }
   }
 
   const getSize = () => {
     switch (bdSize) {
-      case "large":
+      case "lg":
         return {
           borderRadius: "32px",
           fontSize: "16px",
@@ -59,7 +54,7 @@ const Button = (props: ButtonProps) => {
           icon: 12,
           loading: "18px"
         }
-      case "medium":
+      case "md":
         return {
           borderRadius: "32px",
           fontSize: "16px",
@@ -67,7 +62,7 @@ const Button = (props: ButtonProps) => {
           icon: 12,
           loading: "16px"
         }
-      case "small":
+      case "sm":
         return {
           borderRadius: "32px",
           fontSize: "14px",
@@ -120,18 +115,17 @@ const Button = (props: ButtonProps) => {
         },
       }}
       variant="outlined"
-      href=""
       {...props}
     >
       <TextStyled>
         {iconImg}
-        <div style={{ color: c.color, fontSize: s.fontSize }}>{text}</div>
+        <Box style={{ color: c.color, fontSize: s.fontSize }}>{text}</Box>
       </TextStyled>
     </MuiButton>
   );
 };
 
-const TextStyled = styled("div")(() => ({
+const TextStyled = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -142,7 +136,7 @@ const TextStyled = styled("div")(() => ({
 }))
 
 
-const Loading = styled("div")(() => ({
+const Loading = styled(Box)(() => ({
   borderRadius: '50%',
   display: 'inline-block',
   boxSizing: 'border-box',

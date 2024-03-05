@@ -1,6 +1,6 @@
 import { Drawer as MuiDrawer, styled } from '@mui/material'
 
-import { PrimaryBtn } from '../button'
+import { PrimaryButton } from '../button'
 import Close from '../../icons/Close'
 
 export type Position = 'top' | 'right' | 'bottom' | 'left'
@@ -52,7 +52,7 @@ const Drawer = (props: DrawerProps) => {
           {children}
         </BodyView>
         <Footer>
-          <PrimaryBtn text={text} onClick={onClick} />
+          <PrimaryButton text={text} onClick={onClick} />
         </Footer>
       </View>
     </MuiDrawer>
