@@ -1,23 +1,25 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Switch from "./BaseSwitch";
+import SwitchLB from "./SwitchLabel";
 
 export default {
   title: "Components/Switch",
-  component: Switch,
+  component: SwitchLB,
   argTypes: {
     bdSize: {
       control: { type: 'radio' },
       options: ['sm', 'md']
     }
   }
-} as Meta<typeof Switch>
+} as Meta<typeof SwitchLB>
 
-type SwitchStory = StoryObj<typeof Switch>;
+type SwitchLabelStory = StoryObj<typeof SwitchLB>
 
-export const BaseSwitch: SwitchStory = {
+export const SwitchLabel: SwitchLabelStory = {
   args: {
     checked: false,
     bdSize: 'md',
-    disabled: false
+    disabled: false,
+    label: "Option",
+    hint: "hint"
   }
 }

@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from "@storybook/react";
 import Drawer from ".";
+import { Typography } from "@mui/material";
 
 export default {
   title: "Components/Drawer",
@@ -19,7 +20,7 @@ LeftDrawer.args = {
   onClose: () => console.log('close'),
   onClick: () => console.log('click'),
   onCorner: () => console.log('corner'),
-  children: <div>content goes here</div>,
+  children: <Typography>content goes here</Typography>,
 }
 
 export const TopDrawer = Template.bind({})
@@ -29,11 +30,11 @@ TopDrawer.args = {
   text: "Text",
   corner: "Corner",
   position: "top",
-  width: "100%",
+  width: "98%",
   onClose: () => console.log('close'),
   onClick: () => console.log('click'),
   onCorner: () => console.log('corner'),
-  children: <div>content goes here</div>,
+  children: <Typography>content goes here</Typography>,
 }
 
 export const RightDrawer = Template.bind({})
@@ -47,7 +48,7 @@ RightDrawer.args = {
   onClose: () => console.log('close'),
   onClick: () => console.log('click'),
   onCorner: () => console.log('corner'),
-  children: <div>content goes here</div>,
+  children: <Typography>content goes here</Typography>,
 }
 
 export const BottomDrawer = Template.bind({})
@@ -61,5 +62,5 @@ BottomDrawer.args = {
   onClose: () => console.log('close'),
   onClick: () => console.log('click'),
   onCorner: () => console.log('corner'),
-  children: <div>content goes here</div>,
+  children: <Typography>content goes here</Typography>,
 }

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Grid } from '@mui/material'
 import { Box } from "../layout"
 import Drawer, { Position } from '../../components/drawer'
-import { Btn } from '../../components/button'
+import { Button } from '../../components/button'
 import { Meta } from '@storybook/react'
 
 export const SampleDrawer = () => {
@@ -34,16 +34,16 @@ export const SampleDrawer = () => {
       <Box title="Drawer">
         <Grid container spacing={2}>
           <Grid item xs={3} md={3}>
-            <Btn text="Top" bdSize="md" onClick={() => onClick('top', true)} />
+            <Button text="Top" bdSize="md" onClick={() => onClick('top', true)} />
           </Grid>
           <Grid item xs={3} md={3}>
-            <Btn text="Right" bdSize="md" onClick={() => onClick('right', true)} />
+            <Button text="Right" bdSize="md" onClick={() => onClick('right', true)} />
           </Grid>
           <Grid item xs={3} md={3}>
-            <Btn text="Bottom" bdSize="md" onClick={() => onClick('bottom', true)} />
+            <Button text="Bottom" bdSize="md" onClick={() => onClick('bottom', true)} />
           </Grid>
           <Grid item xs={3} md={3}>
-            <Btn text="Left" bdSize="md" onClick={() => onClick('left', true)} />
+            <Button text="Left" bdSize="md" onClick={() => onClick('left', true)} />
           </Grid>
         </Grid>
       </Box>

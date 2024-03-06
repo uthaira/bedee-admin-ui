@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material'
 import { ColumnBox } from "../layout"
-import { PrimaryBtn, Btn, OutlinedBtn, RemoveBtn } from "../../components/button"
+import { PrimaryButton, SecondaryButton, OutlinedButton, RemoveButton } from "../../components/button"
 import { Meta } from '@storybook/react'
 
 export const SampleButton = () => {
@@ -13,19 +13,19 @@ export const SampleButton = () => {
   for (const item of list) {
     const { text, bdSize, disabled, loading } = item
     primaryList.push(
-      <PrimaryBtn key={`primary-${index}`} text={text} bdSize={bdSize} disabled={disabled} loading={loading} />
+      <PrimaryButton key={`primary-${index}`} text={text} bdSize={bdSize} disabled={disabled} loading={loading} />
     )
 
     secondaryList.push(
-      <Btn key={`secondery-${index}`} text={text} bdSize={bdSize} disabled={disabled} loading={loading} />
+      <SecondaryButton key={`secondary-${index}`} text={text} bdSize={bdSize} disabled={disabled} loading={loading} />
     )
 
     outlinedList.push(
-      <OutlinedBtn key={`outlined-${index}`} text={text} bdSize={bdSize} disabled={disabled} loading={loading} />
+      <OutlinedButton key={`outlined-${index}`} text={text} bdSize={bdSize} disabled={disabled} loading={loading} />
     )
 
     removeList.push(
-      <RemoveBtn key={`remove-${index}`} text={text} bdSize={bdSize} disabled={disabled} loading={loading} />
+      <RemoveButton key={`remove-${index}`} text={text} bdSize={bdSize} disabled={disabled} loading={loading} />
     )
 
     index++
@@ -39,7 +39,7 @@ export const SampleButton = () => {
         </ColumnBox>
       </Grid>
       <Grid item xs={3} md={3}>
-        <ColumnBox title="Secondery Button">
+        <ColumnBox title="Secondary Button">
           {secondaryList}
         </ColumnBox>
       </Grid>
