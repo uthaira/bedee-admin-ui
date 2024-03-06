@@ -43,7 +43,7 @@ const SwitchLabel = (props: SwitchLabelProps) => {
       </Grid>
       <Grid item>
         <Box>
-          <Typography color={colors.gray6} fontSize={fs.label}>{label}</Typography>
+          <Typography color={colors.gray5} fontSize={fs.label}>{label}</Typography>
         </Box>
         <Box>
           <Typography color={colors.gray4} fontSize={fs.hint}>{hint}</Typography>
