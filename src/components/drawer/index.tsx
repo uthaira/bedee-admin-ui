@@ -1,4 +1,4 @@
-import { Drawer as MuiDrawer, styled } from '@mui/material'
+import { Drawer as MuiDrawer, Typography, styled } from '@mui/material'
 
 import { PrimaryButton } from '../button'
 import Close from '../../icons/Close'
@@ -33,7 +33,7 @@ const Drawer = (props: DrawerProps) => {
     children
   } = props
 
-  const connerBtn = corner ? <Conner onClick={onCorner}>{corner}</Conner> : undefined
+  const connerBtn = corner ? <Conner onClick={onCorner}><Typography>{corner}</Typography></Conner> : undefined
   return (
     <MuiDrawer anchor={position} open={open} onClose={onClose}>
       <View style={{ width }}>
@@ -44,7 +44,11 @@ const Drawer = (props: DrawerProps) => {
             </CloseBtn>
           </CloseBar>
           <TitleBar>
-            <Title>{title}</Title>
+            <Title>
+              <Typography>
+                {title}
+              </Typography>
+            </Title>
             {connerBtn}
           </TitleBar>
         </MenuView>

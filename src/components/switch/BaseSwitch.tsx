@@ -6,7 +6,7 @@ export interface SwitchProps extends MuiSwitchProps {
   bdSize?: string
 }
 
-interface StyledSwitchProps {
+type Style = {
   width: number
   height: number
   mt: number
@@ -14,19 +14,23 @@ interface StyledSwitchProps {
   transform: string
 }
 
-const Switch = (props: SwitchProps) => {
-  const { size } = props
+type StyleDict = {
+  [key: string]: Style
+}
 
-  const getSize = (): StyledSwitchProps => {
-    const mapSize: { [key: string]: StyledSwitchProps } = {
-      "md": {
+const Switch = (props: SwitchProps) => {
+  const { bdSize } = props
+
+  const getSize = (): Style => {
+    const mapSize: StyleDict = {
+      md: {
         width: 48,
         height: 24,
         mt: 2,
         ml: 3,
         transform: 'translateX(22px)',
       },
-      "sm": {
+      sm: {
         width: 36,
         height: 18,
         mt: 1,
@@ -34,7 +38,8 @@ const Switch = (props: SwitchProps) => {
         transform: 'translateX(16px)',
       }
     }
-    return mapSize[size ?? "md"]
+
+    return mapSize[bdSize ?? "md"]
   }
 
   return <StyledSwitch {...props} {...getSize()} />
@@ -42,7 +47,7 @@ const Switch = (props: SwitchProps) => {
 
 const StyledSwitch = styled((props) => (
   <MuiSwitch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
-))((props: StyledSwitchProps) => ({
+))((props: Style) => ({
   width: props.width,
   height: props.height,
   padding: 0,

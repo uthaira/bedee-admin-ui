@@ -1,4 +1,4 @@
-import { styled } from '@mui/material'
+import { Typography, styled } from '@mui/material'
 
 const Box = (props: any) => {
   const { title, children } = props
@@ -6,7 +6,7 @@ const Box = (props: any) => {
   return (
     <View>
       <Title>
-        {title}
+        <Typography>{title}</Typography>
       </Title>
       <ContentView>
         {children}
