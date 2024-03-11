@@ -3,21 +3,21 @@ import { ButtonProps as ButtonProps$1, SwitchProps as SwitchProps$1 } from '@mui
 
 interface ButtonProps extends ButtonProps$1 {
     bdType?: "primary" | "secondary" | "outlined" | "remove";
+    bdSize?: string;
     icon?: JSX.Element;
     text?: string;
-    disabled?: boolean;
     loading?: boolean;
-    bdSize?: string;
     width?: string;
 }
+declare const Button: (props: ButtonProps) => react_jsx_runtime.JSX.Element;
+
+declare const PrimaryBtn: (props: ButtonProps) => react_jsx_runtime.JSX.Element;
 
 declare const SecondaryBtn: (props: ButtonProps) => react_jsx_runtime.JSX.Element;
 
 declare const OutlinedBtn: (props: ButtonProps) => react_jsx_runtime.JSX.Element;
 
 declare const RemoveBtn: (props: ButtonProps) => react_jsx_runtime.JSX.Element;
-
-declare const PrimaryBtn: (props: ButtonProps) => react_jsx_runtime.JSX.Element;
 
 type Position = 'top' | 'right' | 'bottom' | 'left';
 interface DrawerProps {
@@ -49,6 +49,12 @@ interface SwitchProps extends SwitchProps$1 {
 }
 declare const Switch: (props: SwitchProps) => react_jsx_runtime.JSX.Element;
 
+interface SwitchLabelProps extends SwitchProps {
+    label: string;
+    hint?: string;
+}
+declare const SwitchLabel: (props: SwitchLabelProps) => react_jsx_runtime.JSX.Element;
+
 declare const black = "#000000";
 declare const white = "#FFFFFF";
 declare const gray1 = "#F3F6F9";
@@ -73,7 +79,12 @@ declare const trinary002 = "#F18B61";
 declare const trinary003 = "#F5A889";
 declare const trinary004 = "#F8C5B0";
 declare const trinary005 = "#FAD3C4";
+declare const success = "#13C186";
+declare const warning = "#EFB110";
+declare const error = "#EA5540";
+declare const completed = "#1E6AF6";
+declare const pending = "#F9A01B";
 
 declare const Layout: (props: any) => react_jsx_runtime.JSX.Element;
 
-export { Layout as AdminLayout, SecondaryBtn as Btn, type DrawerProps, OutlinedBtn, type Position, PrimaryBtn, RemoveBtn, SideMenu, Switch, black, gray1, gray2, gray3, gray4, gray5, gray6, gray7, primary001, primary002, primary003, primary004, primary005, secondary001, secondary002, secondary003, secondary004, secondary005, trinary001, trinary002, trinary003, trinary004, trinary005, white };
+export { Layout as AdminLayout, Button, type DrawerProps, OutlinedBtn as OutlinedButton, type Position, PrimaryBtn as PrimaryButton, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, Switch, SwitchLabel, black, completed, error, gray1, gray2, gray3, gray4, gray5, gray6, gray7, pending, primary001, primary002, primary003, primary004, primary005, secondary001, secondary002, secondary003, secondary004, secondary005, success, trinary001, trinary002, trinary003, trinary004, trinary005, warning, white };
