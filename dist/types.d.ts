@@ -33,6 +33,7 @@ interface DrawerProps {
     onCorner?: () => void;
     children: React.ReactNode;
 }
+declare const Drawer: (props: DrawerProps) => react_jsx_runtime.JSX.Element;
 
 interface SideMenuProps {
     menus: any[];
@@ -101,4 +102,4 @@ declare const pending = "#F9A01B";
 
 declare const Layout: (props: any) => react_jsx_runtime.JSX.Element;
 
-export { Layout as AdminLayout, Button, Dialog, type DrawerProps, OutlinedBtn as OutlinedButton, type Position, PrimaryBtn as PrimaryButton, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, Switch, SwitchLabel, black, completed, error, gray1, gray2, gray3, gray4, gray5, gray6, gray7, pending, primary001, primary002, primary003, primary004, primary005, secondary001, secondary002, secondary003, secondary004, secondary005, success, trinary001, trinary002, trinary003, trinary004, trinary005, warning, white };
+export { Layout as AdminLayout, Button, Dialog, Drawer, type DrawerProps, OutlinedBtn as OutlinedButton, type Position, PrimaryBtn as PrimaryButton, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, Switch, SwitchLabel, black, completed, error, gray1, gray2, gray3, gray4, gray5, gray6, gray7, pending, primary001, primary002, primary003, primary004, primary005, secondary001, secondary002, secondary003, secondary004, secondary005, success, trinary001, trinary002, trinary003, trinary004, trinary005, warning, white };

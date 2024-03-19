@@ -18,7 +18,7 @@ export interface DrawerProps {
   children: React.ReactNode
 }
 
-const Drawer = (props: DrawerProps) => {
+export const Drawer = (props: DrawerProps) => {
   const {
     open,
     title,
@@ -123,6 +123,3 @@ const Footer = styled('div')({
   width: 'auto',
   padding: '20px',
 })
-
-
-export default Drawer

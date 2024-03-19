@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Grid } from '@mui/material'
 import { Box } from "../layout"
-import Drawer, { Position } from '../../components/drawer'
+import { Drawer, Position } from '../../components/drawer'
 import { Button } from '../../components/button'
 import { Meta } from '@storybook/react'
 
