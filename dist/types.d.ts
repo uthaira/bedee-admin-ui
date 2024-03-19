@@ -1,5 +1,6 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
-import { ButtonProps as ButtonProps$1, SwitchProps as SwitchProps$1 } from '@mui/material';
+import { ButtonProps as ButtonProps$1, SwitchProps as SwitchProps$1, DialogProps as DialogProps$1 } from '@mui/material';
+import React$1 from 'react';
 
 interface ButtonProps extends ButtonProps$1 {
     bdType?: "primary" | "secondary" | "outlined" | "remove";
@@ -55,6 +56,19 @@ interface SwitchLabelProps extends SwitchProps {
 }
 declare const SwitchLabel: (props: SwitchLabelProps) => react_jsx_runtime.JSX.Element;
 
+interface DialogProps extends DialogProps$1 {
+    subTitle?: string;
+    children?: React$1.ReactNode;
+    icon?: React$1.ReactNode;
+    onConfirm?: () => void;
+    onCancel?: () => void;
+    bdSize?: string;
+    cancelText?: string;
+    confirmText?: string;
+    isCloseIcon?: boolean;
+}
+declare const Dialog: (props: DialogProps) => react_jsx_runtime.JSX.Element;
+
 declare const black = "#000000";
 declare const white = "#FFFFFF";
 declare const gray1 = "#F3F6F9";
@@ -87,4 +101,4 @@ declare const pending = "#F9A01B";
 
 declare const Layout: (props: any) => react_jsx_runtime.JSX.Element;
 
-export { Layout as AdminLayout, Button, type DrawerProps, OutlinedBtn as OutlinedButton, type Position, PrimaryBtn as PrimaryButton, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, Switch, SwitchLabel, black, completed, error, gray1, gray2, gray3, gray4, gray5, gray6, gray7, pending, primary001, primary002, primary003, primary004, primary005, secondary001, secondary002, secondary003, secondary004, secondary005, success, trinary001, trinary002, trinary003, trinary004, trinary005, warning, white };
+export { Layout as AdminLayout, Button, Dialog, type DrawerProps, OutlinedBtn as OutlinedButton, type Position, PrimaryBtn as PrimaryButton, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, Switch, SwitchLabel, black, completed, error, gray1, gray2, gray3, gray4, gray5, gray6, gray7, pending, primary001, primary002, primary003, primary004, primary005, secondary001, secondary002, secondary003, secondary004, secondary005, success, trinary001, trinary002, trinary003, trinary004, trinary005, warning, white };
