@@ -116,5 +116,3 @@ const Footer = styled('div')({
   width: 'auto',
   padding: '20px',
 })
-
-export default Drawer

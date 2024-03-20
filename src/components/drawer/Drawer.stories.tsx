@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from "@storybook/react";
-import Drawer from ".";
+import { Drawer } from ".";
 import { Typography } from "@mui/material";
 
 export default {
