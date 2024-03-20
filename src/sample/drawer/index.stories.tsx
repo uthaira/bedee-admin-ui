@@ -25,8 +25,8 @@ export const SampleDrawer = () => {
           open={state[pos]}
           position={pos}
           title="Title Drawer"
-          text="Apple Filter"
-          corner="Clear"
+          buttonText="Apply Filter"
+          corner="Reset Filter"
           onClose={() => onClick(pos, false)}>
           {list.map((txt, i) => (<div key={i}>{txt}</div>))}
         </Drawer>

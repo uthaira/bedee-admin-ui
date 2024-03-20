@@ -1,4 +1,4 @@
-import { Drawer as MuiDrawer, Typography, styled } from '@mui/material'
+import { Divider, Drawer as MuiDrawer, Typography, styled } from '@mui/material'
 
 import { PrimaryButton } from '../button'
 import Close from '../../icons/Close'
@@ -8,7 +8,7 @@ export type Position = 'top' | 'right' | 'bottom' | 'left'
 export interface DrawerProps {
   open: boolean
   title: string
-  text: string
+  buttonText: string
   corner?: string
   position: Position
   width?: string | number
@@ -18,22 +18,16 @@ export interface DrawerProps {
   children: React.ReactNode
 }
 
-const Drawer = (props: DrawerProps) => {
-  const {
-    open,
-    title,
-    text,
-    corner,
-    position = 'right',
+export const Drawer = (props: DrawerProps) => {
+  const { open, title, buttonText, corner, position = 'right', width, onClose, onClick, onCorner, children } = props
 
-    width,
-    onClose,
-    onClick,
-    onCorner,
-    children
-  } = props
-
-  const connerBtn = corner ? <Conner onClick={onCorner}><Typography>{corner}</Typography></Conner> : undefined
+  const connerBtn = corner ? (
+    <Conner onClick={onCorner}>
+      <Typography noWrap fontSize={14}>
+        {corner}
+      </Typography>
+    </Conner>
+  ) : undefined
   return (
     <MuiDrawer anchor={position} open={open} onClose={onClose}>
       <View style={{ width }}>
@@ -45,18 +39,17 @@ const Drawer = (props: DrawerProps) => {
           </CloseBar>
           <TitleBar>
             <Title>
-              <Typography>
+              <Typography noWrap fontSize={18} fontWeight={600}>
                 {title}
               </Typography>
             </Title>
             {connerBtn}
           </TitleBar>
+        <Divider/>
         </MenuView>
-        <BodyView>
-          {children}
-        </BodyView>
+        <BodyView>{children}</BodyView>
         <Footer>
-          <PrimaryButton text={text} onClick={onClick} />
+          <PrimaryButton text={buttonText} bdSize='sm' onClick={onClick} />
         </Footer>
       </View>
     </MuiDrawer>
@@ -78,10 +71,11 @@ const Conner = styled('div')({
 })
 
 const MenuView = styled('div')({
-  display: 'block',
+  display: 'flex',
+  flexDirection: 'column',
   width: 'auto',
-  padding: '10px 20px',
-  borderBottom: '1px solid #EAEAEA',
+  gap: '20px',
+  padding: '10px 20px 0 20px'
 })
 
 const CloseBar = styled('div')({
@@ -92,7 +86,6 @@ const CloseBar = styled('div')({
 const TitleBar = styled('div')({
   width: '100%',
   display: 'flex',
-  paddingTop: '20px',
 })
 
 const Title = styled('div')({
@@ -123,6 +116,5 @@ const Footer = styled('div')({
   width: 'auto',
   padding: '20px',
 })
-
 
 export default Drawer

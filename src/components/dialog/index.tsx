@@ -1,1 +1,5 @@
 export { default as Dialog } from './BaseDialog'
+export { default as ConfirmChangeDialog } from './ConfirmChangeDialog'
+export { default as ConfirmDiscardDialog } from './ConfirmDiscardDialog'
+export { default as InfoDialog } from './InfoDialog'
+export { default as ErrorDialog } from './ErrorDialog'
