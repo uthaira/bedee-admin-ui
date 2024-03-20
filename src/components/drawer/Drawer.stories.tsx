@@ -13,7 +13,7 @@ export const LeftDrawer = Template.bind({})
 LeftDrawer.args = {
   open: true,
   title: "Title",
-  text: "Text",
+  buttonText: "Text",
   corner: "Corner",
   position: "left",
   width: 200,
@@ -27,7 +27,7 @@ export const TopDrawer = Template.bind({})
 TopDrawer.args = {
   open: true,
   title: "Title",
-  text: "Text",
+  buttonText: "Text",
   corner: "Corner",
   position: "top",
   width: "98%",
@@ -41,7 +41,7 @@ export const RightDrawer = Template.bind({})
 RightDrawer.args = {
   open: true,
   title: "Title",
-  text: "Text",
+  buttonText: "Text",
   corner: "Corner",
   position: "right",
   width: 200,
@@ -55,7 +55,7 @@ export const BottomDrawer = Template.bind({})
 BottomDrawer.args = {
   open: true,
   title: "Title",
-  text: "Text",
+  buttonText: "Text",
   corner: "Corner",
   position: "top",
   width: "100%",

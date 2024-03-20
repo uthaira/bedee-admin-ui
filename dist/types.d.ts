@@ -24,7 +24,7 @@ type Position = 'top' | 'right' | 'bottom' | 'left';
 interface DrawerProps {
     open: boolean;
     title: string;
-    text: string;
+    buttonText: string;
     corner?: string;
     position: Position;
     width?: string | number;
@@ -63,12 +63,21 @@ interface DialogProps extends DialogProps$1 {
     icon?: React$1.ReactNode;
     onConfirm?: () => void;
     onCancel?: () => void;
+    onClose?: () => void;
     bdSize?: string;
     cancelText?: string;
     confirmText?: string;
     isCloseIcon?: boolean;
 }
 declare const Dialog: (props: DialogProps) => react_jsx_runtime.JSX.Element;
+
+declare const ConfirmChangeDialog: ({ cancelText, confirmText, title, subTitle, ...props }: DialogProps) => react_jsx_runtime.JSX.Element;
+
+declare const ConfirmDiscardDialog: ({ confirmText, title, subTitle, ...props }: DialogProps) => react_jsx_runtime.JSX.Element;
+
+declare const InfoDialog: ({ confirmText, title, subTitle, ...props }: DialogProps) => react_jsx_runtime.JSX.Element;
+
+declare const ErrorDialog: ({ confirmText, title, subTitle, ...props }: DialogProps) => react_jsx_runtime.JSX.Element;
 
 declare const black = "#000000";
 declare const white = "#FFFFFF";
@@ -102,4 +111,4 @@ declare const pending = "#F9A01B";
 
 declare const Layout: (props: any) => react_jsx_runtime.JSX.Element;
 
-export { Layout as AdminLayout, Button, Dialog, Drawer, type DrawerProps, OutlinedBtn as OutlinedButton, type Position, PrimaryBtn as PrimaryButton, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, Switch, SwitchLabel, black, completed, error, gray1, gray2, gray3, gray4, gray5, gray6, gray7, pending, primary001, primary002, primary003, primary004, primary005, secondary001, secondary002, secondary003, secondary004, secondary005, success, trinary001, trinary002, trinary003, trinary004, trinary005, warning, white };
+export { Layout as AdminLayout, Button, ConfirmChangeDialog, ConfirmDiscardDialog, Dialog, Drawer, type DrawerProps, ErrorDialog, InfoDialog, OutlinedBtn as OutlinedButton, type Position, PrimaryBtn as PrimaryButton, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, Switch, SwitchLabel, black, completed, error, gray1, gray2, gray3, gray4, gray5, gray6, gray7, pending, primary001, primary002, primary003, primary004, primary005, secondary001, secondary002, secondary003, secondary004, secondary005, success, trinary001, trinary002, trinary003, trinary004, trinary005, warning, white };
