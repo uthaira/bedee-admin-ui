@@ -17,6 +17,7 @@ export interface DialogProps extends MuiDialogProps {
   icon?: React.ReactNode
   onConfirm?: () => void
   onCancel?: () => void
+  onClose?: () => void
   bdSize?: string
   cancelText?: string
   confirmText?: string
@@ -29,7 +30,8 @@ type Style = {
 }
 
 const Dialog = (props: DialogProps) => {
-  const { title, subTitle, children, icon, open, onConfirm, onCancel, bdSize, cancelText, confirmText, isCloseIcon } = props
+  const { title, subTitle, children, icon, open, onConfirm, onCancel, onClose, bdSize, cancelText, confirmText, isCloseIcon } =
+    props
 
   const getSize = (): Style => {
     switch (bdSize) {
@@ -64,11 +66,11 @@ const Dialog = (props: DialogProps) => {
   const s = getSize()
 
   return (
-    <DialogStyle open={open} {...s}>
+    <DialogStyle open={open} onClose={onClose} {...s}>
       {isCloseIcon && (
-        <Box top={10} right={16} position="absolute" onClick={onCancel}>
+        <CloseButtonStyle onClick={onClose}>
           <CloseDialog />
-        </Box>
+        </CloseButtonStyle>
       )}
       {icon && (
         <Box display="flex" justifyContent="center" paddingY={1.5}>
@@ -78,13 +80,12 @@ const Dialog = (props: DialogProps) => {
       <DialogTitleStyle {...s}>{title}</DialogTitleStyle>
       {children || <DialogSubTitleStyle {...s}>{subTitle}</DialogSubTitleStyle>}
       <DialogActionsStyle>
-        {onCancel?.() ||
-          (cancelText && (
-            <ButtonStyle onClick={onCancel} sx={{ color: Colors.black }}>
-              {cancelText}
-            </ButtonStyle>
-          ))}
-        {onConfirm?.() || (confirmText && <ButtonStyle onClick={onConfirm}>{confirmText}</ButtonStyle>)}
+        {cancelText && (
+          <ButtonStyle onClick={onCancel} sx={{ color: Colors.black }}>
+            {cancelText}
+          </ButtonStyle>
+        )}
+        {confirmText && <ButtonStyle onClick={onConfirm}>{confirmText}</ButtonStyle>}
       </DialogActionsStyle>
     </DialogStyle>
   )
@@ -132,6 +133,13 @@ const DialogActionsStyle = styled(MuiDialogActions)(() => ({
 
 const ButtonStyle = styled(Button)(() => ({
   textTransform: 'none',
+}))
+
+const CloseButtonStyle = styled('div')(() => ({
+  position: 'absolute',
+  top: '16px',
+  right: '16px',
+  cursor: 'pointer',
 }))
 
 export default Dialog

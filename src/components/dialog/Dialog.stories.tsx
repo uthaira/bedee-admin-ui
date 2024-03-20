@@ -13,6 +13,12 @@ export default {
       control: { type: 'radio' },
       options: ['sm', 'md', 'lg', 'xl'],
     },
+    confirmText: {
+      control: 'text',
+    },
+    cancelText: {
+      control: 'text',
+    },
   },
 } as Meta<typeof Dialog>
 
@@ -22,8 +28,6 @@ BaseDialog.args = {
   open: true,
   isCloseIcon: false,
   bdSize: 'sm',
-  confirmText: 'Confirm',
-  cancelText: 'Cancel',
   title: 'Tittle Modal',
   subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,',
 }
