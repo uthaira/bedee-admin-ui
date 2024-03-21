@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Meta } from '@storybook/react'
 import { Dialog, ConfirmChangeDialog, ConfirmDiscardDialog, InfoDialog, ErrorDialog, Button } from '../../components'
-import { Box, Grid } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 
 export const SampleDialogTemplate = ({ dialog, confirmChangeDialog, confirmDiscardDialog, infoDialog, errorDialog }: any) => {
   const [dialogStates, setDialogStates] = useState({
@@ -48,21 +48,29 @@ export const SampleDialogTemplate = ({ dialog, confirmChangeDialog, confirmDisca
       <Dialog open={dialogStates.dialog} onClose={() => closeDialog('dialog')} isCloseIcon />
       <ConfirmChangeDialog
         open={dialogStates.confirmChangeDialog}
+        title="Confirm to publish "
+        subTitle="Publish"
         onClose={() => closeDialog('confirmChangeDialog')}
         onConfirm={() => closeDialog('confirmChangeDialog')}
         onCancel={() => closeDialog('confirmChangeDialog')}
-      />
+      ></ConfirmChangeDialog>
       <ConfirmDiscardDialog
+        title="Confirm to discard "
+        subTitle="discard"
         open={dialogStates.confirmDiscardDialog}
         onClose={() => closeDialog('confirmDiscardDialog')}
         onConfirm={() => closeDialog('confirmDiscardDialog')}
       />
       <InfoDialog
+        title="Info Dialog"
+        subTitle="Sub Info Dialog"
         open={dialogStates.infoDialog}
         onClose={() => closeDialog('infoDialog')}
         onConfirm={() => closeDialog('infoDialog')}
       />
       <ErrorDialog
+        title="Error Dialog"
+        subTitle="Sub Error Dialog"
         open={dialogStates.errorDialog}
         onClose={() => closeDialog('errorDialog')}
         onConfirm={() => closeDialog('errorDialog')}

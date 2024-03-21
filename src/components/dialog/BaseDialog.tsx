@@ -102,11 +102,12 @@ const DialogStyle = styled(MuiDialog)((props: Style) => ({
     rowGap: '13px',
     boxShadow: 'none',
     backgroundColor: Colors.white,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
 }))
 
 const DialogTitleStyle = styled(MuiDialogTitle)((props: Style) => ({
+  width: '70%',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -115,7 +116,7 @@ const DialogTitleStyle = styled(MuiDialogTitle)((props: Style) => ({
   padding: '8px 0 0 0',
   lineHeight: '20px',
   textAlign: 'center',
-  color: Colors.secondary001,
+  color: Colors.gray6,
 }))
 
 const DialogSubTitleStyle = styled(MuiDialogTitle)((props: Style) => ({
