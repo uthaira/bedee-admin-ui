@@ -102,6 +102,7 @@ const DialogStyle = styled(MuiDialog)((props: Style) => ({
     rowGap: '13px',
     boxShadow: 'none',
     backgroundColor: Colors.white,
+    overflow: 'hidden'
   },
 }))
 
