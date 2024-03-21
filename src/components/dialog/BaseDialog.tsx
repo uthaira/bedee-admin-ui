@@ -22,6 +22,7 @@ export interface DialogProps extends MuiDialogProps {
   cancelText?: string
   confirmText?: string
   isCloseIcon?: boolean
+  width?: string
 }
 
 type Style = {
@@ -30,7 +31,7 @@ type Style = {
 }
 
 const Dialog = (props: DialogProps) => {
-  const { title, subTitle, children, icon, open, onConfirm, onCancel, onClose, bdSize, cancelText, confirmText, isCloseIcon } =
+  const { title, subTitle, children, icon, open, onConfirm, onCancel, onClose, bdSize, cancelText, confirmText, isCloseIcon, width } =
     props
 
   const getSize = (): Style => {
@@ -38,27 +39,27 @@ const Dialog = (props: DialogProps) => {
       case 'xl':
         return {
           TitleFontSize: '31px',
-          width: '1140px',
+          width: width || '1140px',
         }
       case 'lg':
         return {
           TitleFontSize: '31px',
-          width: '800px',
+          width: width || '800px',
         }
       case 'md':
         return {
           TitleFontSize: '25px',
-          width: '550px',
+          width: width || '550px',
         }
       case 'sm':
         return {
           TitleFontSize: '18px',
-          width: '300px',
+          width: width || '300px',
         }
       default:
         return {
           TitleFontSize: '18px',
-          width: '300px',
+          width: width || '300px',
         }
     }
   }
