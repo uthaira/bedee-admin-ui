@@ -9,7 +9,7 @@ interface RadioGroupData {
 
 interface RadioGroupProps {
   name?: string
-  items: RadioGroupData[]
+  data: RadioGroupData[]
   value: string | number
   onChange: (event: ChangeEvent<HTMLInputElement>, name?: string) => void
   isRow?: boolean
@@ -18,7 +18,7 @@ interface RadioGroupProps {
 }
 
 const RadioGroup = (props: RadioGroupProps) => {
-  const { name, items, value, onChange, isRow = false, title, disabled } = props
+  const { name, data, value, onChange, isRow = false, title, disabled } = props
 
   const onChangeValue = (event: any) => onChange(event.target.value, name)
 
@@ -31,7 +31,7 @@ const RadioGroup = (props: RadioGroupProps) => {
     <Box display="flex" flexDirection="column" width="100%">
       {titleLabel}
       <MuiRadioGroup onChange={onChangeValue} row={isRow}>
-        {items.map((radio) => (
+        {data.map((radio) => (
           <FormControlLabel
             key={radio.value}
             checked={value == radio.value}
