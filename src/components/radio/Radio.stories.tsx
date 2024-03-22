@@ -17,7 +17,7 @@ type RadioStory = StoryObj<typeof Radio>
 export const BaseRadio: RadioStory = {
   args: {
     title: 'Title Label',
-    items: RadioItems,
+    data: RadioItems,
     isRow: true,
     value: 1,
     disabled: false
