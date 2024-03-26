@@ -3,7 +3,7 @@ import * as Colors from '../../colors'
 import { ChangeEvent } from 'react'
 
 interface CheckBoxGroupData {
-  key: string
+  label?: string
   value: string
   disabled?: boolean
 }
@@ -26,19 +26,19 @@ const BaseCheckbox = (props: CheckBoxGroupProps) => {
       {title}
     </Typography>
   ) : undefined
+
+  const checkbox = ({ value, disabled }: CheckBoxGroupData) => (
+    <Checkbox disabled={disabled} name={value} value={value} onChange={onChangeValue} checked={selected.includes(value)} />
+  )
+
+  const content = data.map(({ label, value, disabled }, index) => (
+    <FormControlLabel key={index} control={checkbox({ value, disabled })} sx={FormControlLabelStyle} label={label} />
+  ))
+
   return (
     <Box display="flex" flexDirection="column" width="100%">
       {titleLabel}
-      <FormGroup row={isRow}>
-        {data.map((ms) => (
-          <FormControlLabel
-            key={ms.value}
-            control={<Checkbox disabled={ms.disabled} name={ms.value} value={ms.value} onChange={onChangeValue} checked={selected.includes(ms.value)} />}
-            sx={FormControlLabelStyle}
-            label={ms.key}
-          />
-        ))}
-      </FormGroup>
+      <FormGroup row={isRow}>{content}</FormGroup>
     </Box>
   )
 }

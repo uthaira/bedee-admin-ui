@@ -3,7 +3,7 @@ import * as Colors from '../../colors'
 import { ChangeEvent } from 'react'
 
 interface RadioGroupData {
-  key: string
+  label: string
   value: string | number
 }
 
@@ -27,21 +27,24 @@ const RadioGroup = (props: RadioGroupProps) => {
       {title}
     </Typography>
   ) : undefined
+
+  const content = data.map(({ label, value: val }, index) => (
+    <FormControlLabel
+      key={index}
+      checked={value == val}
+      value={val}
+      control={<Radio sx={RadioStyle} />}
+      sx={FormControlLabelStyle}
+      label={label}
+      disabled={disabled}
+    />
+  ))
+
   return (
     <Box display="flex" flexDirection="column" width="100%">
       {titleLabel}
       <MuiRadioGroup onChange={onChangeValue} row={isRow}>
-        {data.map((radio) => (
-          <FormControlLabel
-            key={radio.value}
-            checked={value == radio.value}
-            value={radio.value}
-            control={<Radio sx={RadioStyle} />}
-            sx={FormControlLabelStyle}
-            label={radio.key}
-            disabled={disabled}
-          />
-        ))}
+        {content}
       </MuiRadioGroup>
     </Box>
   )

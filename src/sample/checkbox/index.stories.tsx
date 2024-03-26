@@ -6,15 +6,15 @@ import { CheckboxGroup } from '../../components'
 export const SampleCheckbox = () => {
   const [state, setState] = useState<any>([])
   const items = [
-    { key: 'One', value: '1' },
-    { key: 'Two', value: '2' },
-    { key: 'Three', value: '3' },
+    { label: 'One', value: '1' },
+    { label: 'Two', value: '2' },
+    { label: 'Three', value: '3' },
   ]
 
   const itemsDisable = [
-    { key: 'One', value: '1', disabled: true },
-    { key: 'Two', value: '2', disabled: true },
-    { key: 'Three', value: '3', disabled: true },
+    { label: 'One', value: '1', disabled: true },
+    { label: 'Two', value: '2', disabled: true },
+    { label: 'Three', value: '3', disabled: true },
   ]
 
   const handleStateChange = (setState: any, val: any) => {
