@@ -2,9 +2,9 @@ import { Meta, StoryObj } from '@storybook/react'
 import Radio from './BaseRadio'
 
 const RadioItems = [
-  { key: 'One', value: 1 },
-  { key: 'Two', value: 2 },
-  { key: 'Three', value: 3 },
+  { label: 'One', value: 1 },
+  { label: 'Two', value: 2 },
+  { label: 'Three', value: 3 },
 ]
 
 export default {
