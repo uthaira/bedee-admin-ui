@@ -1,6 +1,6 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ButtonProps as ButtonProps$1, SwitchProps as SwitchProps$1, DialogProps as DialogProps$1 } from '@mui/material';
-import React$1 from 'react';
+import React$1, { ChangeEvent } from 'react';
 
 interface ButtonProps extends ButtonProps$1 {
     bdType?: "primary" | "secondary" | "outlined" | "remove";
@@ -68,6 +68,7 @@ interface DialogProps extends DialogProps$1 {
     cancelText?: string;
     confirmText?: string;
     isCloseIcon?: boolean;
+    width?: string;
 }
 declare const Dialog: (props: DialogProps) => react_jsx_runtime.JSX.Element;
 
@@ -78,6 +79,35 @@ declare const ConfirmDiscardDialog: ({ confirmText, title, subTitle, ...props }:
 declare const InfoDialog: ({ confirmText, title, subTitle, ...props }: DialogProps) => react_jsx_runtime.JSX.Element;
 
 declare const ErrorDialog: ({ confirmText, title, subTitle, ...props }: DialogProps) => react_jsx_runtime.JSX.Element;
+
+interface RadioGroupData {
+    label: string;
+    value: string | number;
+}
+interface RadioGroupProps {
+    name?: string;
+    data: RadioGroupData[];
+    value: string | number;
+    onChange: (event: ChangeEvent<HTMLInputElement>, name?: string) => void;
+    isRow?: boolean;
+    title?: string;
+    disabled?: boolean;
+}
+declare const RadioGroup: (props: RadioGroupProps) => react_jsx_runtime.JSX.Element;
+
+interface CheckBoxGroupData {
+    label?: string;
+    value: string;
+    disabled?: boolean;
+}
+interface CheckBoxGroupProps {
+    data: CheckBoxGroupData[];
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    selected: string[];
+    title?: string;
+    isRow?: boolean;
+}
+declare const BaseCheckbox: (props: CheckBoxGroupProps) => react_jsx_runtime.JSX.Element;
 
 declare const black = "#000000";
 declare const white = "#FFFFFF";
@@ -111,4 +141,4 @@ declare const pending = "#F9A01B";
 
 declare const Layout: (props: any) => react_jsx_runtime.JSX.Element;
 
-export { Layout as AdminLayout, Button, ConfirmChangeDialog, ConfirmDiscardDialog, Dialog, Drawer, type DrawerProps, ErrorDialog, InfoDialog, OutlinedBtn as OutlinedButton, type Position, PrimaryBtn as PrimaryButton, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, Switch, SwitchLabel, black, completed, error, gray1, gray2, gray3, gray4, gray5, gray6, gray7, pending, primary001, primary002, primary003, primary004, primary005, secondary001, secondary002, secondary003, secondary004, secondary005, success, trinary001, trinary002, trinary003, trinary004, trinary005, warning, white };
+export { Layout as AdminLayout, Button, BaseCheckbox as CheckboxGroup, ConfirmChangeDialog, ConfirmDiscardDialog, Dialog, Drawer, type DrawerProps, ErrorDialog, InfoDialog, OutlinedBtn as OutlinedButton, type Position, PrimaryBtn as PrimaryButton, RadioGroup, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, Switch, SwitchLabel, black, completed, error, gray1, gray2, gray3, gray4, gray5, gray6, gray7, pending, primary001, primary002, primary003, primary004, primary005, secondary001, secondary002, secondary003, secondary004, secondary005, success, trinary001, trinary002, trinary003, trinary004, trinary005, warning, white };
