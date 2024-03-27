@@ -16,7 +16,7 @@ const Tabs = (props: TabsProps) => {
 
   return (
     <Box width="100%">
-      <MuiTabs value={value} onChange={onChange}>
+      <MuiTabs value={value} onChange={onChange} {...props}>
         {tabs}
       </MuiTabs>
     </Box>
