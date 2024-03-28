@@ -1,7 +1,7 @@
 {
   "name": "bedee-admin-ui",
   "description": "Bedee shared UI components",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "repository": "git://github.com:uthaira/bedee-admin-ui.git",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -52,6 +52,7 @@
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.9",
+    "@mui/x-data-grid": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
