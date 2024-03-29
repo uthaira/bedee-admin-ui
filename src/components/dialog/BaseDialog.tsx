@@ -100,7 +100,7 @@ const Dialog = (props: DialogProps) => {
           </ButtonStyle>
         )}
         {confirmText && (
-          <ButtonStyle onClick={onConfirm} sx={{ color: Colors.electricBlue }}>
+          <ButtonStyle onClick={onConfirm} sx={{ color: Colors.primary001 }}>
             {confirmText}
           </ButtonStyle>
         )}
@@ -152,7 +152,6 @@ const DialogActionsStyle = styled(MuiDialogActions)(() => ({
 
 const ButtonStyle = styled(Button)(() => ({
   textTransform: 'none',
-  fontWeight: 600,
   fontSize: 15
 }))
 
