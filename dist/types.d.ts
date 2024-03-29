@@ -1,6 +1,8 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ButtonProps as ButtonProps$1, SwitchProps as SwitchProps$1, DialogProps as DialogProps$1 } from '@mui/material';
-import React$1, { ChangeEvent } from 'react';
+import React$1, { ChangeEvent, ReactNode } from 'react';
+import { DataGridProps } from '@mui/x-data-grid';
+import { SxProps, Theme } from '@mui/material/styles';
 
 interface ButtonProps extends ButtonProps$1 {
     bdType?: "primary" | "secondary" | "outlined" | "remove";
@@ -109,6 +111,28 @@ interface CheckBoxGroupProps {
 }
 declare const BaseCheckbox: (props: CheckBoxGroupProps) => react_jsx_runtime.JSX.Element;
 
+type TableFooterProps = {
+    sx?: SxProps<Theme>;
+    limit?: number;
+    offset?: number;
+    total?: number;
+    onPageChange?: (event: React.ChangeEvent<unknown>, newPage: number) => void;
+};
+
+type TableNoRowsOverlayProps = {
+    title?: ReactNode;
+    description?: ReactNode;
+    icon?: ReactNode;
+};
+
+type TableDataGridProps = {
+    tableFooterProps?: TableFooterProps;
+    tableHeight?: number | string;
+    borderRadiusValue?: number;
+    tableNoRowsOverlayProps?: TableNoRowsOverlayProps;
+} & DataGridProps;
+declare const TableDataGrid: (props: TableDataGridProps) => react_jsx_runtime.JSX.Element;
+
 declare const black = "#000000";
 declare const white = "#FFFFFF";
 declare const gray1 = "#F3F6F9";
@@ -141,4 +165,4 @@ declare const pending = "#F9A01B";
 
 declare const Layout: (props: any) => react_jsx_runtime.JSX.Element;
 
-export { Layout as AdminLayout, Button, BaseCheckbox as CheckboxGroup, ConfirmChangeDialog, ConfirmDiscardDialog, Dialog, Drawer, type DrawerProps, ErrorDialog, InfoDialog, OutlinedBtn as OutlinedButton, type Position, PrimaryBtn as PrimaryButton, RadioGroup, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, Switch, SwitchLabel, black, completed, error, gray1, gray2, gray3, gray4, gray5, gray6, gray7, pending, primary001, primary002, primary003, primary004, primary005, secondary001, secondary002, secondary003, secondary004, secondary005, success, trinary001, trinary002, trinary003, trinary004, trinary005, warning, white };
+export { Layout as AdminLayout, Button, BaseCheckbox as CheckboxGroup, ConfirmChangeDialog, ConfirmDiscardDialog, Dialog, Drawer, type DrawerProps, ErrorDialog, InfoDialog, OutlinedBtn as OutlinedButton, type Position, PrimaryBtn as PrimaryButton, RadioGroup, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, Switch, SwitchLabel, TableDataGrid as Table, black, completed, error, gray1, gray2, gray3, gray4, gray5, gray6, gray7, pending, primary001, primary002, primary003, primary004, primary005, secondary001, secondary002, secondary003, secondary004, secondary005, success, trinary001, trinary002, trinary003, trinary004, trinary005, warning, white };
