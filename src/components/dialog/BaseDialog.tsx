@@ -31,8 +31,21 @@ type Style = {
 }
 
 const Dialog = (props: DialogProps) => {
-  const { title, subTitle, children, icon, open, onConfirm, onCancel, onClose, bdSize, cancelText, confirmText, isCloseIcon, width } =
-    props
+  const {
+    title,
+    subTitle,
+    children,
+    icon,
+    open,
+    onConfirm,
+    onCancel,
+    onClose,
+    bdSize,
+    cancelText,
+    confirmText,
+    isCloseIcon,
+    width,
+  } = props
 
   const getSize = (): Style => {
     switch (bdSize) {
@@ -82,11 +95,15 @@ const Dialog = (props: DialogProps) => {
       {children || <DialogSubTitleStyle {...s}>{subTitle}</DialogSubTitleStyle>}
       <DialogActionsStyle>
         {cancelText && (
-          <ButtonStyle onClick={onCancel} sx={{ color: Colors.black }}>
+          <ButtonStyle onClick={onCancel} sx={{ color: Colors.gray6 }}>
             {cancelText}
           </ButtonStyle>
         )}
-        {confirmText && <ButtonStyle onClick={onConfirm}>{confirmText}</ButtonStyle>}
+        {confirmText && (
+          <ButtonStyle onClick={onConfirm} sx={{ color: Colors.electricBlue }}>
+            {confirmText}
+          </ButtonStyle>
+        )}
       </DialogActionsStyle>
     </DialogStyle>
   )
@@ -100,7 +117,6 @@ const DialogStyle = styled(MuiDialog)((props: Style) => ({
     alignItems: 'center',
     borderRadius: '20px',
     padding: '16px',
-    rowGap: '13px',
     boxShadow: 'none',
     backgroundColor: Colors.white,
     overflow: 'hidden',
@@ -121,9 +137,9 @@ const DialogTitleStyle = styled(MuiDialogTitle)((props: Style) => ({
 }))
 
 const DialogSubTitleStyle = styled(MuiDialogTitle)((props: Style) => ({
+  width: '85%',
   fontSize: '16px',
   fontWeight: 400,
-  padding: '4px',
   lineHeight: '24px',
   textAlign: 'center',
   color: Colors.gray7,
@@ -136,6 +152,8 @@ const DialogActionsStyle = styled(MuiDialogActions)(() => ({
 
 const ButtonStyle = styled(Button)(() => ({
   textTransform: 'none',
+  fontWeight: 600,
+  fontSize: 15
 }))
 
 const CloseButtonStyle = styled('div')(() => ({
