@@ -38,3 +38,6 @@ export const warning = "#EFB110"
 export const error = "#EA5540"
 export const completed = "#1E6AF6"
 export const pending = "#F9A01B"
+
+// Other
+export const electricBlue = "#003CDE"
