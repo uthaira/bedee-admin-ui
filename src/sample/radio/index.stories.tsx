@@ -20,6 +20,7 @@ export const SampleRadio = () => {
     <Box>
       <RadioGroup title='RadioGroup' data={items} value={state} onChange={onRadioChange} isRow />
       <RadioGroup title='RadioGroup - Disabled' disabled data={items} value={state} onChange={onRadioChange} isRow />
+      <RadioGroup title='RadioGroup - column' disabled data={items} value={state} onChange={onRadioChange} />
     </Box>
   )
 }
