@@ -4,18 +4,47 @@ import { Stack } from '@mui/material'
 import { useState } from 'react'
 
 export const SampleTextField = () => {
-  const [text, setText] = useState('')
+  const [state, setState] = useState({
+    normalField: '',
+    disableField: '',
+    errorField: '',
+    textAreaField: '',
+  })
 
-  const onChangeInput = (value: any) => {
-    setText(value)
+  const onChangeInput = (value: any, tag: any) => {
+    setState((prev) => ({ ...prev, [tag]: value }))
   }
 
   return (
     <Stack gap={2}>
-      <TextField value={text} bdOnChange={onChangeInput} titleLabel="Text Field" placeholder="placeholder" />
-      <TextField value={text} bdOnChange={onChangeInput} titleLabel="Text Field - disabled" disabled placeholder="placeholder" />
-      <TextField value={text} bdOnChange={onChangeInput} titleLabel="Text Field - error" error={text === ''} placeholder="placeholder" />
-      <TextField value={text} bdOnChange={onChangeInput} titleLabel="Text Area" multiline rows={4} maxRows={4} placeholder="placeholder" />
+      <TextField value={state.normalField} tag='normalField' bdOnChange={onChangeInput} titleLabel="Text Field" placeholder="placeholder" />
+      <TextField
+        value={state.disableField}
+        tag='disableField'
+        bdOnChange={onChangeInput}
+        titleLabel="Text Field - disabled"
+        disabled
+        placeholder="placeholder"
+      />
+      <TextField
+        value={state.errorField}
+        tag='errorField'
+        bdOnChange={onChangeInput}
+        titleLabel="Text Field - error"
+        error={state.errorField === ''}
+        placeholder="placeholder"
+      />
+      <TextField
+        value={state.textAreaField}
+        tag='textAreaField'
+        bdOnChange={onChangeInput}
+        titleLabel="Text Area"
+        multiline
+        rows={4}
+        maxRows={4}
+        limit={100}
+        placeholder="placeholder"
+      />
     </Stack>
   )
 }
