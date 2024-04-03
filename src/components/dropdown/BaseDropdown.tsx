@@ -2,7 +2,7 @@ import { Box, Typography, SelectProps as MuiSelectProps, MenuItem, styled } from
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import * as Colors from '../../colors'
 
-interface DropdownProps extends MuiSelectProps {
+interface DropdownProps {
   titleLabel?: string
   data?: any
   height?: string | number
@@ -11,7 +11,7 @@ interface DropdownProps extends MuiSelectProps {
   onChange?: (value: any, tag: any) => void
 }
 
-const BaseDropdown = (props: DropdownProps) => {
+const BaseDropdown = (props: DropdownProps & MuiSelectProps) => {
   const { titleLabel, data = [], tag, onChange = () => {} } = props
 
   const displayTitle = titleLabel ? (
