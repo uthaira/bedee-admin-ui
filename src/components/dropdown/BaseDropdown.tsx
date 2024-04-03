@@ -8,11 +8,11 @@ interface DropdownProps {
   height?: string | number
   width?: string | number
   tag?: any
-  onChange?: (value: any, tag: any) => void
+  bdOnChange?: (value: any, tag: any) => void
 }
 
 const BaseDropdown = (props: DropdownProps & MuiSelectProps) => {
-  const { titleLabel, data = [], tag, onChange = () => {} } = props
+  const { titleLabel, data = [], tag, bdOnChange = () => {} } = props
 
   const displayTitle = titleLabel ? (
     <Typography color={Colors.gray6} fontSize={15} fontWeight={600}>
@@ -29,7 +29,7 @@ const BaseDropdown = (props: DropdownProps & MuiSelectProps) => {
     ))
 
   const onChangeValue = (event: SelectChangeEvent<any>) => {
-    onChange(event.target.value, tag)
+    bdOnChange(event.target.value, tag)
   }
 
   return (

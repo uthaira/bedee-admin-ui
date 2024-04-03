@@ -66,7 +66,6 @@ const BaseTextField = (props: BaseTextFieldProps & MuiTextFieldProps) => {
 
   const onClearClick = () => {
     bdOnChange('', tag)
-    onChangeValue('')
   }
 
   const renderClearBtn = () => {
