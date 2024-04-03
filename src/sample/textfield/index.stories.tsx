@@ -14,7 +14,7 @@ export const SampleTextField = () => {
     <Stack gap={2}>
       <TextField value={text} bdOnChange={onChangeInput} titleLabel="Text Field" placeholder="placeholder" />
       <TextField value={text} bdOnChange={onChangeInput} titleLabel="Text Field - disabled" disabled placeholder="placeholder" />
-      <TextField value={text} bdOnChange={onChangeInput} titleLabel="Text Field - error" error placeholder="placeholder" />
+      <TextField value={text} bdOnChange={onChangeInput} titleLabel="Text Field - error" error={text === ''} placeholder="placeholder" />
       <TextField value={text} bdOnChange={onChangeInput} titleLabel="Text Area" multiline rows={4} maxRows={4} placeholder="placeholder" />
     </Stack>
   )
