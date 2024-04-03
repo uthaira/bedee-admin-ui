@@ -41,7 +41,6 @@ export const SampleTextField = () => {
         titleLabel="Text Area"
         multiline
         rows={4}
-        maxRows={4}
         limit={100}
         placeholder="placeholder"
       />
