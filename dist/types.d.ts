@@ -1,5 +1,5 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
-import { ButtonProps as ButtonProps$1, SwitchProps as SwitchProps$1, DialogProps as DialogProps$1 } from '@mui/material';
+import { ButtonProps as ButtonProps$1, SwitchProps as SwitchProps$1, DialogProps as DialogProps$1, TabsProps as TabsProps$1, SelectProps, TextFieldProps } from '@mui/material';
 import React$1, { ChangeEvent, ReactNode } from 'react';
 import { DataGridProps } from '@mui/x-data-grid';
 import { SxProps, Theme } from '@mui/material/styles';
@@ -111,6 +111,25 @@ interface CheckBoxGroupProps {
 }
 declare const BaseCheckbox: (props: CheckBoxGroupProps) => react_jsx_runtime.JSX.Element;
 
+interface TabsData {
+    label: string;
+    value: string | number;
+}
+interface TabsProps extends TabsProps$1 {
+    data: TabsData[];
+}
+declare const Tabs: (props: TabsProps) => react_jsx_runtime.JSX.Element;
+
+interface DropdownProps {
+    titleLabel?: string;
+    data?: any;
+    height?: string | number;
+    width?: string | number;
+    tag?: any;
+    onChange?: (value: any, tag: any) => void;
+}
+declare const BaseDropdown: (props: DropdownProps & SelectProps) => react_jsx_runtime.JSX.Element;
+
 type TableFooterProps = {
     sx?: SxProps<Theme>;
     limit?: number;
@@ -132,6 +151,46 @@ type TableDataGridProps = {
     tableNoRowsOverlayProps?: TableNoRowsOverlayProps;
 } & DataGridProps;
 declare const TableDataGrid: (props: TableDataGridProps) => react_jsx_runtime.JSX.Element;
+
+interface HeadingProps {
+    text: string;
+    color?: string;
+}
+declare const H1: (props: HeadingProps) => react_jsx_runtime.JSX.Element;
+declare const H2: (props: HeadingProps) => react_jsx_runtime.JSX.Element;
+declare const H3: (props: HeadingProps) => react_jsx_runtime.JSX.Element;
+declare const H4: (props: HeadingProps) => react_jsx_runtime.JSX.Element;
+declare const H5: (props: HeadingProps) => react_jsx_runtime.JSX.Element;
+declare const H6: (props: HeadingProps) => react_jsx_runtime.JSX.Element;
+
+interface ParagraphProps {
+    text: string;
+    color?: string;
+}
+declare const P1: (props: ParagraphProps) => react_jsx_runtime.JSX.Element;
+declare const P2: (props: ParagraphProps) => react_jsx_runtime.JSX.Element;
+declare const Lead1: (props: ParagraphProps) => react_jsx_runtime.JSX.Element;
+declare const Lead2: (props: ParagraphProps) => react_jsx_runtime.JSX.Element;
+
+interface SmallProps {
+    text: string;
+    color?: string;
+}
+declare const Mini: (props: SmallProps) => react_jsx_runtime.JSX.Element;
+declare const Tiny: (props: SmallProps) => react_jsx_runtime.JSX.Element;
+
+interface BaseTextFieldProps {
+    bdSize?: string;
+    width?: string | number;
+    titleLabel?: string;
+    value?: string;
+    limit?: number;
+    tag?: any;
+    bdOnChange?: (value: string, tag?: string) => void;
+    icon?: React.ReactNode;
+    onClickIcon?: () => void;
+}
+declare const BaseTextField: (props: BaseTextFieldProps & TextFieldProps) => react_jsx_runtime.JSX.Element;
 
 declare const black = "#000000";
 declare const white = "#FFFFFF";
@@ -162,7 +221,8 @@ declare const warning = "#EFB110";
 declare const error = "#EA5540";
 declare const completed = "#1E6AF6";
 declare const pending = "#F9A01B";
+declare const electricBlue = "#003CDE";
 
 declare const Layout: (props: any) => react_jsx_runtime.JSX.Element;
 
-export { Layout as AdminLayout, Button, BaseCheckbox as CheckboxGroup, ConfirmChangeDialog, ConfirmDiscardDialog, Dialog, Drawer, type DrawerProps, ErrorDialog, InfoDialog, OutlinedBtn as OutlinedButton, type Position, PrimaryBtn as PrimaryButton, RadioGroup, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, Switch, SwitchLabel, TableDataGrid as Table, black, completed, error, gray1, gray2, gray3, gray4, gray5, gray6, gray7, pending, primary001, primary002, primary003, primary004, primary005, secondary001, secondary002, secondary003, secondary004, secondary005, success, trinary001, trinary002, trinary003, trinary004, trinary005, warning, white };
+export { Layout as AdminLayout, Button, BaseCheckbox as CheckboxGroup, ConfirmChangeDialog, ConfirmDiscardDialog, Dialog, Drawer, type DrawerProps, BaseDropdown as Dropdown, ErrorDialog, H1, H2, H3, H4, H5, H6, type HeadingProps, InfoDialog, Lead1, Lead2, Mini, OutlinedBtn as OutlinedButton, P1, P2, type ParagraphProps, type Position, PrimaryBtn as PrimaryButton, RadioGroup, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, type SmallProps, Switch, SwitchLabel, TableDataGrid as Table, Tabs, BaseTextField as TextField, Tiny, black, completed, electricBlue, error, gray1, gray2, gray3, gray4, gray5, gray6, gray7, pending, primary001, primary002, primary003, primary004, primary005, secondary001, secondary002, secondary003, secondary004, secondary005, success, trinary001, trinary002, trinary003, trinary004, trinary005, warning, white };
