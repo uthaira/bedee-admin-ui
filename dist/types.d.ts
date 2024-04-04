@@ -126,7 +126,7 @@ interface DropdownProps {
     height?: string | number;
     width?: string | number;
     tag?: any;
-    onChange?: (value: any, tag: any) => void;
+    bdOnChange?: (value: any, tag: any) => void;
 }
 declare const BaseDropdown: (props: DropdownProps & SelectProps) => react_jsx_runtime.JSX.Element;
 
