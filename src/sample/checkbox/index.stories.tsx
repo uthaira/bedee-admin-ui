@@ -35,18 +35,18 @@ export const SampleCheckbox = () => {
 
   return (
     <Box>
-      <Stack direction='row' gap={20}>
-        <Box>
+      <Stack direction="row" gap={20}>
+        <Box textAlign="center">
           <Lead1 text="Checked" />
           <CheckboxButton checked={true} />
         </Box>
-        <Box>
+        <Box textAlign="center">
           <Lead1 text="Unchecked" />
           <CheckboxButton checked={false} />
         </Box>
-        <Box>
+        <Box textAlign="center">
           <Lead1 text="Disabled" />
-          <CheckboxButton disabled/>
+          <CheckboxButton disabled />
         </Box>
       </Stack>
       <CheckboxGroup title="Checkbox" data={items} onChange={onCheckboxChange} selected={state} isRow />
