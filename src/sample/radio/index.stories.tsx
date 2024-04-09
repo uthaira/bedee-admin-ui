@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/react'
-import { RadioGroup } from '../../components'
+import { Lead1, RadioButton, RadioGroup } from '../../components'
 import { useState } from 'react'
-import { Box } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 
 export const SampleRadio = () => {
   const [state, setState] = useState(1)
@@ -18,9 +18,23 @@ export const SampleRadio = () => {
 
   return (
     <Box>
-      <RadioGroup title='RadioGroup' data={items} value={state} onChange={onRadioChange} isRow />
-      <RadioGroup title='RadioGroup - Disabled' disabled data={items} value={state} onChange={onRadioChange} isRow />
-      <RadioGroup title='RadioGroup - column' disabled data={items} value={state} onChange={onRadioChange} />
+      <Stack direction="row" gap={20}>
+        <Box textAlign="center">
+          <Lead1 text="Checked" />
+          <RadioButton checked={true} />
+        </Box>
+        <Box textAlign="center">
+          <Lead1 text="Unchecked" />
+          <RadioButton checked={false} />
+        </Box>
+        <Box textAlign="center">
+          <Lead1 text="Disabled" />
+          <RadioButton disabled />
+        </Box>
+      </Stack>
+      <RadioGroup title="RadioGroup" data={items} value={state} onChange={onRadioChange} isRow />
+      <RadioGroup title="RadioGroup - Disabled" disabled data={items} value={state} onChange={onRadioChange} isRow />
+      <RadioGroup title="RadioGroup - column" data={items} value={state} onChange={onRadioChange} />
     </Box>
   )
 }

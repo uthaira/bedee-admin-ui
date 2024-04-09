@@ -1,8 +1,13 @@
-const CheckboxUnchecked = () => {
+interface CheckboxUnCheckedProps {
+  fill?: string
+}
+
+const CheckboxUnchecked = (props: CheckboxUnCheckedProps) => {
+  const { fill = 'white' } = props
   return (
     <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_d_2412_25281)">
-        <rect x="3" y="2" width="20" height="20" rx="4" fill="white" />
+        <rect x="3" y="2" width="20" height="20" rx="4" fill={fill} />
         <rect x="3.5" y="2.5" width="19" height="19" rx="3.5" stroke="#C3CAD4" />
       </g>
       <defs>

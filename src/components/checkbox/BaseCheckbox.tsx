@@ -1,13 +1,13 @@
-import { Box, Checkbox, FormControlLabel, FormGroup, Typography, styled } from '@mui/material'
+import { Box, FormControlLabel, FormGroup, Typography, styled } from '@mui/material'
 import * as Colors from '../../colors'
 import { ChangeEvent } from 'react'
-import CheckboxUnChecked from '../../icons/CheckboxUnchecked'
-import CheckboxChecked from '../../icons/CheckboxChecked'
+import CheckboxButton from './CheckboxButton'
 
 interface CheckBoxGroupData {
   label?: string
   value: string
   disabled?: boolean
+  selected?: any
 }
 
 interface CheckBoxGroupProps {
@@ -29,21 +29,12 @@ const BaseCheckbox = (props: CheckBoxGroupProps) => {
     </Typography>
   ) : undefined
 
-  const checkbox = ({ value, disabled }: CheckBoxGroupData) => (
-    <Checkbox
-      sx={{ opacity: disabled ? 0.5 : 1 }}
-      icon={<CheckboxUnChecked />}
-      checkedIcon={<CheckboxChecked />}
-      disabled={disabled}
-      name={value}
-      value={value}
-      onChange={onChangeValue}
-      checked={selected.includes(value)}
-    />
-  )
-
   const content = data.map(({ label, value, disabled }, index) => (
-    <StyledFormControlLabel key={index} control={checkbox({ value, disabled })} label={label} />
+    <StyledFormControlLabel
+      key={index}
+      control={<CheckboxButton value={value} disabled={disabled} selected={selected} onChange={onChangeValue} />}
+      label={label}
+    />
   ))
 
   return (

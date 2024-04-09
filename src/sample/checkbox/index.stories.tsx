@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/react'
 import { useState } from 'react'
-import { Box } from '@mui/material'
-import { CheckboxGroup } from '../../components'
+import { Box, Stack } from '@mui/material'
+import { CheckboxButton, CheckboxGroup, Lead1 } from '../../components'
 
 export const SampleCheckbox = () => {
   const [state, setState] = useState<any>([])
@@ -35,6 +35,20 @@ export const SampleCheckbox = () => {
 
   return (
     <Box>
+      <Stack direction="row" gap={20}>
+        <Box textAlign="center">
+          <Lead1 text="Checked" />
+          <CheckboxButton checked={true} />
+        </Box>
+        <Box textAlign="center">
+          <Lead1 text="Unchecked" />
+          <CheckboxButton checked={false} />
+        </Box>
+        <Box textAlign="center">
+          <Lead1 text="Disabled" />
+          <CheckboxButton disabled />
+        </Box>
+      </Stack>
       <CheckboxGroup title="Checkbox" data={items} onChange={onCheckboxChange} selected={state} isRow />
       <CheckboxGroup title="Checkbox" data={items} onChange={onCheckboxChange} selected={state} />
       <CheckboxGroup title="Checkbox - Disabled" data={itemsDisable} onChange={onCheckboxChange} selected={state} />
