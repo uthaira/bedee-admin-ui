@@ -24,7 +24,7 @@ type StyleDict = {
 }
 
 const BaseTextField = (props: BaseTextFieldProps & MuiTextFieldProps) => {
-  const { bdSize, titleLabel, value, limit, bdOnChange = () => {}, tag, disabled, icon, onClickIcon } = props
+  const { bdSize, titleLabel, value, limit, bdOnChange = () => {}, tag, disabled, icon, onClickIcon, width = '100%' } = props
 
   const getSize = (): Style => {
     const mapSize: StyleDict = {
@@ -99,9 +99,10 @@ const BaseTextField = (props: BaseTextFieldProps & MuiTextFieldProps) => {
   }
 
   return (
-    <Stack>
+    <Stack width={width}>
       {renderLabel()}
       <StyledTextField
+        width={width}
         value={value}
         onChange={onChangeValue}
         InputProps={{
