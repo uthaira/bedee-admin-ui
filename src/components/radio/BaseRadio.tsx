@@ -1,8 +1,7 @@
-import { FormControlLabel, Radio, RadioGroup as MuiRadioGroup, Box, Typography } from '@mui/material'
+import { FormControlLabel, RadioGroup as MuiRadioGroup, Box, Typography } from '@mui/material'
 import * as Colors from '../../colors'
 import { ChangeEvent } from 'react'
-import RadioUnchecked from '../../icons/RadioUnchecked'
-import RadioChecked from '../../icons/RadioChecked'
+import RadioButton from './RadioButton'
 
 interface RadioGroupData {
   label: string
@@ -30,14 +29,12 @@ const RadioGroup = (props: RadioGroupProps) => {
     </Typography>
   ) : undefined
 
-  const radio = <Radio icon={<RadioUnchecked />} checkedIcon={<RadioChecked />} sx={RadioStyle} />
-
   const content = data.map(({ label, value: val }, index) => (
     <FormControlLabel
       key={index}
       checked={value == val}
       value={val}
-      control={radio}
+      control={<RadioButton />}
       sx={FormControlLabelStyle}
       label={label}
       disabled={disabled}
@@ -56,21 +53,6 @@ const RadioGroup = (props: RadioGroupProps) => {
 
 const FormControlLabelStyle = {
   '& .MuiFormControlLabel-label': { color: Colors.gray6 },
-}
-
-const RadioStyle = {
-  '&.MuiRadio-root': {
-    color: Colors.gray3,
-    '&.Mui-disabled': {
-      opacity: 0.5,
-    },
-    '&.Mui-checked': {
-      color: Colors.primary001,
-      '&.Mui-disabled': {
-        opacity: 0.5,
-      },
-    },
-  },
 }
 
 export default RadioGroup
