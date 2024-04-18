@@ -8,7 +8,7 @@ import {
   Button,
 } from '@mui/material'
 import React from 'react'
-import * as Colors from '../../colors'
+import { Colors } from '../../colors'
 import CloseDialog from '../../icons/CloseDialog'
 
 export interface DialogProps extends MuiDialogProps {

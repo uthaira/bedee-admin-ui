@@ -1,6 +1,6 @@
 import { Box, Button as MuiButton, ButtonProps as MuiButtonProps } from "@mui/material"
 import { styled } from "@mui/material/styles"
-import * as colors from "../../colors"
+import { Colors } from "../../colors"
 
 export interface ButtonProps extends MuiButtonProps {
   bdType?: "primary" | "secondary" | "outlined" | "remove"
@@ -19,27 +19,27 @@ const Button = (props: ButtonProps) => {
     switch (bdType) {
       case "secondary":
         return {
-          color: colors.primary001,
-          borderColor: colors.primary001,
-          backgroundColor: colors.white,
+          color: Colors.primary001,
+          borderColor: Colors.primary001,
+          backgroundColor: Colors.white,
         }
       case "outlined":
         return {
-          color: colors.primary001,
-          borderColor: colors.white,
-          backgroundColor: colors.white,
+          color: Colors.primary001,
+          borderColor: Colors.white,
+          backgroundColor: Colors.white,
         }
       case "remove":
         return {
-          color: colors.error,
-          borderColor: colors.error,
-          backgroundColor: colors.white,
+          color: Colors.error,
+          borderColor: Colors.error,
+          backgroundColor: Colors.white,
         }
       default:
         return {
-          color: colors.white,
-          borderColor: colors.primary001,
-          backgroundColor: colors.primary001,
+          color: Colors.white,
+          borderColor: Colors.primary001,
+          backgroundColor: Colors.primary001,
         }
     }
   }

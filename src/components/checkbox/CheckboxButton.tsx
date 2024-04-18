@@ -2,7 +2,7 @@ import { Checkbox } from '@mui/material'
 import CheckboxUnchecked from '../../icons/CheckboxUnchecked'
 import CheckboxChecked from '../../icons/CheckboxChecked'
 import { ChangeEvent } from 'react'
-import * as Colors from '../../colors'
+import { Colors } from '../../colors'
 
 interface CheckboxButtonProps {
   value?: any

@@ -2,7 +2,7 @@ import { styled } from '@mui/material'
 import LogOut from '../../../icons/LogOut'
 import Header from './Header'
 import GroupMenu from './MenuGroup'
-import * as colors from '../../../colors'
+import { Colors } from '../../../colors'
 
 export interface SideMenuProps {
   menus: any[]
@@ -78,11 +78,11 @@ const MenuContent = styled('div')({
     width: '6px'
   },
   '&::-webkit-scrollbar-thumb': {
-    backgroundColor: colors.gray2,
+    backgroundColor: Colors.gray2,
     borderRadius: '8px',
   },
   '&::-webkit-scrollbar-thumb:hover': {
-    backgroundColor: colors.gray3,
+    backgroundColor: Colors.gray3,
   }
 })
 

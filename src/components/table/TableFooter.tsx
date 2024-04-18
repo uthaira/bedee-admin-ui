@@ -3,7 +3,7 @@ import Pagination from "@mui/material/Pagination";
 import { SxProps, Theme, styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import type { FC } from "react";
-import * as colors from '../../colors'
+import { Colors } from '../../colors'
 
 export type TableFooterProps = {
   sx?: SxProps<Theme>;
@@ -35,7 +35,7 @@ export const TableFooter: FC<TableFooterProps> = ({
         }}
       >
         {total > 0 && (
-          <Typography variant="body1" color={colors.gray4} sx={{ fontSize: 12 }}>
+          <Typography variant="body1" color={Colors.gray4} sx={{ fontSize: 12 }}>
             showing {offset + 1} to {offset + limit} ({total} records)
           </Typography>
         )}

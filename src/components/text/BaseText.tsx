@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material"
-import * as colors from '../../colors'
+import { Colors } from '../../colors'
 
 type TextType = |
   'h1' |
@@ -31,7 +31,7 @@ interface BaseTextProps {
 }
 
 export const BaseText = (props: BaseTextProps) => {
-  const { text, bdType, color = colors.black } = props
+  const { text, bdType, color = Colors.black } = props
 
   const getTheme = (): Style => {
     const map: StyleDict = {

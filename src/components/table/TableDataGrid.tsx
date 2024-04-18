@@ -8,7 +8,7 @@ import {
 } from "./TableNoRowsOverlay";
 import { Stack } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import * as colors from '../../colors'
+import { Colors } from '../../colors'
 
 export type TableDataGridProps = {
   tableFooterProps?: UiTableFooterProps;
@@ -19,7 +19,7 @@ export type TableDataGridProps = {
 
 const StyledDataGrid = styled(DataGrid)(() => ({
   "& .MuiDataGrid-columnHeader": {
-    backgroundColor: colors.gray2,
+    backgroundColor: Colors.gray2,
     padding: "0px 12px",
     "&:focus": {
       outline: "none",
@@ -29,7 +29,7 @@ const StyledDataGrid = styled(DataGrid)(() => ({
     },
   },
   "& .MuiDataGrid-columnSeparator": {
-    color: colors.gray2,
+    color: Colors.gray2,
   },
   "& .MuiDataGrid-cell": {
     padding: "12px",
@@ -47,14 +47,14 @@ const StyledDataGrid = styled(DataGrid)(() => ({
     height: "6px",
   },
   "& .MuiDataGrid-scrollbar::-webkit-scrollbar-track": {
-    background: colors.gray2,
+    background: Colors.gray2,
   },
   "& .MuiDataGrid-scrollbar::-webkit-scrollbar-thumb": {
-    backgroundColor: colors.gray3,
+    backgroundColor: Colors.gray3,
     borderRadius: 8,
   },
   "& .MuiDataGrid-scrollbar::-webkit-scrollbar-thumb:hover": {
-    background: colors.gray4,
+    background: Colors.gray4,
   },
 }))
 

@@ -1,6 +1,6 @@
 import { Stack, TextField as MuiTextField, TextFieldProps as MuiTextFieldProps, styled, Typography, Box } from '@mui/material'
 import ClearIcon from '../../icons/ClearIcon'
-import * as Colors from '../../colors'
+import { Colors } from '../../colors'
 
 interface BaseTextFieldProps {
   bdSize?: string

@@ -1,5 +1,5 @@
 import { FormControlLabel, RadioGroup as MuiRadioGroup, Box, Typography } from '@mui/material'
-import * as Colors from '../../colors'
+import { Colors } from '../../colors'
 import { ChangeEvent } from 'react'
 import RadioButton from './RadioButton'
 

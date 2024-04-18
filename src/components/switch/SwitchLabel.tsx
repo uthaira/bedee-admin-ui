@@ -1,6 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
 import Switch, { SwitchProps } from "./BaseSwitch";
-import * as colors from '../../colors'
+import { Colors } from '../../colors'
 
 interface SwitchLabelProps extends SwitchProps {
   label: string
@@ -43,10 +43,10 @@ const SwitchLabel = (props: SwitchLabelProps) => {
       </Grid>
       <Grid item>
         <Box>
-          <Typography color={colors.gray5} fontSize={fs.label}>{label}</Typography>
+          <Typography color={Colors.gray5} fontSize={fs.label}>{label}</Typography>
         </Box>
         <Box>
-          <Typography color={colors.gray4} fontSize={fs.hint}>{hint}</Typography>
+          <Typography color={Colors.gray4} fontSize={fs.hint}>{hint}</Typography>
         </Box>
       </Grid>
     </Grid>
