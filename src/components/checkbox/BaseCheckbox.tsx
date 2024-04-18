@@ -1,5 +1,5 @@
 import { Box, FormControlLabel, FormGroup, Typography, styled } from '@mui/material'
-import * as Colors from '../../colors'
+import { Colors } from '../../colors'
 import { ChangeEvent } from 'react'
 import CheckboxButton from './CheckboxButton'
 

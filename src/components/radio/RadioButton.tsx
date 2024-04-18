@@ -1,7 +1,7 @@
 import { Radio, RadioProps } from '@mui/material'
 import RadioUnchecked from '../../icons/RadioUnchecked'
 import RadioChecked from '../../icons/RadioChecked'
-import * as Colors from '../../colors'
+import { Colors } from '../../colors'
 
 interface RadioButtonProps extends RadioProps {}
 

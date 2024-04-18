@@ -1,6 +1,6 @@
 import { Box, Typography, SelectProps as MuiSelectProps, MenuItem, styled } from '@mui/material'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
-import * as Colors from '../../colors'
+import { Colors } from '../../colors'
 
 interface DropdownProps {
   titleLabel?: string

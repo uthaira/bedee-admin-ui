@@ -1,6 +1,5 @@
-import { styled, Switch as MuiSwitch, SwitchProps as MuiSwitchProps } from "@mui/material";
-
-import * as colors from "../../colors"
+import { styled, Switch as MuiSwitch, SwitchProps as MuiSwitchProps } from "@mui/material"
+import { Colors } from "../../colors"
 
 export interface SwitchProps extends MuiSwitchProps {
   bdSize?: string
@@ -58,27 +57,27 @@ const StyledSwitch = styled((props) => (
     transitionDuration: "300ms",
     "&.Mui-checked": {
       transform: props.transform,
-      color: colors.white,
+      color: Colors.white,
       "& + .MuiSwitch-track": {
-        backgroundColor: colors.primary001,
+        backgroundColor: Colors.primary001,
         opacity: 1,
         border: 0,
       },
       "&.Mui-disabled + .MuiSwitch-track": {
         opacity: 0.5,
-        color: colors.primary004
+        color: Colors.primary004
       },
     },
     "&.Mui-focusVisible .MuiSwitch-thumb": {
-      color: colors.primary001,
-      border: `6px solid ${colors.white}`,
+      color: Colors.primary001,
+      border: `6px solid ${Colors.white}`,
     },
     "&.Mui-disabled .MuiSwitch-thumb": {
-      color: colors.white,
+      color: Colors.white,
     },
     "&.Mui-disabled + .MuiSwitch-track": {
       opacity: 0.5,
-      color: colors.gray2
+      color: Colors.gray2
     },
   },
   "& .MuiSwitch-thumb": {
@@ -88,7 +87,7 @@ const StyledSwitch = styled((props) => (
   },
   "& .MuiSwitch-track": {
     borderRadius: 24,
-    backgroundColor: colors.gray3,
+    backgroundColor: Colors.gray3,
     opacity: 1,
   },
 }));
