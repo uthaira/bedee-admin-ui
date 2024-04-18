@@ -207,7 +207,6 @@ interface BaseTextFieldProps {
 declare const BaseTextField: (props: BaseTextFieldProps & TextFieldProps) => react_jsx_runtime.JSX.Element;
 
 declare const Colors: {
-    electricBlue: string;
     success: string;
     warning: string;
     error: string;

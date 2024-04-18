@@ -5,9 +5,6 @@ import secondary from "./secondary"
 import trinary from "./trinary"
 import functional from "./functional"
 
-// Brand Kit
-const electricBlue = "#003CDE"
-
 export const Colors = {
   ...neutral,
   ...grayscale,
@@ -15,5 +12,4 @@ export const Colors = {
   ...secondary,
   ...trinary,
   ...functional,
-  electricBlue,
 }
