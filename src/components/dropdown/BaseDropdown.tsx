@@ -1,4 +1,11 @@
-import { Box, Typography, SelectProps as MuiSelectProps, MenuItem, styled } from '@mui/material'
+import {
+  Box,
+  Typography,
+  TypographyProps as MuiTypographyProps,
+  SelectProps as MuiSelectProps,
+  MenuItem,
+  styled,
+} from '@mui/material'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import { Colors } from '../../colors'
 
@@ -9,16 +16,13 @@ interface DropdownProps {
   width?: string | number
   tag?: any
   bdOnChange?: (value: any, tag: any) => void
+  titleProps?: MuiTypographyProps
 }
 
 const BaseDropdown = (props: DropdownProps & MuiSelectProps) => {
-  const { titleLabel, data = [], tag, bdOnChange = () => {} } = props
+  const { titleLabel, titleProps, data = [], tag, bdOnChange = () => {} } = props
 
-  const displayTitle = titleLabel ? (
-    <Typography color={Colors.gray6} fontSize={15} fontWeight={600}>
-      {titleLabel}
-    </Typography>
-  ) : undefined
+  const displayTitle = titleLabel ? <Typography {...titleProps}>{titleLabel}</Typography> : undefined
 
   const content =
     data.length > 0 &&

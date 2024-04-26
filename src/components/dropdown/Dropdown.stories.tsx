@@ -16,7 +16,7 @@ type DropdownStory = StoryObj<typeof Dropdown>
 
 export const BaseDropdown: DropdownStory = {
   args: {
-    title: 'Dropdown',
+    titleLabel: 'Dropdown',
     data: mockData,
     value: 1,
     disabled: false,
