@@ -16,7 +16,18 @@ const Tabs = (props: TabsProps) => {
 
   return (
     <Box width="100%">
-      <MuiTabs value={value} onChange={onChange} {...props}>
+      <MuiTabs
+        {...props}
+        value={value}
+        onChange={onChange}
+        TabIndicatorProps={{
+          sx: {
+            height: 4,
+            borderTopLeftRadius: 8,
+            borderTopRightRadius: 8,
+          },
+        }}
+      >
         {tabs}
       </MuiTabs>
     </Box>

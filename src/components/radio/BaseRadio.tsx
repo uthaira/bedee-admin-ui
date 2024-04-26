@@ -1,4 +1,10 @@
-import { FormControlLabel, RadioGroup as MuiRadioGroup, Box, Typography } from '@mui/material'
+import {
+  FormControlLabel,
+  RadioGroup as MuiRadioGroup,
+  Box,
+  Typography,
+  TypographyProps as MuiTypographyProps,
+} from '@mui/material'
 import { Colors } from '../../colors'
 import { ChangeEvent } from 'react'
 import RadioButton from './RadioButton'
@@ -16,18 +22,15 @@ interface RadioGroupProps {
   isRow?: boolean
   title?: string
   disabled?: boolean
+  titleProps?: MuiTypographyProps
 }
 
 const RadioGroup = (props: RadioGroupProps) => {
-  const { name, data, value, onChange, isRow = false, title, disabled } = props
+  const { name, data, value, onChange, isRow = false, title, disabled, titleProps } = props
 
   const onChangeValue = (event: any) => onChange(event.target.value, name)
 
-  const titleLabel = title ? (
-    <Typography color={Colors.gray6} fontSize={15} fontWeight={600}>
-      {title}
-    </Typography>
-  ) : undefined
+  const titleLabel = title ? <Typography {...titleProps}>{title}</Typography> : undefined
 
   const content = data.map(({ label, value: val }, index) => (
     <FormControlLabel

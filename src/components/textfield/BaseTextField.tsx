@@ -1,4 +1,12 @@
-import { Stack, TextField as MuiTextField, TextFieldProps as MuiTextFieldProps, styled, Typography, Box } from '@mui/material'
+import {
+  Stack,
+  TextField as MuiTextField,
+  TextFieldProps as MuiTextFieldProps,
+  styled,
+  Typography,
+  TypographyProps as MuiTypographyProps,
+  Box,
+} from '@mui/material'
 import ClearIcon from '../../icons/ClearIcon'
 import { Colors } from '../../colors'
 
@@ -12,6 +20,7 @@ interface BaseTextFieldProps {
   bdOnChange?: (value: string, tag?: string) => void
   icon?: React.ReactNode
   onClickIcon?: () => void
+  titleProps?: MuiTypographyProps
 }
 
 type Style = {
@@ -24,7 +33,7 @@ type StyleDict = {
 }
 
 const BaseTextField = (props: BaseTextFieldProps & MuiTextFieldProps) => {
-  const { bdSize, titleLabel, value, limit, bdOnChange = () => {}, tag, disabled, icon, onClickIcon, width = '100%' } = props
+  const { bdSize, titleLabel, value, limit, bdOnChange = () => {}, tag, disabled, icon, onClickIcon, width = '100%', titleProps } = props
 
   const getSize = (): Style => {
     const mapSize: StyleDict = {
@@ -46,7 +55,7 @@ const BaseTextField = (props: BaseTextFieldProps & MuiTextFieldProps) => {
     if (!titleLabel) return undefined
 
     return (
-      <Typography color={Colors.gray6} fontSize={15} fontWeight={600} marginBottom={1}>
+      <Typography {...titleProps}>
         {titleLabel}
       </Typography>
     )

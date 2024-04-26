@@ -23,11 +23,15 @@ export interface DialogProps extends MuiDialogProps {
   confirmText?: string
   isCloseIcon?: boolean
   width?: string
+  subTitleWidth?: string
 }
 
 type Style = {
   width: string
   TitleFontSize: string
+  fullWidth?: boolean
+  maxWidth?: any
+  subTitleWidth?: string
 }
 
 const Dialog = (props: DialogProps) => {
@@ -36,7 +40,6 @@ const Dialog = (props: DialogProps) => {
     subTitle,
     children,
     icon,
-    open,
     onConfirm,
     onCancel,
     onClose,
@@ -45,6 +48,9 @@ const Dialog = (props: DialogProps) => {
     confirmText,
     isCloseIcon,
     width,
+    fullWidth,
+    maxWidth,
+    subTitleWidth
   } = props
 
   const getSize = (): Style => {
@@ -80,7 +86,7 @@ const Dialog = (props: DialogProps) => {
   const s = getSize()
 
   return (
-    <DialogStyle open={open} onClose={onClose} {...s}>
+    <DialogStyle fullWidth={fullWidth} maxWidth={maxWidth} onClose={onClose} {...props} {...s}>
       {isCloseIcon && (
         <CloseButtonStyle onClick={onClose}>
           <CloseDialog />
@@ -92,7 +98,7 @@ const Dialog = (props: DialogProps) => {
         </Box>
       )}
       <DialogTitleStyle {...s}>{title}</DialogTitleStyle>
-      {children || <DialogSubTitleStyle {...s}>{subTitle}</DialogSubTitleStyle>}
+      {children || <DialogSubTitleStyle {...s} subTitleWidth={subTitleWidth} >{subTitle}</DialogSubTitleStyle>}
       <DialogActionsStyle>
         {cancelText && (
           <ButtonStyle onClick={onCancel} sx={{ color: Colors.gray6 }}>
@@ -120,6 +126,8 @@ const DialogStyle = styled(MuiDialog)((props: Style) => ({
     boxShadow: 'none',
     backgroundColor: Colors.white,
     overflow: 'hidden',
+    ...(props.fullWidth && { width: '100%' }),
+    ...(props.maxWidth && { maxWidth: props.maxWidth }),
   },
 }))
 
@@ -137,7 +145,7 @@ const DialogTitleStyle = styled(MuiDialogTitle)((props: Style) => ({
 }))
 
 const DialogSubTitleStyle = styled(MuiDialogTitle)((props: Style) => ({
-  width: '85%',
+  width: props.subTitleWidth || '85%',
   fontSize: '16px',
   fontWeight: 400,
   lineHeight: '24px',
@@ -152,7 +160,7 @@ const DialogActionsStyle = styled(MuiDialogActions)(() => ({
 
 const ButtonStyle = styled(Button)(() => ({
   textTransform: 'none',
-  fontSize: 15
+  fontSize: 15,
 }))
 
 const CloseButtonStyle = styled('div')(() => ({
