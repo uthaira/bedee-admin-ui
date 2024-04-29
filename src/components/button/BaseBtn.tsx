@@ -1,35 +1,35 @@
-import { Box, Button as MuiButton, ButtonProps as MuiButtonProps } from "@mui/material"
-import { styled } from "@mui/material/styles"
-import { Colors } from "../../colors"
+import { Box, Button as MuiButton, ButtonProps as MuiButtonProps } from '@mui/material'
+import { styled } from '@mui/material/styles'
+import { Colors } from '../../colors'
 
 export interface ButtonProps extends MuiButtonProps {
-  bdType?: "primary" | "secondary" | "outlined" | "remove"
+  bdType?: 'primary' | 'secondary' | 'outlined' | 'remove'
   bdSize?: string
-
   icon?: JSX.Element
   text?: string
   loading?: boolean
   width?: string
+  isRightIcon?: boolean
 }
 
 const Button = (props: ButtonProps) => {
-  const { bdType, icon, text, loading, bdSize, width = '100%' } = props
+  const { bdType, icon, text, loading, bdSize, width = '100%', isRightIcon = false } = props
 
   const getTheme = () => {
     switch (bdType) {
-      case "secondary":
+      case 'secondary':
         return {
           color: Colors.primary001,
           borderColor: Colors.primary001,
           backgroundColor: Colors.white,
         }
-      case "outlined":
+      case 'outlined':
         return {
           color: Colors.primary001,
           borderColor: Colors.white,
           backgroundColor: Colors.white,
         }
-      case "remove":
+      case 'remove':
         return {
           color: Colors.error,
           borderColor: Colors.error,
@@ -46,37 +46,37 @@ const Button = (props: ButtonProps) => {
 
   const getSize = () => {
     switch (bdSize) {
-      case "lg":
+      case 'lg':
         return {
-          borderRadius: "32px",
-          fontSize: "16px",
-          height: "52px",
+          borderRadius: '32px',
+          fontSize: '16px',
+          height: '52px',
           icon: 12,
-          loading: "18px"
+          loading: '18px',
         }
-      case "md":
+      case 'md':
         return {
-          borderRadius: "32px",
-          fontSize: "16px",
-          height: "48px",
+          borderRadius: '32px',
+          fontSize: '16px',
+          height: '48px',
           icon: 12,
-          loading: "16px"
+          loading: '16px',
         }
-      case "sm":
+      case 'sm':
         return {
-          borderRadius: "32px",
-          fontSize: "14px",
-          height: "40px",
+          borderRadius: '32px',
+          fontSize: '14px',
+          height: '40px',
           icon: 12,
-          loading: "14px"
+          loading: '14px',
         }
       default:
         return {
-          borderRadius: "32px",
-          fontSize: "12px",
-          height: "30px",
+          borderRadius: '32px',
+          fontSize: '12px',
+          height: '30px',
           icon: 16,
-          loading: "12px"
+          loading: '12px',
         }
     }
   }
@@ -96,19 +96,19 @@ const Button = (props: ButtonProps) => {
       sx={{
         borderRadius: s.borderRadius,
         fontSize: s.fontSize,
-        paddingY: "8px",
+        paddingY: '8px',
         borderColor: c.borderColor,
         backgroundColor: c.backgroundColor,
         width,
         height: s.height,
-        "&.MuiButton-outlined": {
+        '&.MuiButton-outlined': {
           color: c.color,
           backgroundColor: c.backgroundColor,
         },
-        "&:hover": {
+        '&:hover': {
           borderColor: c.borderColor,
         },
-        "&.Mui-disabled": {
+        '&.Mui-disabled': {
           color: c.color,
           backgroundColor: c.backgroundColor,
           opacity: 0.6,
@@ -118,23 +118,23 @@ const Button = (props: ButtonProps) => {
       {...props}
     >
       <TextStyled>
-        {iconImg}
+        {!isRightIcon && iconImg}
         <Box style={{ color: c.color, fontSize: s.fontSize }}>{text}</Box>
+        {isRightIcon && iconImg}
       </TextStyled>
     </MuiButton>
-  );
-};
+  )
+}
 
 const TextStyled = styled(Box)(() => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  minWidth: "70px",
-  columnGap: "8px",
-  lineHeight: "16px",
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  minWidth: '70px',
+  columnGap: '8px',
+  lineHeight: '16px',
   textTransform: 'none',
 }))
-
 
 const Loading = styled(Box)(() => ({
   borderRadius: '50%',
@@ -148,8 +148,8 @@ const Loading = styled(Box)(() => ({
     },
     '100%': {
       transform: 'rotate(360deg)',
-    }
-  }
+    },
+  },
 }))
 
 export default Button
