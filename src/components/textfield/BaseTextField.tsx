@@ -142,7 +142,7 @@ const StyledTextField = styled((props) => <MuiTextField {...props} />)((props: S
       borderColor: Colors.gray3,
     },
     '&.Mui-focused fieldset': {
-      borderColor: Colors.gray3,
+      borderColor: Colors.primary001,
     },
   },
   '& .MuiInputBase-input': {
