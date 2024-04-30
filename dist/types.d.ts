@@ -1,16 +1,17 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
-import { ButtonProps as ButtonProps$1, SwitchProps as SwitchProps$1, DialogProps as DialogProps$1, RadioProps, TabsProps as TabsProps$1, SelectProps, TextFieldProps } from '@mui/material';
+import { ButtonProps as ButtonProps$1, SwitchProps as SwitchProps$1, DialogProps as DialogProps$1, DialogTitleProps, TypographyProps, RadioProps, TabsProps as TabsProps$1, SelectProps, TextFieldProps } from '@mui/material';
 import React$1, { ChangeEvent, ReactNode } from 'react';
 import { DataGridProps } from '@mui/x-data-grid';
 import { SxProps, Theme } from '@mui/material/styles';
 
 interface ButtonProps extends ButtonProps$1 {
-    bdType?: "primary" | "secondary" | "outlined" | "remove";
+    bdType?: 'primary' | 'secondary' | 'outlined' | 'remove';
     bdSize?: string;
     icon?: JSX.Element;
     text?: string;
     loading?: boolean;
     width?: string;
+    isRightIcon?: boolean;
 }
 declare const Button: (props: ButtonProps) => react_jsx_runtime.JSX.Element;
 
@@ -71,6 +72,8 @@ interface DialogProps extends DialogProps$1 {
     confirmText?: string;
     isCloseIcon?: boolean;
     width?: string;
+    titleProps?: DialogTitleProps;
+    subTitleProps?: DialogTitleProps;
 }
 declare const Dialog: (props: DialogProps) => react_jsx_runtime.JSX.Element;
 
@@ -94,6 +97,7 @@ interface RadioGroupProps {
     isRow?: boolean;
     title?: string;
     disabled?: boolean;
+    titleProps?: TypographyProps;
 }
 declare const RadioGroup: (props: RadioGroupProps) => react_jsx_runtime.JSX.Element;
 
@@ -141,6 +145,7 @@ interface DropdownProps {
     width?: string | number;
     tag?: any;
     bdOnChange?: (value: any, tag: any) => void;
+    titleProps?: TypographyProps;
 }
 declare const BaseDropdown: (props: DropdownProps & SelectProps) => react_jsx_runtime.JSX.Element;
 
@@ -203,6 +208,7 @@ interface BaseTextFieldProps {
     bdOnChange?: (value: string, tag?: string) => void;
     icon?: React.ReactNode;
     onClickIcon?: () => void;
+    titleProps?: TypographyProps;
 }
 declare const BaseTextField: (props: BaseTextFieldProps & TextFieldProps) => react_jsx_runtime.JSX.Element;
 
