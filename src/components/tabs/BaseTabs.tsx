@@ -12,7 +12,9 @@ interface TabsProps extends MuiTabProps {
 const Tabs = (props: TabsProps) => {
   const { value, onChange, data } = props
 
-  const tabs = data.map(({ value, label }, index) => <Tab key={index} value={value} label={label} />)
+  const tabs = data.map(({ value, label }, index) => (
+    <Tab key={index} value={value} label={label} sx={{ textTransform: 'none', fontWeight: 600 }} />
+  ))
 
   return (
     <Box width="100%">
