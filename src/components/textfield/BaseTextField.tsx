@@ -136,10 +136,10 @@ const StyledTextField = styled((props) => <MuiTextField {...props} />)((props: S
     color: Colors.gray5,
     borderRadius: 8,
     '& fieldset': {
-      borderColor: Colors.gray3,
+      borderColor: Colors.gray0,
     },
     '&:hover fieldset': {
-      borderColor: Colors.gray3,
+      borderColor: Colors.gray0,
     },
     '&.Mui-focused fieldset': {
       borderColor: Colors.primary001,
