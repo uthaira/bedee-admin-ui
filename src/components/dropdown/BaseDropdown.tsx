@@ -37,7 +37,7 @@ const BaseDropdown = (props: DropdownProps & MuiSelectProps) => {
   }
 
   return (
-    <Box display="flex" flexDirection="column" width="100%" gap={1}>
+    <Box display="flex" flexDirection="column" width="100%">
       {displayTitle}
       <SelectStyle onChange={onChangeValue} {...props}>
         {content}
@@ -71,6 +71,9 @@ const SelectStyle = styled(Select)((props: any) => ({
     backgroundColor: Colors.gray2,
     opacity: 0.5,
     pointerEvents: 'none',
+  },
+  '& .MuiSelect-nativeInput::placeholder': {
+    color: Colors.gray4,
   },
 }))
 

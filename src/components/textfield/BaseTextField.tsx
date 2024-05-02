@@ -158,6 +158,7 @@ const StyledTextField = styled((props) => <MuiTextField {...props} />)((props: S
   },
   '& .MuiInputBase-input::placeholder': {
     color: Colors.gray4,
+    fontSize: 14
   },
   '& .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root.Mui-disabled': {
     backgroundColor: Colors.gray1,
