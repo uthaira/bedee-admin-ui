@@ -27,6 +27,7 @@ const Tabs = (props: TabsProps) => {
             height: 4,
             borderTopLeftRadius: 8,
             borderTopRightRadius: 8,
+            mb: 1
           },
         }}
       >

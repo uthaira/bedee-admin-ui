@@ -136,10 +136,10 @@ const StyledTextField = styled((props) => <MuiTextField {...props} />)((props: S
     color: Colors.gray5,
     borderRadius: 8,
     '& fieldset': {
-      borderColor: Colors.gray3,
+      borderColor: Colors.gray0,
     },
     '&:hover fieldset': {
-      borderColor: Colors.gray3,
+      borderColor: Colors.gray0,
     },
     '&.Mui-focused fieldset': {
       borderColor: Colors.primary001,
@@ -158,6 +158,7 @@ const StyledTextField = styled((props) => <MuiTextField {...props} />)((props: S
   },
   '& .MuiInputBase-input::placeholder': {
     color: Colors.gray4,
+    fontSize: 14
   },
   '& .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root.Mui-disabled': {
     backgroundColor: Colors.gray1,

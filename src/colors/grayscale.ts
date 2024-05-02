@@ -1,4 +1,5 @@
 export default {
+  gray0: "#C7C9D9",
   gray1: "#F3F6F9",
   gray2: "#EAEEF6",
   gray3: "#C3CAD4",
