@@ -233,6 +233,7 @@ declare const Colors: {
     primary003: string;
     primary004: string;
     primary005: string;
+    gray0: string;
     gray1: string;
     gray2: string;
     gray3: string;
