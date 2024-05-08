@@ -78,10 +78,7 @@ const SelectStyle = styled(Select)((props: any) => ({
   },
   '& .MuiSelect-nativeInput::placeholder': {
     color: Colors.gray4,
-  },
-  '& .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected': {
-    backgroundColor: 'red',
-  },
+  }
 }))
 
 export default BaseDropdown
