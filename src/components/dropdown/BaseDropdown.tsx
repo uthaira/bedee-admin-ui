@@ -39,7 +39,11 @@ const BaseDropdown = (props: DropdownProps & MuiSelectProps) => {
   return (
     <Box display="flex" flexDirection="column" width="100%">
       {displayTitle}
-      <SelectStyle onChange={onChangeValue} {...props}>
+      <SelectStyle
+        onChange={onChangeValue}
+        {...props}
+        MenuProps={{ slotProps: { paper: { sx: { maxHeight: '180px', overflowY: 'auto' } } } }}
+      >
         {content}
       </SelectStyle>
     </Box>
@@ -74,7 +78,7 @@ const SelectStyle = styled(Select)((props: any) => ({
   },
   '& .MuiSelect-nativeInput::placeholder': {
     color: Colors.gray4,
-  },
+  }
 }))
 
 export default BaseDropdown
