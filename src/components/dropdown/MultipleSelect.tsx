@@ -5,8 +5,10 @@ import CheckboxUnchecked from '../../icons/CheckboxUnchecked'
 import CheckboxChecked from '../../icons/CheckboxChecked'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
-import { Box, Typography, TypographyProps } from '@mui/material'
-import { P2 } from '../text'
+import { Box, IconButton, Stack, Typography, TypographyProps } from '@mui/material'
+import { Mini, P2 } from '../text'
+import Close from '../../icons/Close'
+import { Colors } from '../../colors'
 
 interface MultipleSelectProps {
   list?: any
@@ -49,7 +51,7 @@ const MultipleSelect = (props: MultipleSelectProps) => {
   const renderHeaderListBox = () => (headerListbox ? headerListbox : undefined)
 
   return (
-    <>
+    <Stack>
       {displayTitle}
       <Autocomplete
         onChange={onValueChange}
@@ -59,6 +61,7 @@ const MultipleSelect = (props: MultipleSelectProps) => {
         value={selectedValue}
         disabled={disabled}
         disableCloseOnSelect
+        isOptionEqualToValue={(option, value) => option.id === value.id}
         getOptionLabel={(option: any) => option?.name || option?.label || option}
         renderOption={(props, option, { selected }) => (
           <ListItem {...props}>
@@ -80,6 +83,35 @@ const MultipleSelect = (props: MultipleSelectProps) => {
             InputLabelProps={{ shrink: false }}
           />
         )}
+        renderTags={(value: any[], getTagProps) =>
+          value.map((option, index) => (
+            <Box
+              key={index}
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                backgroundColor: Colors.gray2,
+                px: '8px',
+                py: '4px',
+                borderRadius: '16px',
+              }}
+            >
+              <Mini text={option.name} color={Colors.gray7} />
+              <IconButton
+                size="small"
+                sx={{ ml: 0.5, bgcolor: Colors.white }}
+                onClick={() =>
+                  onValueChange(
+                    null,
+                    selectedValue.filter((val: any) => val !== option)
+                  )
+                }
+              >
+                <Close width="10" color={Colors.gray4} />
+              </IconButton>
+            </Box>
+          ))
+        }
         ListboxComponent={({ children, ...props }) => (
           <List {...props} sx={{ height: '200px' }}>
             {renderHeaderListBox()}
@@ -88,7 +120,7 @@ const MultipleSelect = (props: MultipleSelectProps) => {
         )}
         sx={{ width: width || '100%' }}
       />
-    </>
+    </Stack>
   )
 }
 
