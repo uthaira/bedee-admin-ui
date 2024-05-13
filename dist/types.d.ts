@@ -149,6 +149,21 @@ interface DropdownProps {
 }
 declare const BaseDropdown: (props: DropdownProps & SelectProps) => react_jsx_runtime.JSX.Element;
 
+interface MultipleSelectProps {
+    list?: any;
+    onChange?: (value: any, tag: any) => void;
+    tag?: string;
+    width?: string;
+    height?: string;
+    titleLabel?: string;
+    titleProps?: TypographyProps;
+    placeholder?: string;
+    headerListbox?: React.ReactNode;
+    selectedValue?: any;
+    disabled?: boolean;
+}
+declare const MultipleSelect: (props: MultipleSelectProps) => react_jsx_runtime.JSX.Element;
+
 type TableFooterProps = {
     sx?: SxProps<Theme>;
     limit?: number;
@@ -247,4 +262,4 @@ declare const Colors: {
 
 declare const Layout: (props: any) => react_jsx_runtime.JSX.Element;
 
-export { Layout as AdminLayout, Button, CheckboxButton, BaseCheckbox as CheckboxGroup, Colors, ConfirmChangeDialog, ConfirmDiscardDialog, Dialog, Drawer, type DrawerProps, BaseDropdown as Dropdown, ErrorDialog, H1, H2, H3, H4, H5, H6, type HeadingProps, InfoDialog, Lead1, Lead2, Mini, OutlinedBtn as OutlinedButton, P1, P2, type ParagraphProps, type Position, PrimaryBtn as PrimaryButton, RadioButton, RadioGroup, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, type SmallProps, Switch, SwitchLabel, TableDataGrid as Table, Tabs, BaseTextField as TextField, Tiny };
+export { Layout as AdminLayout, Button, CheckboxButton, BaseCheckbox as CheckboxGroup, Colors, ConfirmChangeDialog, ConfirmDiscardDialog, Dialog, Drawer, type DrawerProps, BaseDropdown as Dropdown, ErrorDialog, H1, H2, H3, H4, H5, H6, type HeadingProps, InfoDialog, Lead1, Lead2, Mini, MultipleSelect, OutlinedBtn as OutlinedButton, P1, P2, type ParagraphProps, type Position, PrimaryBtn as PrimaryButton, RadioButton, RadioGroup, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, type SmallProps, Switch, SwitchLabel, TableDataGrid as Table, Tabs, BaseTextField as TextField, Tiny };
