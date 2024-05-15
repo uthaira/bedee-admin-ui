@@ -10,16 +10,17 @@ interface CheckboxButtonProps {
   selected?: any
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   checked?: boolean
+  disableColor?: string
 }
 
 const CheckboxButton = (props: CheckboxButtonProps) => {
-  const { value, disabled, selected, onChange, checked } = props
+  const { value, disabled, selected, onChange, checked, disableColor } = props
 
   return (
     <Checkbox
-      sx={{ opacity: disabled ? 0.5 : 1 }}
+      sx={{ opacity: disabled && !disableColor ? 0.5 : 1 }}
       icon={<CheckboxUnchecked fill={disabled ? Colors.gray3 : undefined} />}
-      checkedIcon={<CheckboxChecked />}
+      checkedIcon={<CheckboxChecked fill={disabled ? disableColor : undefined} />}
       disabled={disabled}
       name={value}
       value={value}

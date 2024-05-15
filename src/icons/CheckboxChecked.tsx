@@ -1,8 +1,14 @@
-const CheckboxChecked = () => {
+interface CheckboxCheckedProps {
+  fill?: string
+}
+
+const CheckboxChecked = (props: CheckboxCheckedProps) => {
+  const { fill } = props
+
   return (
     <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_ddd_2412_25274)">
-        <rect x="3" y="2" width="20" height="20" rx="4" fill="#1E6AF6" />
+        <rect x="3" y="2" width="20" height="20" rx="4" fill={fill || '#1E6AF6'} />
         <path
           fillRule="evenodd"
           clipRule="evenodd"

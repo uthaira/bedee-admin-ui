@@ -33,7 +33,19 @@ type StyleDict = {
 }
 
 const BaseTextField = (props: BaseTextFieldProps & MuiTextFieldProps) => {
-  const { bdSize, titleLabel, value, limit, bdOnChange = () => {}, tag, disabled, icon, onClickIcon, width = '100%', titleProps } = props
+  const {
+    bdSize,
+    titleLabel,
+    value,
+    limit,
+    bdOnChange = () => {},
+    tag,
+    disabled,
+    icon,
+    onClickIcon,
+    width = '100%',
+    titleProps,
+  } = props
 
   const getSize = (): Style => {
     const mapSize: StyleDict = {
@@ -54,11 +66,7 @@ const BaseTextField = (props: BaseTextFieldProps & MuiTextFieldProps) => {
   const renderLabel = () => {
     if (!titleLabel) return undefined
 
-    return (
-      <Typography {...titleProps}>
-        {titleLabel}
-      </Typography>
-    )
+    return <Typography {...titleProps}>{titleLabel}</Typography>
   }
 
   const renderCounter = () => {
@@ -81,9 +89,20 @@ const BaseTextField = (props: BaseTextFieldProps & MuiTextFieldProps) => {
     if (!value || value === '' || disabled) return
 
     return (
-      <Box onClick={onClearClick} sx={{ cursor: 'pointer' }}>
+      <Stack
+        onClick={onClearClick}
+        width={24}
+        height={24}
+        borderRadius="50%"
+        bgcolor={Colors.gray1}
+        alignItems="center"
+        justifyContent="center"
+        sx={{
+          cursor: 'pointer',
+        }}
+      >
         <ClearIcon />
-      </Box>
+      </Stack>
     )
   }
 
@@ -142,6 +161,7 @@ const StyledTextField = styled((props) => <MuiTextField {...props} />)((props: S
       borderColor: Colors.gray0,
     },
     '&.Mui-focused fieldset': {
+      border: '1px solid',
       borderColor: Colors.primary001,
     },
   },
@@ -158,7 +178,7 @@ const StyledTextField = styled((props) => <MuiTextField {...props} />)((props: S
   },
   '& .MuiInputBase-input::placeholder': {
     color: Colors.gray4,
-    fontSize: 14
+    fontSize: 14,
   },
   '& .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root.Mui-disabled': {
     backgroundColor: Colors.gray1,

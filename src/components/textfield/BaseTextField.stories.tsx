@@ -8,7 +8,7 @@ export default {
 
 type TextFieldStory = StoryObj<typeof TextField>
 
-export const BaseRadio: TextFieldStory = {
+export const BaseTextField: TextFieldStory = {
   args: {
     titleLabel: 'Title Label',
     value: '',
