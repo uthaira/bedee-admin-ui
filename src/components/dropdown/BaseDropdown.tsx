@@ -41,8 +41,8 @@ const BaseDropdown = (props: DropdownProps & MuiSelectProps) => {
       {displayTitle}
       <SelectStyle
         onChange={onChangeValue}
-        {...props}
         MenuProps={{ slotProps: { paper: { sx: { maxHeight: '180px', overflowY: 'auto' } } } }}
+        {...props}
       >
         {content}
       </SelectStyle>
