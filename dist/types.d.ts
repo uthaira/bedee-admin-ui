@@ -126,6 +126,7 @@ interface CheckboxButtonProps {
     selected?: any;
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
     checked?: boolean;
+    disableColor?: string;
 }
 declare const CheckboxButton: (props: CheckboxButtonProps) => react_jsx_runtime.JSX.Element;
 
