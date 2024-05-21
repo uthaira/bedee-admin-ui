@@ -1,4 +1,4 @@
-import { Box, Button as MuiButton, ButtonProps as MuiButtonProps } from '@mui/material'
+import { Box, Button as MuiButton, ButtonProps as MuiButtonProps, Stack, Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { Colors } from '../../colors'
 
@@ -10,10 +10,11 @@ export interface ButtonProps extends MuiButtonProps {
   loading?: boolean
   width?: string
   isRightIcon?: boolean
+  counter?: number
 }
 
 const Button = (props: ButtonProps) => {
-  const { bdType, icon, text, loading, bdSize, width = '100%', isRightIcon = false } = props
+  const { bdType, icon, text, loading, bdSize, width = '100%', isRightIcon = false, counter } = props
 
   const getTheme = () => {
     switch (bdType) {
@@ -91,6 +92,14 @@ const Button = (props: ButtonProps) => {
   }
   const iconImg = loading ? <Loading style={iconStyle} /> : icon
 
+  const displayCounter = counter && (
+    <Stack justifyContent="center" alignItems="center" borderRadius="50%" bgcolor={c.color} width={18} height={18}>
+      <Typography fontSize={s.fontSize} color={c.backgroundColor}>
+        {counter}
+      </Typography>
+    </Stack>
+  )
+
   return (
     <MuiButton
       sx={{
@@ -121,6 +130,7 @@ const Button = (props: ButtonProps) => {
         {!isRightIcon && iconImg}
         <Box style={{ color: c.color, fontSize: s.fontSize }}>{text}</Box>
         {isRightIcon && iconImg}
+        {displayCounter}
       </TextStyled>
     </MuiButton>
   )
