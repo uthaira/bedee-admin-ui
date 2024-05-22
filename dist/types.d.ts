@@ -12,6 +12,7 @@ interface ButtonProps extends ButtonProps$1 {
     loading?: boolean;
     width?: string;
     isRightIcon?: boolean;
+    counter?: number;
 }
 declare const Button: (props: ButtonProps) => react_jsx_runtime.JSX.Element;
 
