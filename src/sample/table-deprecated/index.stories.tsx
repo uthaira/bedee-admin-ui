@@ -52,6 +52,6 @@ export const SampleTable = () => {
 }
 
 export default {
-  title: "Sample/Table",
+  title: "Sample/Table_Deprecated",
   component: SampleTable
 } as Meta<typeof SampleTable>

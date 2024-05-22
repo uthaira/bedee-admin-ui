@@ -3,7 +3,7 @@ import TableDataGrid from "./TableDataGrid";
 import { columns, rows } from "../../sample/table-deprecated/data";
 
 export default {
-  title: "Components/Table",
+  title: "Components/Table_Deprecated",
   component: TableDataGrid,
 } as Meta<typeof TableDataGrid>
 
