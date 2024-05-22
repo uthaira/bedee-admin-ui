@@ -19,7 +19,7 @@ interface DropdownProps {
   titleProps?: MuiTypographyProps
 }
 
-const BaseDropdown = (props: DropdownProps & MuiSelectProps) => {
+const BaseDropdown = (props: MuiSelectProps & DropdownProps) => {
   const { titleLabel, titleProps, data = [], tag, bdOnChange = () => {} } = props
 
   const displayTitle = titleLabel ? <Typography {...titleProps}>{titleLabel}</Typography> : undefined
@@ -41,7 +41,6 @@ const BaseDropdown = (props: DropdownProps & MuiSelectProps) => {
       {displayTitle}
       <SelectStyle
         onChange={onChangeValue}
-        MenuProps={{ slotProps: { paper: { sx: { maxHeight: '180px', overflowY: 'auto' } } } }}
         {...props}
       >
         {content}
