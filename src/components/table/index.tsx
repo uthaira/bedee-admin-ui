@@ -1,0 +1,1 @@
+export { BaseTable as Table } from './BaseTable';
