@@ -125,8 +125,8 @@ const ButtonStyle = styled(Button)(() => ({
 
 const CloseButtonStyle = styled('div')(() => ({
   position: 'absolute',
-  top: '16px',
-  right: '16px',
+  top: '20px',
+  right: '20px',
   cursor: 'pointer',
 }))
 
