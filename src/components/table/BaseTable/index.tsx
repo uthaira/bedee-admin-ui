@@ -34,9 +34,9 @@ export const BaseTable = <DataType extends DefaultDataType = DefaultDataType>(pr
         <MaterialTableHead {...props.tableHeadProps ?? {}}>
           <TableHeadRow {...props.tableHeadRowProps ?? {}}>
             {props.columns.map((column) => (
-              <MaterialTableCell key={column.key.toString()} {...column.tableHeadColumnCellProps ?? {}}>
+              <TableHeadRowCell key={column.key.toString()} {...column.tableHeadColumnCellProps ?? {}}>
                 {column.tableHeadColumnCellRenderer}
-              </MaterialTableCell>
+              </TableHeadRowCell>
             ))}
           </TableHeadRow>
         </MaterialTableHead>
@@ -82,6 +82,14 @@ const TableHeadRow = styled(MaterialTableRow)({
   backgroundColor: Colors.gray2,
 });
 
+const TableHeadRowCell = styled(MaterialTableCell)({
+  fontSize: '14px',
+  fontWeight: 600,
+  lineHeight: '24px',
+  color: Colors.gray6,
+  padding: '8px',
+});
+
 const TableBodyRow = styled(MaterialTableRow)({
   backgroundColor: Colors.white,
   borderBottom: `1px solid ${Colors.gray2}`,
@@ -89,4 +97,9 @@ const TableBodyRow = styled(MaterialTableRow)({
 
 const TableBodyRowCell = styled(MaterialTableCell)({
   border: 'none',
+  color: Colors.gray6,
+  fontSize: '14px',
+  fontWeight: 400,
+  lineHeight: '20px',
+  padding: '8px',
 });

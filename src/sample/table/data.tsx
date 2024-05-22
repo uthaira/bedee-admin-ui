@@ -173,7 +173,7 @@ export const BASE_TABLE_PROPS: BaseTableProps<Datatype> = {
       tableHeadColumnCellRenderer: "Select",
       tableBodyRowCell: {
         type: 'custom',
-        render: () =>  <input type="checkbox" />,
+        render: () => <input type="checkbox" />,
       }
     },
     {
@@ -200,8 +200,11 @@ export const BASE_TABLE_PROPS: BaseTableProps<Datatype> = {
     },
     {
       key: 'greeting',
+      tableHeadColumnCellProps: {
+        align: "center",
+      },
       tableHeadColumnCellRenderer: (
-        <p style={{ color: 'blue', minWidth: 250 }}>Greeting</p>
+        <p style={{ margin: 0, color: 'blue', minWidth: 250, fontWeight: 300, fontSize: 26 }}>Greeting</p>
       ),
     },
     {
@@ -209,7 +212,7 @@ export const BASE_TABLE_PROPS: BaseTableProps<Datatype> = {
       tableHeadColumnCellRenderer: 'Tags',
       tableBodyRowCell: {
         type: 'custom',
-        render: ({ data }) => <p style={{ minWidth: 300 }}>{data.tags.join(', ')}</p>,
+        render: ({ data }) => <p style={{ margin: 0, minWidth: 300 }}>{data.tags.join(', ')}</p>,
       },
     },
     {
