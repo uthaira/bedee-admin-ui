@@ -149,7 +149,7 @@ interface DropdownProps {
     bdOnChange?: (value: any, tag: any) => void;
     titleProps?: TypographyProps;
 }
-declare const BaseDropdown: (props: DropdownProps & SelectProps) => react_jsx_runtime.JSX.Element;
+declare const BaseDropdown: (props: SelectProps & DropdownProps) => react_jsx_runtime.JSX.Element;
 
 interface MultipleSelectProps {
     list?: any;
