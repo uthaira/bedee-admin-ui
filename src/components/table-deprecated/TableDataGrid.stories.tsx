@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import TableDataGrid from "./TableDataGrid";
-import { columns, rows } from "../../sample/table/data";
+import { columns, rows } from "../../sample/table-deprecated/data";
 
 export default {
   title: "Components/Table",
