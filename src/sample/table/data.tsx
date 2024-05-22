@@ -170,7 +170,7 @@ export const BASE_TABLE_PROPS: BaseTableProps<Datatype> = {
   columns: [
     {
       key: "select",
-      tableHeadColumnCellRenderer: "Select",
+      tableHeadColumnCellRenderer: null,
       tableBodyRowCell: {
         type: 'custom',
         render: () => <input type="checkbox" />,
