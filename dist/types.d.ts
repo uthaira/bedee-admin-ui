@@ -163,6 +163,7 @@ interface MultipleSelectProps {
     headerListbox?: React.ReactNode;
     selectedValue?: any;
     disabled?: boolean;
+    noOptionsText?: string;
 }
 declare const MultipleSelect: (props: MultipleSelectProps) => react_jsx_runtime.JSX.Element;
 
