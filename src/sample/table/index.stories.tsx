@@ -1,44 +1,43 @@
-import { useEffect, useState } from 'react';
-import { Meta } from '@storybook/react';
-import { TablePagination } from "../../components/table/TablePagination";
-import { Table } from '../../components/table';
-import { BASE_TABLE_PROPS, Datatype } from './data';
-import { Box, Stack } from '@mui/material';
+import { useEffect, useState } from 'react'
+import { Meta } from '@storybook/react'
+import { TablePagination } from "../../components/table/TablePagination"
+import { Table } from '../../components/table'
+import { BASE_TABLE_PROPS, Datatype } from './data'
+import { Box, Stack } from '@mui/material'
 
-const LIMIT = 8;
+const LIMIT = 8
 
 const fetchDataSync = (params: { offset: number; limit: number }) => {
-  console.info(params);
   return {
-    items: BASE_TABLE_PROPS.dataSource.slice(params.offset, params.offset + params.limit),
-    total: BASE_TABLE_PROPS.dataSource.length,
-  };
-};
+    items: BASE_TABLE_PROPS.rows.slice(params.offset, params.offset + params.limit),
+    total: BASE_TABLE_PROPS.rows.length,
+  }
+}
 
 export const SampleTable = () => {
   const [data, setData] = useState<{ items: Datatype[]; total: number }>({
     items: [],
     total: 0,
-  });
-  const [offset, setOffset] = useState(0);
+  })
+  const [offset, setOffset] = useState(0)
 
-  const page = Math.floor(offset / LIMIT);
+  const page = Math.floor(offset / LIMIT)
 
   const onPageChange = (newPage: number) => {
-    setOffset(Math.min(data.total, LIMIT * newPage));
-  };
+    setOffset(Math.min(data.total, LIMIT * newPage))
+  }
 
   useEffect(() => {
-    const resp = fetchDataSync({ offset, limit: LIMIT });
-    setData(resp);
-  }, [offset]);
+    const resp = fetchDataSync({ offset, limit: LIMIT })
+    setData(resp)
+  }, [offset])
 
   return (
     <Box maxWidth={700} overflow="hidden">
       <Stack spacing={2}>
         <Table
           {...BASE_TABLE_PROPS}
-          dataSource={data.items}
+          rows={data.items}
         />
         <TablePagination
           count={data.total}
@@ -48,8 +47,8 @@ export const SampleTable = () => {
         />
       </Stack>
     </Box>
-  );
-};
+  )
+}
 
 export default {
   title: "Sample/Table",

@@ -1,46 +1,49 @@
-import styled from "@emotion/styled";
-import MaterialTablePagination, { tablePaginationClasses } from "@mui/material/TablePagination";
-import MaterialPagination from "@mui/material/Pagination";
-import { paginationItemClasses } from "@mui/material";
-import { commaize } from "../../../utils/formatter";
-import { Colors } from "../../../colors";
-import type { FC } from "react";
-import type { LabelDisplayedRowsArgs, TablePaginationProps } from "@mui/material/TablePagination";
-import type { TablePaginationActionsProps } from "@mui/material/TablePagination/TablePaginationActions";
-import type { PaginationProps } from "@mui/material/Pagination";
+import styled from "@emotion/styled"
+import MuiTablePagination, { tablePaginationClasses } from "@mui/material/TablePagination"
+import MuiPagination from "@mui/material/Pagination"
+import { paginationItemClasses } from "@mui/material"
+import { commaize } from "../../../utils/formatter"
+import { Colors } from "../../../colors"
+import type { FC } from "react"
+import type { LabelDisplayedRowsArgs, TablePaginationProps } from "@mui/material/TablePagination"
+import type { TablePaginationActionsProps } from "@mui/material/TablePagination/TablePaginationActions"
+import type { PaginationProps } from "@mui/material/Pagination"
 
-const TablePaginationActions: FC<TablePaginationActionsProps> = (props) => {
-  const currentPage = props.page + 1;
-  const totalPageCount = Math.ceil(props.count / props.rowsPerPage);
+const Actions: FC<TablePaginationActionsProps> = (props) => {
+  const { page, count, rowsPerPage, onPageChange } = props
+
+  const totalPageCount = Math.ceil(count / rowsPerPage)
 
   const onChange: PaginationProps['onChange'] = (_, newPage) => {
-    props.onPageChange?.(null, newPage - 1);
-  };
+    onPageChange?.(null, newPage - 1)
+  }
 
   return (
     <StyledPagination
       count={totalPageCount}
-      page={currentPage}
+      page={page + 1}
       onChange={onChange}
       variant="outlined"
       shape="rounded"
     />
-  );
-};
+  )
+}
 
 export const TablePagination: FC<TablePaginationProps> = (props) => {
-  const sculptLabelDisplayedRows = ({ from, to, count }: LabelDisplayedRowsArgs) => `showing ${commaize(from)} to ${commaize(to)} of ${commaize(count)} result`;
+  const displayRow = ({ from, to, count }: LabelDisplayedRowsArgs) => {
+    return `showing ${commaize(from)} to ${commaize(to)} of ${commaize(count)} result`;
+  };
   return (
     <StyledTablePagination
       rowsPerPageOptions={[]}
-      ActionsComponent={TablePaginationActions}
-      labelDisplayedRows={sculptLabelDisplayedRows}
+      ActionsComponent={Actions}
+      labelDisplayedRows={displayRow}
       {...props}
     />
-  );
-};
+  )
+}
 
-const StyledTablePagination = styled(MaterialTablePagination)({
+const StyledTablePagination = styled(MuiTablePagination)({
   border: 'none',
   [`& .${tablePaginationClasses.spacer}`]: {
     display: 'none'
@@ -55,9 +58,9 @@ const StyledTablePagination = styled(MaterialTablePagination)({
     color: Colors.gray4,
     lineHeight: 1,
   },
-});
+})
 
-const StyledPagination = styled(MaterialPagination)({
+const StyledPagination = styled(MuiPagination)({
   [`& .${paginationItemClasses.root}`]: {
     fontSize: '16px',
     color: '#1C1C1C',
@@ -87,4 +90,4 @@ const StyledPagination = styled(MaterialPagination)({
   [`& .${paginationItemClasses.disabled}`]: {
     opacity: 0.4,
   },
-});
+})

@@ -1,21 +1,21 @@
 import type { BaseTableProps } from "../../components/table/BaseTable/constants";
-import dataSource from "./data-source.json";
+import rows from "./data-source.json";
 
 export type Datatype = {
-  id: string;
-  name: string;
-  isActive: boolean;
-  picture: string;
-  age: number;
-  tags: string[];
-  greeting: string;
-  favoriteFruit: string;
+  id: string
+  name: string
+  isActive: boolean
+  picture: string
+  age: number
+  tags: string[]
+  greeting: string
+  favoriteFruit: string
 };
 
 export const BASE_TABLE_PROPS: BaseTableProps<Datatype> = {
-  dataSource,
-  getTableBodyRowKey: ({ data }) => data.id,
-  tableContainerProps: {
+  rows,
+  rowKeyName: 'id',
+  containerProps: {
     style: { maxHeight: 400 },
   },
   tableProps: {
@@ -24,99 +24,99 @@ export const BASE_TABLE_PROPS: BaseTableProps<Datatype> = {
   columns: [
     {
       key: "select",
-      tableHeadColumnCellProps: {
+      cellProps: {
         sx: {
           width: 'width: 5%',
           minWidth: '20px'
         },
       },
-      tableHeadColumnCellRenderer: null,
-      tableBodyRowCell: {
+      cellContent: null,
+      bodyRowCell: {
         type: 'custom',
-        render: () => <input type="checkbox" />,
+        cellContent: () => <input type="checkbox" />,
       }
     },
     {
       key: "id",
-      tableHeadColumnCellProps: {
+      cellProps: {
         sx: {
           width: 'width: 20%',
           minWidth: '250px'
         },
       },
-      tableHeadColumnCellRenderer: "ID",
+      cellContent: "ID",
     },
     {
       key: "name",
-      tableHeadColumnCellProps: {
+      cellProps: {
         sx: {
           width: 'width: 15%',
           minWidth: '100px'
         },
       },
-      tableHeadColumnCellRenderer: "Name",
+      cellContent: "Name",
     },
     {
       key: "isActive",
-      tableHeadColumnCellRenderer: "Active",
-      tableHeadColumnCellProps: {
+      cellContent: "Active",
+      cellProps: {
         align: "center",
         sx: {
           width: 'width: 13%',
           minWidth: '50px',
         },
       },
-      tableBodyRowCell: {
+      bodyRowCell: {
         type: "custom",
-        defaultTableBodyRowCellProps: {
+        cellProps: {
           align: "center",
         },
-        render: ({ data }) => data.isActive ? "Yes" : "No",
+        cellContent: ({ data }) => data.isActive ? "Yes" : "No",
       }
     },
     {
       key: 'greeting',
-      tableHeadColumnCellProps: {
+      cellProps: {
         align: "center",
         sx: {
           width: 'width: 17%',
           minWidth: '150px'
         },
       },
-      tableHeadColumnCellRenderer: (
+      cellContent: (
         <p style={{ margin: 0, color: 'blue', minWidth: 250, fontWeight: 300, fontSize: 26 }}>Greeting</p>
       ),
     },
     {
       key: 'tags',
-      tableHeadColumnCellProps: {
+      cellProps: {
         align: "center",
         sx: {
           width: 'width: 15%',
           minWidth: '150px'
         },
       },
-      tableHeadColumnCellRenderer: 'Tags',
-      tableBodyRowCell: {
+      cellContent: 'Tags',
+      bodyRowCell: {
         type: 'custom',
-        render: ({ data }) => <p style={{ margin: 0, minWidth: 300 }}>{data.tags.join(', ')}</p>,
+        cellContent: ({ data }) => <p style={{ margin: 0, minWidth: 300 }}>{data.tags.join(', ')}</p>,
       },
     },
     {
       key: 'favoriteFruit',
-      tableHeadColumnCellRenderer: 'Favorite Fruit',
-      tableHeadColumnCellProps: {
+      cellContent: 'Favorite Fruit',
+      cellProps: {
         align: 'center',
         sx: {
           width: 'width: 15%',
           minWidth: '150px',
         },
       },
-      tableBodyRowCell: {
-        defaultTableBodyRowCellProps: {
+      bodyRowCell: {
+        cellProps: {
           align: 'center',
         },
       }
     }
   ],
-};
+}
