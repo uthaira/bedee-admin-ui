@@ -22,6 +22,7 @@ interface MultipleSelectProps {
   headerListbox?: React.ReactNode
   selectedValue?: any
   disabled?: boolean
+  noOptionsText?: string
 }
 
 const MultipleSelect = (props: MultipleSelectProps) => {
@@ -37,6 +38,7 @@ const MultipleSelect = (props: MultipleSelectProps) => {
     headerListbox,
     selectedValue,
     disabled,
+    noOptionsText
   } = props
 
   const onValueChange = (event: any, value: any) => {
@@ -63,6 +65,7 @@ const MultipleSelect = (props: MultipleSelectProps) => {
         disableCloseOnSelect
         isOptionEqualToValue={(option, value) => option.id === value.id}
         getOptionLabel={(option: any) => option?.name || option?.label || option}
+        noOptionsText={noOptionsText}
         renderOption={(props, option, { selected }) => (
           <ListItem {...props}>
             <Box display="flex" alignItems="center" height={32} marginLeft={-2}>
@@ -91,9 +94,11 @@ const MultipleSelect = (props: MultipleSelectProps) => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 backgroundColor: Colors.gray2,
-                px: '10px',
-                py: '4px',
                 borderRadius: '16px',
+                px: '8px',
+                py: '4px',
+                mx: '2px',
+                my: '2px',
               }}
             >
               <Mini text={option.name} color={Colors.gray7} />
