@@ -91,7 +91,7 @@ const MultipleSelect = (props: MultipleSelectProps) => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 backgroundColor: Colors.gray2,
-                px: '8px',
+                px: '10px',
                 py: '4px',
                 borderRadius: '16px',
               }}
