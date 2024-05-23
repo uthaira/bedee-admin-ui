@@ -22,84 +22,83 @@ const RowCellRenderer = <DataType extends DefaultDataType = DefaultDataType>(pro
 
   return (
     <>
-      {rowData[column.key] ?? ''}
+      {rowData[column.key] ?? ""}
     </>
   );
 };
 
 export const BaseTable = <DataType extends DefaultDataType = DefaultDataType>(props: BaseTableProps<DataType>) => {
   return (
-    <TableContainer className={props.className} {...props.tableContainerProps ?? {}}>
+    <StyledTableContainer className={props.className} {...props.tableContainerProps ?? {}}>
       <MaterialTable {...props.tableProps ?? {}}>
         <MaterialTableHead {...props.tableHeadProps ?? {}}>
-          <TableHeadRow {...props.tableHeadRowProps ?? {}}>
+          <MaterialTableRow {...props.tableHeadRowProps ?? {}}>
             {props.columns.map((column) => (
-              <TableHeadRowCell key={column.key.toString()} {...column.tableHeadColumnCellProps ?? {}}>
+              <StyledTableHeadRowCell key={column.key.toString()} {...column.tableHeadColumnCellProps ?? {}}>
                 {column.tableHeadColumnCellRenderer}
-              </TableHeadRowCell>
+              </StyledTableHeadRowCell>
             ))}
-          </TableHeadRow>
+          </MaterialTableRow>
         </MaterialTableHead>
         <MaterialTableBody {...props.tableBodyProps ?? {}}>
           {props.dataSource.map((rowData, rowIndex) => {
             const rowKey = props.getTableBodyRowKey?.({ data: rowData, rowIndex }) ?? rowIndex;
             const additionalTableBodyRowProps = props.getTableBodyRowProps?.({ data: rowData, rowIndex }) ?? {};
             return (
-              <TableBodyRow key={rowKey} {...props.defaultTableBodyRowProps} {...additionalTableBodyRowProps}>
+              <StyledTableBodyRow key={rowKey} {...props.defaultTableBodyRowProps} {...additionalTableBodyRowProps}>
                 {props.columns.map((column, columnIndex) => {
                   const columnKey = `${rowKey}_${column.key}`;
                   const additionalTableRowCellProps = column.tableBodyRowCell?.getTableBodyRowCellProps?.({ data: rowData, column, rowIndex, columnIndex }) ?? {};
                   return (
-                    <TableBodyRowCell key={columnKey} {...column.tableBodyRowCell?.defaultTableBodyRowCellProps ?? {}} {...additionalTableRowCellProps}>
+                    <StyledTableBodyRowCell key={columnKey} {...column.tableBodyRowCell?.defaultTableBodyRowCellProps ?? {}} {...additionalTableRowCellProps}>
                       <RowCellRenderer column={column} rowData={rowData} columnIndex={columnIndex} rowIndex={rowIndex} />
-                    </TableBodyRowCell>
+                    </StyledTableBodyRowCell>
                   );
                 })}
-              </TableBodyRow>
+              </StyledTableBodyRow>
             );
           })}
         </MaterialTableBody>
       </MaterialTable>
-    </TableContainer>
+    </StyledTableContainer>
   );
 };
 
-const TableContainer = styled(MaterialTableContainer)({
-  '&::-webkit-scrollbar': {
-    width: '6px',
-    height: '6px',
+const StyledTableContainer = styled(MaterialTableContainer)({
+  "&::-webkit-scrollbar": {
+    width: "6px",
+    height: "6px",
   },
-  '&::-webkit-scrollbar-track': {
+  "&::-webkit-scrollbar-track": {
     backgroundColor: Colors.gray2,
   },
-  '&::-webkit-scrollbar-thumb': {
+  "&::-webkit-scrollbar-thumb": {
     backgroundColor: Colors.gray3,
-    borderRadius: '8px',
+    borderRadius: "8px",
   }
 });
 
-const TableHeadRow = styled(MaterialTableRow)({
-  backgroundColor: Colors.gray2,
-});
-
-const TableHeadRowCell = styled(MaterialTableCell)({
-  fontSize: '14px',
+const StyledTableHeadRowCell = styled(MaterialTableCell)({
+  fontSize: "14px",
   fontWeight: 600,
-  lineHeight: '24px',
+  lineHeight: "24px",
   color: Colors.gray6,
-  padding: '8px',
+  backgroundColor: Colors.gray2,
+  padding: "8px",
+  border: "none",
 });
 
-const TableBodyRow = styled(MaterialTableRow)({
+const StyledTableBodyRow = styled(MaterialTableRow)({
   backgroundColor: Colors.white,
   borderBottom: `1px solid ${Colors.gray2}`,
+  verticalAlign: 'top',
 });
 
-const TableBodyRowCell = styled(MaterialTableCell)({
-  border: 'none',
+const StyledTableBodyRowCell = styled(MaterialTableCell)({
+  border: "none",
   color: Colors.gray6,
-  fontSize: '14px',
+  fontSize: "14px",
   fontWeight: 400,
-  lineHeight: '20px',
-  padding: '8px',
+  lineHeight: "20px",
+  padding: "8px",
 });
