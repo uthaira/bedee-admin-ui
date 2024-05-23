@@ -1,7 +1,7 @@
 import type { BaseTableProps } from "../../components/table/BaseTable/constants";
 import rows from "./data-source.json";
 
-export type Datatype = {
+export type DataType = {
   id: string
   name: string
   isActive: boolean
@@ -12,7 +12,7 @@ export type Datatype = {
   favoriteFruit: string
 };
 
-export const BASE_TABLE_PROPS: BaseTableProps<Datatype> = {
+export const BASE_TABLE_PROPS: BaseTableProps<DataType> = {
   rows,
   rowKeyName: 'id',
   containerProps: {

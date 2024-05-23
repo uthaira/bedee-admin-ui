@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Meta } from '@storybook/react'
 import { TablePagination } from "../../components/table/TablePagination"
 import { Table } from '../../components/table'
-import { BASE_TABLE_PROPS, Datatype } from './data'
+import { BASE_TABLE_PROPS, DataType } from './data'
 import { Box, Stack } from '@mui/material'
 
 const LIMIT = 8
@@ -15,7 +15,7 @@ const fetchDataSync = (params: { offset: number; limit: number }) => {
 }
 
 export const SampleTable = () => {
-  const [data, setData] = useState<{ items: Datatype[]; total: number }>({
+  const [data, setData] = useState<{ items: DataType[]; total: number }>({
     items: [],
     total: 0,
   })
