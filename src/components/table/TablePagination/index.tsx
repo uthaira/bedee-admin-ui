@@ -67,9 +67,12 @@ const StyledPagination = styled(MuiPagination)({
     lineHeight: '24px',
     height: '40px',
     minWidth: '40px',
+    backgroundColor: Colors.white,
+    ":hover": {
+      backgroundColor: Colors.white,
+    },
   },
   [`& .${paginationItemClasses.outlined}`]: {
-    backgroundColor: 'white',
     borderColor: '#E8E8E8',
     boxShadow: '0px 1px 1px 0px #0000000F',
   },
