@@ -12,6 +12,7 @@ interface ButtonProps extends ButtonProps$1 {
     loading?: boolean;
     width?: string;
     isRightIcon?: boolean;
+    counter?: number;
 }
 declare const Button: (props: ButtonProps) => react_jsx_runtime.JSX.Element;
 
@@ -148,7 +149,7 @@ interface DropdownProps {
     bdOnChange?: (value: any, tag: any) => void;
     titleProps?: TypographyProps;
 }
-declare const BaseDropdown: (props: DropdownProps & SelectProps) => react_jsx_runtime.JSX.Element;
+declare const BaseDropdown: (props: SelectProps & DropdownProps) => react_jsx_runtime.JSX.Element;
 
 interface MultipleSelectProps {
     list?: any;
@@ -162,6 +163,7 @@ interface MultipleSelectProps {
     headerListbox?: React.ReactNode;
     selectedValue?: any;
     disabled?: boolean;
+    noOptionsText?: string;
 }
 declare const MultipleSelect: (props: MultipleSelectProps) => react_jsx_runtime.JSX.Element;
 

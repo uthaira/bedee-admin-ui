@@ -1,7 +1,7 @@
 {
   "name": "bedee-admin-ui",
   "description": "Bedee shared UI components",
-  "version": "0.1.23",
+  "version": "0.1.25",
   "repository": "git://github.com:uthaira/bedee-admin-ui.git",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

@@ -7,10 +7,7 @@ export const SampleDropdown = () => {
   const [selected, setSelected] = useState({
     normalDropdown: '',
     disabledDropdown: '',
-    multipleSelect: [
-      mockSelectData.find((film: any) => film.id === '3'),
-      mockSelectData.find((film: any) => film.id === '4'),
-    ],
+    multipleSelect: [mockSelectData.find((film: any) => film.id === '3'), mockSelectData.find((film: any) => film.id === '4')],
   })
 
   const onSelectChange = (value: any, tag: any) => {
@@ -45,6 +42,7 @@ export const SampleDropdown = () => {
         list={mockSelectData}
         onChange={onSelectChange}
         tag="multipleSelect"
+        noOptionsText="No result found."
       />
     </Box>
   )
