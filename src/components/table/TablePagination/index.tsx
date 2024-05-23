@@ -88,6 +88,7 @@ const StyledPagination = styled(MuiPagination)({
   [`& .${paginationItemClasses.selected}`]: {
     borderColor: Colors.primary001,
     color: Colors.primary001,
+    backgroundColor: Colors.white,
     boxShadow: '0px 1px 1px 0px #00000014, 0px 2px 1px 0px #0000000F, 0px 1px 3px 0px #0000001A',
   },
   [`& .${paginationItemClasses.disabled}`]: {
