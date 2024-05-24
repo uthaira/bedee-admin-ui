@@ -1,8 +1,9 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
-import { ButtonProps as ButtonProps$1, SwitchProps as SwitchProps$1, DialogProps as DialogProps$1, DialogTitleProps, TypographyProps, RadioProps, TabsProps as TabsProps$1, SelectProps, TextFieldProps } from '@mui/material';
-import React$1, { ChangeEvent, ReactNode } from 'react';
-import { DataGridProps } from '@mui/x-data-grid';
-import { SxProps, Theme } from '@mui/material/styles';
+import { ButtonProps as ButtonProps$1, SwitchProps as SwitchProps$1, DialogProps as DialogProps$1, DialogTitleProps, TypographyProps, RadioProps, TabsProps as TabsProps$1, SelectProps, TableContainerProps, TableProps, TableHeadProps, TableBodyProps, TextFieldProps } from '@mui/material';
+import React$1, { ChangeEvent, ReactNode, FC } from 'react';
+import { TableRowProps } from '@mui/material/TableRow';
+import { TableCellProps } from '@mui/material/TableCell';
+import { TablePaginationProps } from '@mui/material/TablePagination';
 
 interface ButtonProps extends ButtonProps$1 {
     bdType?: 'primary' | 'secondary' | 'outlined' | 'remove';
@@ -167,27 +168,44 @@ interface MultipleSelectProps {
 }
 declare const MultipleSelect: (props: MultipleSelectProps) => react_jsx_runtime.JSX.Element;
 
-type TableFooterProps = {
-    sx?: SxProps<Theme>;
-    limit?: number;
-    offset?: number;
-    total?: number;
-    onPageChange?: (event: React.ChangeEvent<unknown>, newPage: number) => void;
+declare const ROW_CELL_TYPE_BASE = "base";
+declare const ROW_CELL_TYPE_CUSTOM = "custom";
+type DefaultDataType = Record<PropertyKey, any>;
+type TableBodyRowCellType<DataType extends DefaultDataType = DefaultDataType> = {
+    cellProps?: TableCellProps;
+} & ({
+    type: typeof ROW_CELL_TYPE_CUSTOM;
+    cellContent: FC<Record<string, any> & {
+        data: DataType;
+        rowIndex: number;
+        columnIndex: number;
+    }>;
+} | {
+    type?: typeof ROW_CELL_TYPE_BASE;
+});
+type ColumnType<DataType extends DefaultDataType = DefaultDataType> = {
+    key: string;
+    bodyRowCell?: TableBodyRowCellType<DataType>;
+    cellContent: ReactNode;
+    cellProps?: TableCellProps;
+};
+type BaseTableProps<DataType extends DefaultDataType = DefaultDataType> = {
+    className?: string;
+    rows: DataType[];
+    columns: ColumnType<DataType>[];
+    containerProps?: TableContainerProps;
+    tableProps?: TableProps;
+    headProps?: TableHeadProps;
+    headRowProps?: TableRowProps;
+    bodyProps?: TableBodyProps;
+    bodyRowProps?: TableRowProps;
+    rowKeyName?: keyof DataType;
+    emptyContent?: ReactNode;
 };
 
-type TableNoRowsOverlayProps = {
-    title?: ReactNode;
-    description?: ReactNode;
-    icon?: ReactNode;
-};
+declare const BaseTable: <DataType extends DefaultDataType = DefaultDataType>(props: BaseTableProps<DataType>) => react_jsx_runtime.JSX.Element;
 
-type TableDataGridProps = {
-    tableFooterProps?: TableFooterProps;
-    tableHeight?: number | string;
-    borderRadiusValue?: number;
-    tableNoRowsOverlayProps?: TableNoRowsOverlayProps;
-} & DataGridProps;
-declare const TableDataGrid: (props: TableDataGridProps) => react_jsx_runtime.JSX.Element;
+declare const TablePagination: FC<TablePaginationProps>;
 
 interface HeadingProps {
     text: string;
@@ -265,4 +283,4 @@ declare const Colors: {
 
 declare const Layout: (props: any) => react_jsx_runtime.JSX.Element;
 
-export { Layout as AdminLayout, Button, CheckboxButton, BaseCheckbox as CheckboxGroup, Colors, ConfirmChangeDialog, ConfirmDiscardDialog, Dialog, Drawer, type DrawerProps, BaseDropdown as Dropdown, ErrorDialog, H1, H2, H3, H4, H5, H6, type HeadingProps, InfoDialog, Lead1, Lead2, Mini, MultipleSelect, OutlinedBtn as OutlinedButton, P1, P2, type ParagraphProps, type Position, PrimaryBtn as PrimaryButton, RadioButton, RadioGroup, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, type SmallProps, Switch, SwitchLabel, TableDataGrid as Table, Tabs, BaseTextField as TextField, Tiny };
+export { Layout as AdminLayout, Button, CheckboxButton, BaseCheckbox as CheckboxGroup, Colors, ConfirmChangeDialog, ConfirmDiscardDialog, Dialog, Drawer, type DrawerProps, BaseDropdown as Dropdown, ErrorDialog, H1, H2, H3, H4, H5, H6, type HeadingProps, InfoDialog, Lead1, Lead2, Mini, MultipleSelect, OutlinedBtn as OutlinedButton, P1, P2, type ParagraphProps, type Position, PrimaryBtn as PrimaryButton, RadioButton, RadioGroup, RemoveBtn as RemoveButton, SecondaryBtn as SecondaryButton, SideMenu, type SmallProps, Switch, SwitchLabel, BaseTable as Table, TablePagination, Tabs, BaseTextField as TextField, Tiny };
