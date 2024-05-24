@@ -1,1 +1,2 @@
-export { default as Table } from './TableDataGrid'
+export { BaseTable as Table } from './BaseTable';
+export { TablePagination } from './TablePagination';

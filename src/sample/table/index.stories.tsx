@@ -1,52 +1,68 @@
-import { Box, Grid } from '@mui/material'
-import { ChangeEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Meta } from '@storybook/react'
+import { TablePagination } from "../../components/table/TablePagination"
 import { Table } from '../../components/table'
-import { columns, rows } from './data'
-import { ColumnBox } from '../layout'
+import { BASE_TABLE_PROPS, DataType } from './data'
+import { Box, Stack } from '@mui/material'
+import { Lead1 } from '../../components'
+
+const LIMIT = 8
+
+const fetchDataSync = (params: { offset: number; limit: number }) => {
+  return {
+    items: BASE_TABLE_PROPS.rows.slice(params.offset, params.offset + params.limit),
+    total: BASE_TABLE_PROPS.rows.length,
+  }
+}
 
 export const SampleTable = () => {
-  const [page, setPage] = useState<number>(1)
-  const [data, setData] = useState(rows)
+  const [data, setData] = useState<{ items: DataType[]; total: number }>({
+    items: [],
+    total: 0,
+  })
+  const [offset, setOffset] = useState(0)
+
+  const page = Math.floor(offset / LIMIT)
+
+  const onPageChange = (newPage: number) => {
+    setOffset(Math.min(data.total, LIMIT * newPage))
+  }
 
   useEffect(() => {
-    const offset = (page - 1) * limit
-    setData(rows.slice(offset, offset + limit))
-  }, [page])
-
-  const limit = 10
+    const resp = fetchDataSync({ offset, limit: LIMIT })
+    setData(resp)
+  }, [offset])
 
   return (
-    <Box>
-      <Grid container spacing={2}>
-        <Grid item>
-          <ColumnBox title="With data">
-            <Table 
-              columns={columns} 
-              rows={data}
-              tableFooterProps={{
-                limit,
-                offset: (page - 1) * limit,
-                total: rows.length,
-                onPageChange: (_event: ChangeEvent<unknown>, newPage: number) => setPage(newPage),
-              }}
-            />
-          </ColumnBox>
-        </Grid>
-        <Grid item>
-          <ColumnBox title="Without data">
-            <Table 
-              columns={columns} 
-              rows={[]}
-              tableFooterProps={{
-                limit,
-                offset: 0,
-                total: 0,
-              }}
-            />
-          </ColumnBox>
-        </Grid>
-      </Grid>
+    <Box overflow="hidden">
+      <Stack spacing={6}>
+        <Stack spacing={2}>
+          <Lead1 text="Table" />
+          <Table
+            {...BASE_TABLE_PROPS}
+            rows={data.items}
+          />
+          <TablePagination
+            count={data.total}
+            page={page}
+            rowsPerPage={LIMIT}
+            onPageChange={(e, v) => onPageChange(v)}
+          />
+        </Stack>
+        <Stack spacing={2}>
+          <Lead1 text="Table - Empty" />
+          <Table
+            {...BASE_TABLE_PROPS}
+            rows={[]}
+          />
+          <TablePagination
+            count={0}
+            page={0}
+            rowsPerPage={LIMIT}
+            onPageChange={() => {}}
+          />
+        </Stack>
+      </Stack>
     </Box>
   )
 }
