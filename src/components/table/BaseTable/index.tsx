@@ -1,30 +1,14 @@
+import { styled } from "@mui/material"
 import MuiTableContainer from "@mui/material/TableContainer"
 import MuiTable from "@mui/material/Table"
 import MuiTableHead from "@mui/material/TableHead"
 import MuiTableRow from "@mui/material/TableRow"
 import MuiTableCell from "@mui/material/TableCell"
 import MuiTableBody from "@mui/material/TableBody"
-import { BaseTableProps, ColumnType, DefaultDataType, ROW_CELL_TYPE_CUSTOM } from "./constants"
-import { styled } from "@mui/material"
+import RowCellContent from "./RowCellContent"
+import EmptyContent from "./EmptyContent"
 import { Colors } from "../../../colors"
-
-const RowCellContent = <DataType extends DefaultDataType = DefaultDataType>(props: { column: ColumnType; row: DataType; rowIndex: number; columnIndex: number; }) => {
-  const { column, row, rowIndex, columnIndex } = props
-  const { bodyRowCell } = column
-
-  if (bodyRowCell?.type === ROW_CELL_TYPE_CUSTOM) {
-    const { cellContent: Content } = bodyRowCell
-    return (
-      <Content data={row} rowIndex={rowIndex} columnIndex={columnIndex} />
-    )
-  }
-
-  return (
-    <>
-      {row[column.key] ?? ""}
-    </>
-  )
-}
+import { BaseTableProps, DefaultDataType } from "./constants"
 
 export const BaseTable = <DataType extends DefaultDataType = DefaultDataType>(props: BaseTableProps<DataType>) => {
   const {
@@ -38,6 +22,7 @@ export const BaseTable = <DataType extends DefaultDataType = DefaultDataType>(pr
     bodyProps = {},
     bodyRowProps = {},
     rowKeyName,
+    emptyContent,
   } = props
   return (
     <StyledTableContainer className={className} {...containerProps}>
@@ -52,7 +37,17 @@ export const BaseTable = <DataType extends DefaultDataType = DefaultDataType>(pr
           </MuiTableRow>
         </MuiTableHead>
         <MuiTableBody {...bodyProps}>
-          {rows.map((row, rowIndex) => {
+          {(rows.length === 0 && Boolean(emptyContent)) && emptyContent}
+          {(rows.length === 0 && !emptyContent) && (
+            (
+              <StyledTableBodyRow>
+                <StyledTableBodyRowCell colSpan={columns.length}>
+                  <EmptyContent />
+                </StyledTableBodyRowCell>
+              </StyledTableBodyRow>
+            )
+          )}
+          {rows.length > 0 && rows.map((row, rowIndex) => {
             const rowKey = (rowKeyName && row[rowKeyName]) ? row[rowKeyName] : rowIndex;
             return (
               <StyledTableBodyRow key={rowKey} {...bodyRowProps}>

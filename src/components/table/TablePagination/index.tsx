@@ -67,10 +67,6 @@ const StyledPagination = styled(MuiPagination)({
     lineHeight: '24px',
     height: '40px',
     minWidth: '40px',
-    backgroundColor: Colors.white,
-    ":hover": {
-      backgroundColor: Colors.white,
-    },
   },
   [`& .${paginationItemClasses.outlined}`]: {
     borderColor: '#E8E8E8',
@@ -85,7 +81,7 @@ const StyledPagination = styled(MuiPagination)({
   [`& .${paginationItemClasses.rounded}`]: {
     borderRadius: '8px',
   },
-  [`& .${paginationItemClasses.selected}`]: {
+  [`& .${paginationItemClasses.root}.${paginationItemClasses.selected}`]: {
     borderColor: Colors.primary001,
     color: Colors.primary001,
     backgroundColor: Colors.white,

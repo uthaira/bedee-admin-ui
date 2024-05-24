@@ -4,6 +4,7 @@ import { TablePagination } from "../../components/table/TablePagination"
 import { Table } from '../../components/table'
 import { BASE_TABLE_PROPS, DataType } from './data'
 import { Box, Stack } from '@mui/material'
+import { Lead1 } from '../../components'
 
 const LIMIT = 8
 
@@ -33,18 +34,34 @@ export const SampleTable = () => {
   }, [offset])
 
   return (
-    <Box maxWidth={700} overflow="hidden">
-      <Stack spacing={2}>
-        <Table
-          {...BASE_TABLE_PROPS}
-          rows={data.items}
-        />
-        <TablePagination
-          count={data.total}
-          page={page}
-          rowsPerPage={LIMIT}
-          onPageChange={(e, v) => onPageChange(v)}
-        />
+    <Box overflow="hidden">
+      <Stack spacing={6}>
+        <Stack spacing={2}>
+          <Lead1 text="Table" />
+          <Table
+            {...BASE_TABLE_PROPS}
+            rows={data.items}
+          />
+          <TablePagination
+            count={data.total}
+            page={page}
+            rowsPerPage={LIMIT}
+            onPageChange={(e, v) => onPageChange(v)}
+          />
+        </Stack>
+        <Stack spacing={2}>
+          <Lead1 text="Table - Empty" />
+          <Table
+            {...BASE_TABLE_PROPS}
+            rows={[]}
+          />
+          <TablePagination
+            count={0}
+            page={0}
+            rowsPerPage={LIMIT}
+            onPageChange={() => {}}
+          />
+        </Stack>
       </Stack>
     </Box>
   )

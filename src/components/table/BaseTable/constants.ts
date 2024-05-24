@@ -35,4 +35,5 @@ export type BaseTableProps<DataType extends DefaultDataType = DefaultDataType> =
   bodyProps?: TableBodyProps;
   bodyRowProps?: TableRowProps;
   rowKeyName?: keyof DataType;
+  emptyContent?: ReactNode;
 }
