@@ -37,15 +37,15 @@ export const BaseTable = <DataType extends DefaultDataType = DefaultDataType>(pr
           </MuiTableRow>
         </MuiTableHead>
         <MuiTableBody {...bodyProps}>
-          {(rows.length === 0 && Boolean(emptyContent)) && emptyContent}
-          {(rows.length === 0 && !emptyContent) && (
-            (
-              <StyledTableBodyRow>
-                <StyledTableBodyRowCell colSpan={columns.length}>
-                  <EmptyContent />
-                </StyledTableBodyRowCell>
-              </StyledTableBodyRow>
-            )
+          {rows.length === 0 && (
+            <StyledTableBodyRow>
+              <StyledTableBodyRowCell colSpan={columns.length}>
+                {Boolean(emptyContent)
+                  ? emptyContent
+                  : <EmptyContent />
+                }
+              </StyledTableBodyRowCell>
+            </StyledTableBodyRow>
           )}
           {rows.length > 0 && rows.map((row, rowIndex) => {
             const rowKey = (rowKeyName && row[rowKeyName]) ? row[rowKeyName] : rowIndex;

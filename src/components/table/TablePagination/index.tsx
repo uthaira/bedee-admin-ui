@@ -1,4 +1,4 @@
-import styled from "@emotion/styled"
+import { styled } from "@mui/material"
 import MuiTablePagination, { tablePaginationClasses } from "@mui/material/TablePagination"
 import MuiPagination from "@mui/material/Pagination"
 import { paginationItemClasses } from "@mui/material"
