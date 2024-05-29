@@ -1,6 +1,5 @@
 import { Box, FormControlLabel, FormGroup, Typography, styled } from '@mui/material'
 import { Colors } from '../../colors'
-import { ChangeEvent } from 'react'
 import CheckboxButton from './CheckboxButton'
 
 interface CheckBoxGroupData {
@@ -12,7 +11,7 @@ interface CheckBoxGroupData {
 
 interface CheckBoxGroupProps {
   data: CheckBoxGroupData[]
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+  onChange: (value: string) => void
   selected: string[]
   title?: string
   isRow?: boolean

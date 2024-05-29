@@ -111,6 +111,8 @@ const DialogSubTitleStyle = styled(MuiDialogTitle)(() => ({
   lineHeight: '24px',
   textAlign: 'center',
   color: Colors.gray7,
+  overflow: 'auto',
+  maxHeight: '120px'
 }))
 
 const DialogActionsStyle = styled(MuiDialogActions)(() => ({
