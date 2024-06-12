@@ -1,5 +1,5 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
-import { ButtonProps as ButtonProps$1, SwitchProps as SwitchProps$1, DialogProps as DialogProps$1, DialogTitleProps, TypographyProps, RadioProps, TabsProps as TabsProps$1, SelectProps, TableContainerProps, TableProps, TableHeadProps, TableBodyProps, TextFieldProps } from '@mui/material';
+import { ButtonProps as ButtonProps$1, SwitchProps as SwitchProps$1, DialogProps as DialogProps$1, DialogTitleProps, TypographyProps, RadioProps, TabsProps as TabsProps$1, TabProps, SelectProps, TableContainerProps, TableProps, TableHeadProps, TableBodyProps, TextFieldProps } from '@mui/material';
 import React$1, { ChangeEvent, ReactNode, FC } from 'react';
 import { TableRowProps } from '@mui/material/TableRow';
 import { TableCellProps } from '@mui/material/TableCell';
@@ -115,7 +115,7 @@ interface CheckBoxGroupData {
 }
 interface CheckBoxGroupProps {
     data: CheckBoxGroupData[];
-    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    onChange: (value: string) => void;
     selected: string[];
     title?: string;
     isRow?: boolean;
@@ -138,6 +138,7 @@ interface TabsData {
 }
 interface TabsProps extends TabsProps$1 {
     data: TabsData[];
+    tabProps?: TabProps;
 }
 declare const Tabs: (props: TabsProps) => react_jsx_runtime.JSX.Element;
 
