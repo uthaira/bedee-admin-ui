@@ -46,6 +46,9 @@ interface SideMenuProps {
     username: string;
     role: string;
     version: string;
+    lastLoginDate?: string;
+    lastLoginTime?: string;
+    activeKey?: string;
     onLogout?: () => void;
     onVisible: () => void;
 }
