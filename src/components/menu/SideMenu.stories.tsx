@@ -1,14 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react"
 import BaseSideMenu from "./SideMenu"
-import DasboardIcon from "../../icons/DasboardIcon"
-import ReportIcon from "../../icons/ReportIcon"
-import Fullfill from "../../icons/Fullfill"
-import Marketing from "../../icons/Marketing"
-import CustomerIcon from "../../icons/CustomerIcon"
-import ProviderIcon from "../../icons/ProviderIcon"
-import Issue from "../../icons/Issue"
-import Admin from "../../icons/Admin"
-import Setting from "../../icons/Setting"
 
 export default {
   title: "Components/Menu",
@@ -17,229 +8,527 @@ export default {
 
 type Story = StoryObj<typeof BaseSideMenu>;
 
+
 const menus = [
   {
-    title: 'Dashboard',
-    icon: <DasboardIcon />,
-    roles: ['monitoring_dashboard_view_all', 'appointment_edit_all'],
+    title: "Dashboard",
+    icon: "DasboardIcon",
+    permission: [
+      {
+        code: "consultation_monitoring",
+        view: true,
+      },
+      {
+        code: "appointment",
+        view: true,
+      },
+      {
+        code: "schedule",
+        view: true,
+      },
+    ],
     list: [
       {
-        title: 'Consultation Monitoring',
-        link: '/consultation-monitoring',
-        roles: ['monitoring_dashboard_view_all'],
+        title: "Consultation Monitoring",
+        active: "consultation_monitoring",
+        status: "active",
+        link: "/fulfillment-web/consultation-monitoring",
+        permission: [
+          {
+            code: "consultation_monitoring",
+            view: true,
+          },
+        ],
       },
       {
-        title: 'Appointment',
-        link: '/appointment',
-        roles: ['appointment_edit_all'],
+        title: "Appointment",
+        active: "appointment",
+        status: "active",
+        link: "/fulfillment-web/appointment",
+        permission: [
+          {
+            code: "appointment",
+            view: true,
+          },
+        ],
       },
       {
-        title: 'Schedule',
-        link: '/schedule',
-        roles: ['appointment_edit_all'],
-      }
-    ]
+        title: "Schedule",
+        active: "schedule",
+        status: "active",
+        link: "/fulfillment-web/schedule",
+        permission: [
+          {
+            code: "schedule",
+            view: true,
+          },
+        ],
+      },
+    ],
   },
   {
-    title: 'Report',
-    icon: <ReportIcon />,
-    roles: ['finance_report_view_all', 'sale_report_view_all', 'transaction_report_view_all'],
+    title: "Report",
+    icon: "ChartPie",
+    permission: [
+      {
+        code: "finance_report",
+        view: true,
+      },
+      {
+        code: "sale_report",
+        view: true,
+      },
+      {
+        code: "transaction_report",
+        view: true,
+      },
+      {
+        code: "fda_report",
+        view: true,
+      },
+    ],
     list: [
       {
-        title: 'Finance report',
-        link: `/finance-report`,
-        roles: ['finance_report_view_all'],
+        title: "Finance report",
+        active: "finance_report",
+        status: "active",
+        link: "/fulfillment-web/finance-report",
+        permission: [
+          {
+            code: "finance_report",
+            view: true,
+          },
+        ],
       },
       {
-        title: 'Sale report',
-        link: '/sale-report',
-        roles: ['sale_report_view_all'],
+        title: "Sale report",
+        active: "sale_report",
+        status: "active",
+        link: "/fulfillment-web/sale-report",
+        permission: [
+          {
+            code: "sale_report",
+            view: true,
+          },
+        ],
       },
       {
-        title: 'Transaction report',
-        link: '/transaction-report',
-        roles: ['transaction_report_view_all'],
+        title: "Transaction report",
+        active: "transaction_report",
+        status: "active",
+        link: "/fulfillment-web/transaction-report",
+        permission: [
+          {
+            code: "transaction_report",
+            view: true,
+          },
+        ],
       },
       {
-        title: 'FDA report',
-        link: '/fda-report',
-        roles: ['sale_report_view_all'],
-      }
-    ]
+        title: "FDA report",
+        active: "fda_report",
+        status: "active",
+        link: "/fulfillment-web/fda-report",
+        permission: [
+          {
+            code: "fda_report",
+            view: true,
+          },
+        ],
+      },
+    ],
   },
   {
-    title: 'Fulfillment',
-    icon: <Fullfill />,
-    roles: ['order_edit_all', 'order_view_intervention', 'inventory_view_all', 'inventory_view_store'],
+    title: "Fulfillment",
+    icon: "ShoppingCart",
+    permission: [
+      {
+        code: "order",
+        view: true,
+      },
+      {
+        code: "inventory",
+        view: true,
+      },
+    ],
     list: [
       {
-        title: 'Order',
-        link: '/order',
-        roles: ['order_edit_all', 'order_view_intervention'],
+        title: "Order",
+        active: "order",
+        status: "active",
+        link: "/fulfillment-web/order",
+        permission: [
+          {
+            code: "order",
+            view: true,
+          },
+        ],
       },
       {
-        title: 'Inventory',
-        link: '/inventory',
-        roles: ['inventory_view_all', 'inventory_view_store'],
-      }
-    ]
+        title: "Inventory",
+        active: "inventory",
+        status: "active",
+        link: "/fulfillment-web/inventory",
+        permission: [
+          {
+            code: "inventory",
+            view: true,
+          },
+        ],
+      },
+    ],
   },
   {
-    title: 'Marketing',
-    icon: <Marketing />,
-    roles: ['campaign_monitoring_view_all', 'campaign_monitoring_edit_all', 'coupon_code_view_all', 'coupon_code_edit_all'],
+    title: "Marketing",
+    icon: "Marketing",
+    permission: [
+      {
+        code: "coupon_monitoring",
+        view: true,
+      },
+      {
+        code: "coupon_upload",
+        edit: true,
+      },
+      {
+        code: "banner",
+        view: true,
+      },
+      {
+        code: "deeplink",
+        view: true,
+      },
+    ],
     list: [
       {
-        title: 'Coupon monitoring',
-        link: '/home/marketing/coupon',
-        roles: ['campaign_monitoring_view_all', 'campaign_monitoring_edit_all'],
+        title: "Coupon monitoring",
+        link: "/admin-provider-portal/home/marketing/coupon",
+        permission: [
+          {
+            code: "coupon_monitoring",
+            view: true,
+          },
+        ],
+        active: "coupon",
+        status: "active",
       },
       {
-        title: 'Coupon upload',
-        link: '/home/marketing/importer',
-        roles: ['coupon_code_view_all', 'coupon_code_edit_all'],
+        title: "Coupon upload",
+        link: "/admin-provider-portal/home/marketing/importer",
+        permission: [
+          {
+            code: "coupon_upload",
+            edit: true,
+          },
+        ],
+        active: "importer",
+        status: "active",
       },
       {
-        title: 'Insurance calculation',
-        link: '/home/marketing/insurance',
-        roles: [],
-        isTest: true
+        title: "Banner management",
+        link: "/admin-provider-portal/home/marketing/banner",
+        permission: [
+          {
+            code: "banner",
+            view: true,
+          },
+        ],
+        active: "banner",
+        status: "active",
       },
       {
-        title: 'Banner management',
-        link: '/home/marketing/banner',
-        roles: [],
-        isTest: true
-      }
-    ]
+        title: "Deeplink management",
+        link: "/admin-provider-portal/home/marketing/deeplink",
+        permission: [
+          {
+            code: "deeplink",
+            view: true,
+          },
+        ],
+        active: "deeplink",
+        status: "active",
+      },
+    ],
   },
   {
-    title: 'Catalog',
-    icon: <Marketing />,
-    roles: ['campaign_monitoring_view_all', 'campaign_monitoring_edit_all', 'coupon_code_view_all', 'coupon_code_edit_all'],
-    isTest: true,
+    title: "Customer management",
+    icon: "CustomerIcon",
+    permission: [
+      {
+        code: "customer",
+        view: true,
+      },
+      {
+        code: "customer_detail",
+        view: true,
+      },
+    ],
     list: [
       {
-        title: 'Categories',
-        link: '/home/catalog/category',
-        roles: [],
+        title: "Customer profile",
+        link: "/fulfillment-web/customer",
+        permission: [
+          {
+            code: "customer",
+            view: true,
+          },
+          {
+            code: "customer_detail",
+            view: true,
+          },
+        ],
+        status: "active",
       },
-      {
-        title: 'Campaigns',
-        link: '/home/catalog/campaign',
-        roles: [],
-      },
-      {
-        title: 'Deep link',
-        link: '/home/catalog/deep-link',
-        roles: [],
-      }
-    ]
+    ],
   },
   {
-    title: 'Customer management',
-    icon: <CustomerIcon />,
-    roles: ['user_management_view_all'],
+    title: "Investigation management",
+    icon: "Lab",
+    permission: [
+      {
+        code: "lab_result_transaction",
+        view: true,
+      },
+    ],
     list: [
       {
-        title: 'Customer profile',
-        link: '/customer',
-        roles: [],
-      }
-    ]
+        title: "Lab result transaction",
+        link: "/admin-provider-portal/home/investigation-management/lab-result-transaction",
+        permission: [
+          {
+            code: "lab_result_transaction",
+            view: true,
+          },
+        ],
+        active: "lab-result-transaction",
+        status: "active",
+      },
+    ],
   },
   {
-    title: 'Provider management',
-    icon: <ProviderIcon />,
-    roles: ['provider_view'],
-    minActive: ['doctors_profile', 'pharmacist_profile', 'alliedhealths_profile'],
+    title: "Provider management",
+    icon: "ProviderIcon",
+    permission: [
+      {
+        code: "provider_doctor",
+        view: true,
+      },
+      {
+        code: "provider_pharmacist",
+        view: true,
+      },
+      {
+        code: "provider_ah",
+        view: true,
+      },
+      {
+        code: "timetable",
+        view: true,
+      },
+    ],
+    minActive: ["doctors_profile", "pharmacist_profile", "alliedhealths_profile"],
     list: [
       {
-        title: 'Doctor profile',
-        link: '/home/provider-management/doctors_profile',
-        roles: [],
-        active: ['doctors_profile'],
+        title: "Doctor profile",
+        link: "/admin-provider-portal/home/provider-management/doctors_profile",
+        permission: [
+          {
+            code: "provider_doctor",
+            view: true,
+          },
+        ],
+        active: "doctors_profile",
+        status: "active",
       },
       {
-        title: 'Pharmacist profile',
-        link: '/home/provider-management/pharmacist_profile',
-        roles: [],
-        active: ['pharmacist_profile'],
+        title: "Pharmacist profile",
+        link: "/admin-provider-portal/home/provider-management/pharmacist_profile",
+        permission: [
+          {
+            code: "provider_pharmacist",
+            view: true,
+          },
+        ],
+        active: "pharmacist_profile",
+        status: "active",
       },
       {
-        title: 'Allied health profile',
-        link: '/home/provider-management/alliedhealths_profile',
-        roles: [],
-        active: ['alliedhealths_profile'],
+        title: "Allied health profile",
+        link: "/admin-provider-portal/home/provider-management/alliedhealths_profile",
+        permission: [
+          {
+            code: "provider_ah",
+            view: true,
+          },
+        ],
+        active: "alliedhealths_profile",
+        status: "active",
       },
       {
-        title: 'Instant Timetable',
-        link: '/home/provider-management/schedule',
-        roles: [],
-      }
-    ]
+        title: "Instant Timetable",
+        link: "/admin-provider-portal/home/provider-management/schedule",
+        permission: [
+          {
+            code: "timetable",
+            view: true,
+          },
+        ],
+        status: "active",
+      },
+    ],
   },
   {
-    title: 'Refund management',
-    icon: <Issue />,
-    roles: ['refund_management_view', 'refund_management_edit'],
-    minActive: ['refund_management'],
+    title: "Refund management",
+    icon: "ClipboardList",
+    permission: [
+      {
+        code: "refund",
+        view: true,
+      },
+    ],
+    minActive: ["refund_management"],
     list: [
       {
-        title: 'Refund management',
-        link: '/refund-management',
-        roles: [],
-        active: ['refund_management'],
-      }
-    ]
+        title: "Refund management",
+        link: "/fulfillment-web/refund-management",
+        permission: [
+          {
+            code: "refund",
+            view: true,
+          },
+        ],
+        active: "refund_management",
+        status: "active",
+      },
+    ],
   },
   {
-    title: 'Admin',
-    icon: <Admin />,
-    roles: ['product_edit_all', 'product_view_all', 'store_edit_all', 'store_view_all'],
+    title: "Admin",
+    icon: "Admin",
+    permission: [
+      {
+        code: "store",
+        view: true,
+      },
+      {
+        code: "product",
+        view: true,
+      },
+    ],
     minActive: [],
     list: [
       {
-        title: 'Store',
-        link: '/store',
-        roles: ['store_edit_all', 'store_view_all'],
-        active: [],
+        title: "Store",
+        link: "/fulfillment-web/store",
+        permission: [
+          {
+            code: "store",
+            view: true,
+          },
+        ],
+        active: "store",
+        status: "active",
       },
       {
-        title: 'Product',
-        link: '/product',
-        roles: ['product_edit_all', 'product_view_all'],
-        active: [],
-      }
-    ]
+        title: "Product",
+        link: "/fulfillment-web/product",
+        permission: [
+          {
+            code: "product",
+            view: true,
+          },
+        ],
+        active: "product",
+        status: "active",
+      },
+      {
+        title: "Category",
+        link: "/fulfillment-web/category",
+        permission: [
+          {
+            code: "category",
+            view: true,
+          },
+        ],
+        active: "category",
+        status: "active",
+      },
+    ],
   },
   {
-    title: 'Settings',
-    icon: <Setting />,
-    roles: ['operating_hours_view_all', 'operating_hours_edit_all', 'master_data_all'],
-    minActive: ['master-data-provider'],
+    title: "Settings",
+    icon: "Setting",
+    permission: [
+      {
+        code: "role",
+        view: true,
+      },
+      {
+        code: "operating_hours",
+        view: true,
+      },
+      {
+        code: "master_data_provider",
+        view: true,
+      },
+      {
+        code: "master_data_tc",
+        view: true,
+      },
+    ],
+    minActive: ["master-data-provider"],
     list: [
       {
-        title: 'Operating hours',
-        link: '/home/setting/operating-hours',
-        roles: ['operating_hours_view_all', 'operating_hours_edit_all'],
-        active: [],
+        title: "Role management",
+        active: "role-management",
+        status: "active",
+        link: "/admin-provider-portal/home/setting/role-management",
+        permission: [
+          {
+            code: "role",
+            view: true,
+          },
+        ],
       },
       {
-        title: 'Master data for provider',
-        link: '/home/setting/master-data-provider',
-        roles: ['master_data_all'],
-        active: ['master-data-provider'],
+        title: "Operating hours",
+        active: "operating-hours",
+        status: "active",
+        link: "/admin-provider-portal/home/setting/operating-hours",
+        permission: [
+          {
+            code: "operating_hours",
+            view: true,
+          },
+        ],
       },
       {
-        title: 'Master data for teleconsult',
-        link: '/home/setting/master-data-teleconsult',
-        roles: ['master_data_all'],
-        active: ['master-data-teleconsult'],
-      }
-    ]
+        title: "Master data for provider",
+        active: "master-data-provider",
+        status: "active",
+        link: "/admin-provider-portal/home/setting/master-data-provider",
+        permission: [
+          {
+            code: "master_data_provider",
+            view: true,
+          },
+        ],
+      },
+      {
+        title: "Master data for teleconsult",
+        active: "master-data-teleconsult",
+        status: "active",
+        link: "/admin-provider-portal/home/setting/master-data-teleconsult",
+        permission: [
+          {
+            code: "master_data_tc",
+            view: true,
+          },
+        ],
+      },
+    ],
   },
-]
+];
 
 export const SideMenu: Story = {
   args: {
@@ -247,6 +536,8 @@ export const SideMenu: Story = {
     visible: true,
     username: 'admin@admin.com',
     role: 'Admin',
-    version: '1.0.0'
+    version: '1.0.0',
+    lastLoginDate: '13/6/2024',
+    lastLoginTime: '13:37:28',
   },
 };

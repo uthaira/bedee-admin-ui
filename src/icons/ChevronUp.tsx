@@ -1,12 +1,11 @@
-/* eslint-disable */
+type Props = {
+  className? : string
+}
 
-function ChevronUp() {
+function ChevronUp( props : Props ) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6.41421 16C5.52331 16 5.07714 14.9229 5.70711 14.2929L11.2929 8.70711C11.6834 8.31658 12.3166 8.31658 12.7071 8.70711L18.2929 14.2929C18.9229 14.9229 18.4767 16 17.5858 16L6.41421 16Z" fill="white" />
-    </svg>
+    <svg stroke="white" fill="white" stroke-width="0" viewBox="0 0 512 512" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M256 217.9L383 345c9.4 9.4 24.6 9.4 33.9 0 9.4-9.4 9.3-24.6 0-34L273 167c-9.1-9.1-23.7-9.3-33.1-.7L95 310.9c-4.7 4.7-7 10.9-7 17s2.3 12.3 7 17c9.4 9.4 24.6 9.4 33.9 0l127.1-127z"></path></svg>
   )
 }
 
-/* eslint-enable */
 export default ChevronUp
