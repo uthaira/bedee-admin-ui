@@ -12,6 +12,7 @@ import ChevronDown from '../../../icons/ChevronDown'
 import ChevronUp from '../../../icons/ChevronUp'
 import MenuListItem from './MenuListItem'
 import MenuPopupItem from './MenuPopupItem'
+import { getMenuIcon } from '../../../utils/menu'
 
 const GroupMenu = (props: any) => {
   const [open, setOpen] = useState(false)
@@ -19,7 +20,7 @@ const GroupMenu = (props: any) => {
 
   const isOpenPopup = Boolean(anchorEl)
 
-  const { item, visible } = props
+  const { item, visible, activeKey = '' } = props
   const { title, icon } = item
   const menus = item.list || []
 
@@ -29,16 +30,16 @@ const GroupMenu = (props: any) => {
 
   if (visible) {
     const content = menus.map((it: any, i: number) => {
-      return <MenuListItem item={it} key={i} />
+      return <MenuListItem item={it} key={i} activeKey={activeKey} />
     })
     return (
       <View>
         <ListButton onClick={onClick}>
           <Icon>
-            {icon}
+            {getMenuIcon(icon)}
           </Icon>
-          <ListItemText primary={title} />
-          {open ? <ChevronDown /> : <ChevronUp />}
+          <ListItemText primary={title}  primaryTypographyProps={{ fontSize: 16,fontWeight: 100 }} />
+          {open ? <ChevronUp /> :   <ChevronDown /> }
         </ListButton>
         <Collapse in={open} timeout="auto" unmountOnExit>
           {content}
@@ -88,6 +89,11 @@ const View = styled('div')({
 const ListButton = styled(ListItemButton)({
   width: '100%',
   padding: '8px 0px',
+  '&:hover, &:focus, &:active': {
+    textDecoration: 'none',
+    backgroundColor: 'transparent',
+    borderRadius: '8px',
+  },
 })
 
 const Icon = styled(ListItemIcon)({

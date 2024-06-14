@@ -1,6 +1,7 @@
-import { styled } from '@mui/material'
+import { Avatar, ListItemText, styled } from '@mui/material'
 
 import BedeeLogo from '../../../icons/BedeeLogo'
+import { getAvartarName } from '../../../utils/menu'
 
 const Header = (props: any) => {
   const { visible, username, role, onVisible } = props
@@ -15,10 +16,13 @@ const Header = (props: any) => {
         </Logo>
         <BrandName style={style}>Bedee</BrandName>
       </LogoSection>
-      <User style={style}>
-        <Username>{username || ''}</Username>
-        <RoleName>{role || ''}</RoleName>
+      <UserSection>
+      <Avatar sx={{ bgcolor: '#E5F3FF', color: '#0085FF',border: '1px solid #CCE7FF' }}>{getAvartarName(username)}</Avatar>
+      <User>
+        <ListItemText  primaryTypographyProps={{ fontSize: 14, fontWeight: 500  }} >{username}</ListItemText>
+        <ListItemText  primaryTypographyProps={{ fontSize: 16, fontWeight: 700  }} >{role}</ListItemText>
       </User>
+        </UserSection>
     </View>
   )
 }
@@ -26,11 +30,24 @@ const Header = (props: any) => {
 
 const View = styled('div')({
   width: '100%',
-  paddingBottom: '24px',
   borderBottom: '1px solid #CDE7F6',
+  paddingTop: '24px',
+  paddingBottom: '12px',
+  paddingLeft: '8px',
 })
 
 const LogoSection = styled('div')({
+  width: '100%',
+  fontWeight: 700,
+  fontSize: '27px',
+  display: 'flex',
+  alignItems: 'center',
+  columnGap: '8px',
+  cursor: 'pointer',
+  marginBottom: '8px',
+})
+
+const UserSection = styled('div')({
   width: '100%',
   fontWeight: 700,
   fontSize: '27px',
@@ -59,15 +76,5 @@ const User = styled('div')({
   width: '100%',
 })
 
-const Username = styled('div')({
-  width: '100%',
-})
-
-const RoleName = styled('div')({
-  width: '100%',
-  paddingTop: '8px',
-  fontWeight: 700,
-  color: 'white',
-})
 
 export default Header

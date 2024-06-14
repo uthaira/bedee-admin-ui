@@ -1,4 +1,4 @@
-import { styled } from '@mui/material'
+import { ListItemText, styled } from '@mui/material'
 import LogOut from '../../../icons/LogOut'
 import Header from './Header'
 import GroupMenu from './MenuGroup'
@@ -10,6 +10,9 @@ export interface SideMenuProps {
   username: string
   role: string
   version: string
+  lastLoginDate?: string
+  lastLoginTime?: string
+  activeKey?: string
   onLogout?: () => void
   onVisible: () => void
 }
@@ -22,11 +25,14 @@ const SideMenu = (props: SideMenuProps) => {
     role,
     version,
     onLogout,
-    onVisible
+    onVisible,
+    lastLoginDate,
+    lastLoginTime,
+    activeKey = '',
   } = props
 
   const content = menus.map((it: any, i: number) => {
-    return <GroupMenu item={it} visible={visible} key={i} />
+    return <GroupMenu item={it} visible={visible} key={i} activeKey={activeKey} />
   })
 
   const style = visible ? {} : { display: 'none' }
@@ -48,9 +54,10 @@ const SideMenu = (props: SideMenuProps) => {
         <Footer>
           <Logout onClick={onLogout}>
             <LogOut />
-            <LogoutText style={style}>Logout</LogoutText>
+            <ListItemText primaryTypographyProps={{ fontSize: 16,fontWeight: 100 }}>Logout</ListItemText>
           </Logout>
-          <Version style={style}>{version || ''}</Version>
+          {lastLoginDate &&  <ListItemText  primaryTypographyProps={{ fontSize: 10, fontWeight: 100, color:Colors.gray3  }} >Last logged in : {lastLoginDate} | {lastLoginTime} </ListItemText>}
+          {version &&  <ListItemText  primaryTypographyProps={{ fontSize: 10, fontWeight: 100, color:Colors.gray3  }} >Version : {version || ''}</ListItemText>}
         </Footer>
       </Padding>
     </View>
@@ -68,18 +75,18 @@ const View = styled('div')({
 })
 
 const Padding = styled('div')({
-  padding: '16px',
+  padding: '8px',
 })
 
 const MenuContent = styled('div')({
-  height: 'calc(100vh - 220px)',
+  height: 'calc(100vh - 260px)',
   overflowY: 'auto',
   '&::-webkit-scrollbar': {
-    width: '6px'
+    width: '0px'
   },
   '&::-webkit-scrollbar-thumb': {
     backgroundColor: Colors.gray2,
-    borderRadius: '8px',
+    borderRadius: '0px',
   },
   '&::-webkit-scrollbar-thumb:hover': {
     backgroundColor: Colors.gray3,
@@ -93,20 +100,11 @@ const Footer = styled('div')({
 
 const Logout = styled('div')({
   width: '100%',
-  paddingBottom: '8px',
+  padding: '8px 0 4px',
   display: 'flex',
   alignItems: 'center',
   columnGap: '8px',
   cursor: 'pointer'
-})
-
-const LogoutText = styled('div')({
-  width: '100%',
-})
-
-const Version = styled('div')({
-  width: '100%',
-  fontSize: '14px',
 })
 
 export default SideMenu
