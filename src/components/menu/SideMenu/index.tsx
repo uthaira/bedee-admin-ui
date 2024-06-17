@@ -3,6 +3,8 @@ import LogOut from '../../../icons/LogOut'
 import Header from './Header'
 import GroupMenu from './MenuGroup'
 import { Colors } from '../../../colors'
+import DoubleChevronLeft from '../../../icons/DoubleChevronLeft'
+import DoubleChevronRight from '../../../icons/DoubleChevronRight'
 
 export interface SideMenuProps {
   menus: any[]
@@ -32,11 +34,12 @@ const SideMenu = (props: SideMenuProps) => {
   } = props
 
   const content = menus.map((it: any, i: number) => {
-    return <GroupMenu item={it} visible={visible} key={i} activeKey={activeKey} />
+    return <GroupMenu item={it} visible={visible} key={i} activeKey={activeKey} onVisible={onVisible} />
   })
 
   const style = visible ? {} : { display: 'none' }
   const width = visible ? '280px' : '55px'
+   const collapseClassName = visible ? '' : 'collapse'
   return (
     <View style={{ width }}>
       <Padding>
@@ -51,15 +54,22 @@ const SideMenu = (props: SideMenuProps) => {
           {content}
         </MenuContent>
 
-        <Footer>
-          <Logout onClick={onLogout}>
+        <Footer className={collapseClassName}>
+          <Logout className={collapseClassName} onClick={onLogout}>
             <LogOut />
-            <ListItemText primaryTypographyProps={{ fontSize: 16,fontWeight: 100 }}>Logout</ListItemText>
+            <ListItemText style={style} primaryTypographyProps={{ fontSize: 16,fontWeight: 100 }}>Logout</ListItemText>
           </Logout>
-          {lastLoginDate &&  <ListItemText  primaryTypographyProps={{ fontSize: 10, fontWeight: 100, color:Colors.gray3  }} >Last logged in : {lastLoginDate} | {lastLoginTime} </ListItemText>}
-          {version &&  <ListItemText  primaryTypographyProps={{ fontSize: 10, fontWeight: 100, color:Colors.gray3  }} >Version : {version || ''}</ListItemText>}
+          {lastLoginDate &&  <ListItemText style={style} primaryTypographyProps={{ fontSize: 12, fontWeight: 400, color:Colors.gray2  }} >Last logged in : {lastLoginDate} | {lastLoginTime} </ListItemText>}
+          {version &&  <ListItemText style={style} primaryTypographyProps={{ fontSize: 12, fontWeight: 400, color:Colors.gray2  }} >Version : {version || ''}</ListItemText>}
         </Footer>
       </Padding>
+      {visible ?    
+      <CollapseInButton onClick={onVisible}>
+        <DoubleChevronLeft />
+      </CollapseInButton> :    
+      <CollapseOutButton onClick={onVisible}>
+        <DoubleChevronRight />
+      </CollapseOutButton>}
     </View>
   )
 }
@@ -69,7 +79,7 @@ const View = styled('div')({
   height: '100vh',
   color: 'white',
   background: 'linear-gradient(175.42deg, #6C9EFF 3.15%, #3977EB 53.9%, #0056F3 95.95%)',
-  position: 'fixed',
+  position: 'relative',
   top: 0,
   left: 0,
 })
@@ -96,6 +106,10 @@ const MenuContent = styled('div')({
 const Footer = styled('div')({
   width: 'calc(100% - 18px)',
   paddingTop: '8px',
+  '&.collapse' : {
+    width: '100%',
+    textAlign: 'center',
+  }
 })
 
 const Logout = styled('div')({
@@ -104,7 +118,36 @@ const Logout = styled('div')({
   display: 'flex',
   alignItems: 'center',
   columnGap: '8px',
-  cursor: 'pointer'
+  cursor: 'pointer',
+  '&.collapse' : {
+    display: 'contents'
+  }
+})
+
+const CollapseInButton = styled('div')({
+  textAlign: 'center',
+  color: 'white',
+  position: 'absolute',
+  top: 20,
+  right: 0,
+  borderRadius: '4px 0px 0px 4px',
+  background: '#F7F8F9',
+  cursor: 'pointer',
+  'svg': {
+    width: '10px',
+    height: '8px',
+  },
+  padding: '4px 8px',
+  boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 4px',
+})
+
+const CollapseOutButton = styled(CollapseInButton)({
+  right: -28,
+  borderRadius: '0px 4px 4px 0px',
+  'svg': {
+    width: '12px',
+    height: '12px',
+  },
 })
 
 export default SideMenu
