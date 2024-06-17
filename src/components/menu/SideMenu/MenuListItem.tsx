@@ -26,7 +26,7 @@ const MenuItem = (props: any) => {
         <SubIcon />
         </Icon>
       <Link href={link}>
-      <ListItemText primary={title} primaryTypographyProps={{ fontSize: 16,fontWeight: 100 }}/></Link>
+      <ListItemText primary={title} primaryTypographyProps={{ fontSize: 16,fontWeight: 400 }}/></Link>
     </ListItemButton>
     </List>
   )

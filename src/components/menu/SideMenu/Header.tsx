@@ -8,6 +8,7 @@ const Header = (props: any) => {
 
   const style = visible ? {} : { display: 'none' }
   const logo = visible ? {} : { width: '24px', height: '24px' }
+  const avartar = visible ? {} : { width: '24px', height: '24px' }
   return (
     <View>
       <LogoSection onClick={onVisible}>
@@ -17,23 +18,26 @@ const Header = (props: any) => {
         <BrandName style={style}>Bedee</BrandName>
       </LogoSection>
       <UserSection>
-      <Avatar sx={{ bgcolor: '#E5F3FF', color: '#0085FF',border: '1px solid #CCE7FF' }}>{getAvartarName(username)}</Avatar>
-      <User>
-        <ListItemText  primaryTypographyProps={{ fontSize: 14, fontWeight: 500  }} >{username}</ListItemText>
-        <ListItemText  primaryTypographyProps={{ fontSize: 16, fontWeight: 700  }} >{role}</ListItemText>
-      </User>
-        </UserSection>
+      <Avatar style={avartar} sx={{ bgcolor: '#E5F3FF', color: '#0085FF',border: '1px solid #CCE7FF' }}>{getAvartarName(username)}</Avatar>
+        {visible && (
+          <User>
+            <ListItemText  primaryTypographyProps={{ fontSize: 14, fontWeight: 500  }} >{username}</ListItemText>
+            <ListItemText  primaryTypographyProps={{ fontSize: 16, fontWeight: 700  }} >{role}</ListItemText>
+          </User>
+        )}
+      </UserSection>
     </View>
   )
 }
 
 
 const View = styled('div')({
-  width: '100%',
+  // width: '100%',
   borderBottom: '1px solid #CDE7F6',
   paddingTop: '24px',
   paddingBottom: '12px',
   paddingLeft: '8px',
+  paddingRight: '8px',
 })
 
 const LogoSection = styled('div')({

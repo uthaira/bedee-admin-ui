@@ -20,7 +20,7 @@ const GroupMenu = (props: any) => {
 
   const isOpenPopup = Boolean(anchorEl)
 
-  const { item, visible, activeKey = '' } = props
+  const { item, visible, activeKey = '', onVisible = () => {} } = props
   const { title, icon } = item
   const menus = item.list || []
 
@@ -38,7 +38,7 @@ const GroupMenu = (props: any) => {
           <Icon>
             {getMenuIcon(icon)}
           </Icon>
-          <ListItemText primary={title}  primaryTypographyProps={{ fontSize: 16,fontWeight: 100 }} />
+          <ListItemText primary={title}  primaryTypographyProps={{ fontSize: 16,fontWeight: 400 }} />
           {open ? <ChevronUp /> :   <ChevronDown /> }
         </ListButton>
         <Collapse in={open} timeout="auto" unmountOnExit>
@@ -59,11 +59,12 @@ const GroupMenu = (props: any) => {
         aria-haspopup="true"
         aria-expanded={isOpenPopup ? 'true' : undefined}
       >
-        <Icon>
-          {icon}
-        </Icon>
+        <CollapseIcon onClick={onVisible}>
+          {getMenuIcon(icon)}
+        </CollapseIcon>
       </ListButton>
       <Menu
+        onClick={() => setAnchorEl(null)}
         id={title}
         anchorEl={anchorEl}
         open={isOpenPopup}
@@ -71,6 +72,7 @@ const GroupMenu = (props: any) => {
         MenuListProps={{
           'aria-labelledby': title,
         }}
+        hideBackdrop
       >
         {content}
       </Menu>
@@ -98,6 +100,16 @@ const ListButton = styled(ListItemButton)({
 
 const Icon = styled(ListItemIcon)({
   minWidth: '40px',
+})
+
+const CollapseIcon = styled(ListItemIcon)({
+  minWidth: '0',
+  margin: '0 auto',
+  textAlign: 'center',
+  'svg': {
+    width: '24px',
+    height: '24px',
+  }
 })
 
 export default GroupMenu

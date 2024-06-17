@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react"
 import BaseSideMenu from "./SideMenu"
+import { useState } from "react";
 
 export default {
   title: "Components/Menu",
