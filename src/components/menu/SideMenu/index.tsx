@@ -57,10 +57,10 @@ const SideMenu = (props: SideMenuProps) => {
         <Footer className={collapseClassName}>
           <Logout className={collapseClassName} onClick={onLogout}>
             <LogOut />
-            <ListItemText style={style} primaryTypographyProps={{ fontSize: 16,fontWeight: 100 }}>Logout</ListItemText>
+            <ListItemText style={style} primaryTypographyProps={{ fontSize: 16,fontWeight: 400 }}>Logout</ListItemText>
           </Logout>
-          {lastLoginDate &&  <ListItemText style={style} primaryTypographyProps={{ fontSize: 12, fontWeight: 400, color:Colors.gray2  }} >Last logged in : {lastLoginDate} | {lastLoginTime} </ListItemText>}
-          {version &&  <ListItemText style={style} primaryTypographyProps={{ fontSize: 12, fontWeight: 400, color:Colors.gray2  }} >Version : {version || ''}</ListItemText>}
+          {lastLoginDate &&  <ListItemText style={style} primaryTypographyProps={{ fontSize: 12, fontWeight: 400, color:Colors.gray3  }} >Last logged in : {lastLoginDate} | {lastLoginTime} </ListItemText>}
+          {version &&  <ListItemText style={style} primaryTypographyProps={{ fontSize: 12, fontWeight: 400, color:Colors.gray3  }} >Version : {version || ''}</ListItemText>}
         </Footer>
       </Padding>
       {visible ?    
@@ -105,7 +105,6 @@ const MenuContent = styled('div')({
 
 const Footer = styled('div')({
   width: 'calc(100% - 18px)',
-  paddingTop: '8px',
   '&.collapse' : {
     width: '100%',
     textAlign: 'center',
@@ -137,7 +136,7 @@ const CollapseInButton = styled('div')({
     width: '10px',
     height: '8px',
   },
-  padding: '4px 8px',
+  padding: '8px 10px',
   boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 4px',
 })
 
