@@ -3,7 +3,7 @@ import SubIcon from '../../../icons/SubIcon'
 
 const MenuItem = (props: any) => {
   const { item = {} , activeKey = ''} = props
-  const { title, link } = item
+  const { title, link, renderLink, } = item
   return (
     <List component="div" disablePadding>
       <ListItemButton    
@@ -20,13 +20,17 @@ const MenuItem = (props: any) => {
           },
           padding: '8px',
           pl: 4,
-        }} 
+        }}
         selected={activeKey === item.active}>
       <Icon>
         <SubIcon />
         </Icon>
-      <Link href={link}>
-      <ListItemText primary={title} primaryTypographyProps={{ fontSize: 16,fontWeight: 400 }}/></Link>
+        {renderLink ? 
+          renderLink(<ListItemText primary={title} primaryTypographyProps={{ fontSize: 16,fontWeight: 400 }}/>) : 
+          <Link href={link}>
+            <ListItemText primary={title} primaryTypographyProps={{ fontSize: 16,fontWeight: 400 }}/>
+          </Link>
+        }
     </ListItemButton>
     </List>
   )
