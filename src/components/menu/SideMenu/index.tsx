@@ -1,4 +1,4 @@
-import { ListItemText, styled } from '@mui/material'
+import { ListItemText, colors, styled } from '@mui/material'
 import LogOut from '../../../icons/LogOut'
 import Header from './Header'
 import GroupMenu from './MenuGroup'
@@ -89,7 +89,7 @@ const Padding = styled('div')({
 })
 
 const MenuContent = styled('div')({
-  height: 'calc(100vh - 260px)',
+  height: 'calc(100vh - 300px)',
   overflowY: 'auto',
   '&::-webkit-scrollbar': {
     width: '0px'
@@ -141,12 +141,13 @@ const CollapseInButton = styled('div')({
 })
 
 const CollapseOutButton = styled(CollapseInButton)({
-  right: -28,
+  right: -30,
   borderRadius: '0px 4px 4px 0px',
   'svg': {
     width: '12px',
     height: '12px',
   },
+  zIndex: '100',
 })
 
 export default SideMenu
