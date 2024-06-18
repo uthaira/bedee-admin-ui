@@ -540,5 +540,6 @@ export const SideMenu: Story = {
     version: '1.0.0',
     lastLoginDate: '13/6/2024',
     lastLoginTime: '13:37:28',
+    activeKey: 'inventory'
   },
 };

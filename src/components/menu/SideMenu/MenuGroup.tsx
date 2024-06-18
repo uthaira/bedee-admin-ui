@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   styled,
   ListItemButton,
@@ -23,6 +23,17 @@ const GroupMenu = (props: any) => {
   const { item, visible, activeKey = '', onVisible = () => {} } = props
   const { title, icon } = item
   const menus = item.list || []
+
+  useEffect(() => {
+    if(activeKey){
+      item.list.forEach((submenu: any) => {
+        if(submenu.active == activeKey){
+          setOpen(true)
+          return
+        }
+      })
+    }
+  },[activeKey])
 
   const onClick = () => setOpen(!open)
   const onAnchorEl = (event: any) => setAnchorEl(event.currentTarget)

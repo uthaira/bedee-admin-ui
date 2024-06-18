@@ -11,7 +11,7 @@ const Header = (props: any) => {
   const avartar = visible ? {} : { width: '24px', height: '24px' }
   return (
     <View>
-      <LogoSection onClick={onVisible}>
+      <LogoSection>
         <Logo style={logo}>
           <BedeeLogo />
         </Logo>
