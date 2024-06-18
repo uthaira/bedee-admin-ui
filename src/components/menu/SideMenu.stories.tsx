@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react"
-import BaseSideMenu from "./SideMenu"
+import BaseSideMenu, { Menu } from "./SideMenu"
 import { useState } from "react";
 
 export default {
@@ -529,7 +529,7 @@ const menus = [
       },
     ],
   },
-];
+] as Menu[];
 
 export const SideMenu: Story = {
   args: {
