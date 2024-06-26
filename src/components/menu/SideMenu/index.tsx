@@ -6,23 +6,16 @@ import { Colors } from '../../../colors'
 import DoubleChevronLeft from '../../../icons/DoubleChevronLeft'
 import DoubleChevronRight from '../../../icons/DoubleChevronRight'
 
-export type MenuList = {
-  title: string;
-  icon: string;
-  permission?: Array<any>;
-  link: string;
-  status: string;
-  active: string;
-  renderLink?: any;
-};
-
 export type Menu = {
-  title: string;
-  icon: string;
+  title?: string;
+  icon?: string;
   permission?: Array<any>;
   minActive?: Array<string>;
   active?: string;
-  list: Array<MenuList>;
+  list?: Array<Menu>;
+  status?: string;
+  link?: string
+  renderLink?: any;
 };
 
 export interface SideMenuProps {

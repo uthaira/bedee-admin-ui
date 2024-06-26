@@ -40,22 +40,16 @@ interface DrawerProps {
 }
 declare const Drawer: (props: DrawerProps) => react_jsx_runtime.JSX.Element;
 
-type MenuList = {
-    title: string;
-    icon: string;
-    permission?: Array<any>;
-    link: string;
-    status: string;
-    active: string;
-    renderLink?: any;
-};
 type Menu = {
-    title: string;
-    icon: string;
+    title?: string;
+    icon?: string;
     permission?: Array<any>;
     minActive?: Array<string>;
     active?: string;
-    list: Array<MenuList>;
+    list?: Array<Menu>;
+    status?: string;
+    link?: string;
+    renderLink?: any;
 };
 interface SideMenuProps {
     menus: Menu[];
