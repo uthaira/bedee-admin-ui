@@ -40,8 +40,19 @@ interface DrawerProps {
 }
 declare const Drawer: (props: DrawerProps) => react_jsx_runtime.JSX.Element;
 
+type Menu = {
+    title?: string;
+    icon?: string;
+    permission?: Array<any>;
+    minActive?: Array<string>;
+    active?: string;
+    list?: Array<Menu>;
+    status?: string;
+    link?: string;
+    renderLink?: any;
+};
 interface SideMenuProps {
-    menus: any[];
+    menus: Menu[];
     visible: boolean;
     username: string;
     role: string;
@@ -51,6 +62,7 @@ interface SideMenuProps {
     activeKey?: string;
     onLogout?: () => void;
     onVisible: () => void;
+    menuWidth?: string;
 }
 declare const SideMenu: (props: SideMenuProps) => react_jsx_runtime.JSX.Element;
 

@@ -20,20 +20,22 @@ const GroupMenu = (props: any) => {
 
   const isOpenPopup = Boolean(anchorEl)
 
-  const { item, visible, activeKey = '', onVisible = () => {} } = props
-  const { title, icon } = item
+  const { item, visible, activeKey = '', onVisible = () => { } } = props
+  const { title, icon, renderLink, link = "", active = "" } = item
   const menus = item.list || []
+  const hasSubmenu = menus?.length > 0
+  console.log('hasChild', hasSubmenu)
 
   useEffect(() => {
-    if(activeKey){
-      item.list.forEach((submenu: any) => {
-        if(submenu.active == activeKey){
+    if (activeKey) {
+      item.list?.forEach((submenu: any) => {
+        if (submenu.active == activeKey) {
           setOpen(true)
           return
         }
       })
     }
-  },[activeKey])
+  }, [activeKey])
 
   const onClick = () => setOpen(!open)
   const onAnchorEl = (event: any) => setAnchorEl(event.currentTarget)
@@ -45,12 +47,33 @@ const GroupMenu = (props: any) => {
     })
     return (
       <View>
-        <ListButton onClick={onClick}>
+        <ListButton onClick={onClick}
+          sx={{
+            '&.Mui-selected': {
+              backgroundColor: 'rgba(50, 58, 67, 0.20)',
+              borderRadius: '8px',
+              '&:hover': {
+                backgroundColor: 'rgba(50, 58, 67, 0.20)',
+              },
+            },
+            '&:hover': {
+              borderRadius: '8px',
+            },
+            padding: '8px',
+          }}
+          selected={!hasSubmenu && activeKey === active}
+        >
           <Icon>
             {getMenuIcon(icon)}
           </Icon>
-          <ListItemText primary={title}  primaryTypographyProps={{ fontSize: 16,fontWeight: 400 }} />
-          {open ? <ChevronUp /> :   <ChevronDown /> }
+          {hasSubmenu ? (
+            <ListItemText primary={title} primaryTypographyProps={{ fontSize: 16, fontWeight: 400 }} />
+          ) : renderLink ?
+            renderLink(<ListItemText primary={title} primaryTypographyProps={{ fontSize: 16, fontWeight: 400 }} />) :
+            <Link href={link}>
+              <ListItemText primary={title} primaryTypographyProps={{ fontSize: 16, fontWeight: 400 }} />
+            </Link>}
+          {hasSubmenu && (open ? <ChevronUp /> : <ChevronDown />)}
         </ListButton>
         <Collapse in={open} timeout="auto" unmountOnExit>
           {content}
@@ -69,24 +92,46 @@ const GroupMenu = (props: any) => {
         aria-controls={isOpenPopup ? title : undefined}
         aria-haspopup="true"
         aria-expanded={isOpenPopup ? 'true' : undefined}
+        sx={{
+          '&.Mui-selected': {
+            backgroundColor: 'rgba(50, 58, 67, 0.20)',
+            borderRadius: '8px',
+            '&:hover': {
+              backgroundColor: 'rgba(50, 58, 67, 0.20)',
+            },
+          },
+          '&:hover': {
+            borderRadius: '8px',
+          },
+          padding: '8px',
+        }}
+        selected={!hasSubmenu && activeKey === active}
       >
         <CollapseIcon onClick={onVisible}>
-          {getMenuIcon(icon)}
+          {hasSubmenu ? (
+            getMenuIcon(icon)
+          ) : renderLink ?
+            renderLink(getMenuIcon(icon)) :
+            <Link href={link}>
+              {getMenuIcon(icon)}
+            </Link>}
         </CollapseIcon>
       </ListButton>
-      <Menu
-        onClick={() => setAnchorEl(null)}
-        id={title}
-        anchorEl={anchorEl}
-        open={isOpenPopup}
-        onClose={onClose}
-        MenuListProps={{
-          'aria-labelledby': title,
-        }}
-        hideBackdrop
-      >
-        {content}
-      </Menu>
+      {hasSubmenu && (
+        <Menu
+          onClick={() => setAnchorEl(null)}
+          id={title}
+          anchorEl={anchorEl}
+          open={isOpenPopup}
+          onClose={onClose}
+          MenuListProps={{
+            'aria-labelledby': title,
+          }}
+          hideBackdrop
+        >
+          {content}
+        </Menu>
+      )}
     </View>
   )
 }
@@ -101,7 +146,6 @@ const View = styled('div')({
 
 const ListButton = styled(ListItemButton)({
   width: '100%',
-  padding: '8px 0px',
   '&:hover, &:focus, &:active': {
     textDecoration: 'none',
     backgroundColor: 'transparent',
@@ -121,6 +165,12 @@ const CollapseIcon = styled(ListItemIcon)({
     width: '24px',
     height: '24px',
   }
+})
+
+const Link = styled('a')({
+  width: '100%',
+  color: 'white',
+  textDecoration: 'none',
 })
 
 export default GroupMenu

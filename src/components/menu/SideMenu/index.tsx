@@ -1,4 +1,4 @@
-import { ListItemText, colors, styled } from '@mui/material'
+import { ListItemText, styled } from '@mui/material'
 import LogOut from '../../../icons/LogOut'
 import Header from './Header'
 import GroupMenu from './MenuGroup'
@@ -6,8 +6,20 @@ import { Colors } from '../../../colors'
 import DoubleChevronLeft from '../../../icons/DoubleChevronLeft'
 import DoubleChevronRight from '../../../icons/DoubleChevronRight'
 
+export type Menu = {
+  title?: string;
+  icon?: string;
+  permission?: Array<any>;
+  minActive?: Array<string>;
+  active?: string;
+  list?: Array<Menu>;
+  status?: string;
+  link?: string
+  renderLink?: any;
+};
+
 export interface SideMenuProps {
-  menus: any[]
+  menus: Menu[]
   visible: boolean
   username: string
   role: string
@@ -17,6 +29,7 @@ export interface SideMenuProps {
   activeKey?: string
   onLogout?: () => void
   onVisible: () => void
+  menuWidth?: string
 }
 
 const SideMenu = (props: SideMenuProps) => {
@@ -31,6 +44,7 @@ const SideMenu = (props: SideMenuProps) => {
     lastLoginDate,
     lastLoginTime,
     activeKey = '',
+    menuWidth = '280px',
   } = props
 
   const content = menus.map((it: any, i: number) => {
@@ -38,7 +52,7 @@ const SideMenu = (props: SideMenuProps) => {
   })
 
   const style = visible ? {} : { display: 'none' }
-  const width = visible ? '280px' : '55px'
+  const width = visible ? menuWidth : '55px'
    const collapseClassName = visible ? '' : 'collapse'
   return (
     <View style={{ width }}>
