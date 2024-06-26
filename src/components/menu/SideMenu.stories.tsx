@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react"
 import BaseSideMenu, { Menu } from "./SideMenu"
-import { useState } from "react";
 
 export default {
   title: "Components/Menu",
@@ -529,6 +528,19 @@ const menus = [
       },
     ],
   },
+  {
+    title: "None sub menu",
+    icon: "DasboardIcon",
+    active: "sale_report_test",
+    status: "active",
+    link: "/fulfillment-web/sale-report",
+    permission: [
+      {
+        code: "sale_report",
+        view: true,
+      },
+    ],
+  },
 ] as Menu[];
 
 export const SideMenu: Story = {
@@ -540,6 +552,6 @@ export const SideMenu: Story = {
     version: '1.0.0',
     lastLoginDate: '13/6/2024',
     lastLoginTime: '13:37:28',
-    activeKey: 'inventory'
+    activeKey: 'sale_report_test'
   },
 };
