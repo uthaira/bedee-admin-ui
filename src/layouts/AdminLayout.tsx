@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { styled } from '@mui/material'
 
-import DasboardIcon from '../icons/DasboardIcon'
+import DashboardIcon from '../icons/DasboardIcon'
 import ReportIcon from '../icons/ReportIcon'
 import Fullfill from '../icons/Fullfill'
 import CustomerIcon from '../icons/CustomerIcon'
@@ -55,7 +55,7 @@ const Layout = (props: any) => {
 const Menus = [
   {
     title: 'Dashboard',
-    icon: <DasboardIcon />,
+    icon: <DashboardIcon />,
     roles: ['monitoring_dashboard_view_all', 'appointment_edit_all'],
     list: [
       {

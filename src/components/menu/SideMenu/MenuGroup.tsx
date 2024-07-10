@@ -24,7 +24,6 @@ const GroupMenu = (props: any) => {
   const { title, icon, renderLink, link = "", active = "" } = item
   const menus = item.list || []
   const hasSubmenu = menus?.length > 0
-  console.log('hasChild', hasSubmenu)
 
   useEffect(() => {
     if (activeKey) {
