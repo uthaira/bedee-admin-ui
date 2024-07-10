@@ -12,7 +12,7 @@ type Story = StoryObj<typeof BaseSideMenu>;
 const menus = [
   {
     title: "Dashboard",
-    icon: "DasboardIcon",
+    icon: "DashboardIcon",
     permission: [
       {
         code: "consultation_monitoring",
