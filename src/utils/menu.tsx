@@ -9,6 +9,7 @@ import ChartPie from '../icons/ChartPie'
 import ShoppingCart from '../icons/ShoppingCart'
 import ClipboardList from '../icons/ClipboardList'
 import SurveyIcon from '../icons/SurveyIcon'
+import InsuranceIcon from '../icons/InsuranceIcon'
 
 export const getMenuIcon = (keyIcon: string) => {
   switch (keyIcon) {
@@ -36,6 +37,8 @@ export const getMenuIcon = (keyIcon: string) => {
       return <Lab />
     case 'SurveyIcon':
       return <SurveyIcon />
+    case 'InsuranceIcon':
+      return <InsuranceIcon />
     default:
       return ''
   }

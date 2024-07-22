@@ -529,6 +529,31 @@ const menus = [
     ],
   },
   {
+    title: 'Insurance',
+    icon: 'InsuranceIcon',
+    permission: [
+      {
+        code: 'refund',
+        view: true,
+      },
+    ],
+    minActive: ['insurance'],
+    list: [
+      {
+        title: 'Order',
+        link: '/fulfillment-web/insurance',
+        permission: [
+          {
+            code: 'order',
+            view: true,
+          },
+        ],
+        active: 'insurance',
+        status: 'active',
+      },
+    ],
+  },
+  {
     title: "None sub menu",
     icon: "DasboardIcon",
     active: "sale_report_test",
