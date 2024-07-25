@@ -1,54 +1,55 @@
-import { styled, List, ListItemButton, ListItemText, ListItemIcon } from '@mui/material'
+import { List, ListItemButton, ListItemText, ListItemIcon, styled } from '@mui/material'
 import SubIcon from '../../../icons/SubIcon'
 
 const MenuItem = (props: any) => {
-  const { item = {} , activeKey = ''} = props
-  const { title, link, renderLink, } = item
+  const { item = {}, activeKey = '' } = props
+  const { title, link, renderLink } = item
+
   return (
     <List component="div" disablePadding>
-      <ListItemButton    
-        sx={{
-          '&.Mui-selected': {
-            backgroundColor: 'rgba(50, 58, 67, 0.20)',
-            borderRadius: '8px',
-            '&:hover': {
-              backgroundColor: 'rgba(50, 58, 67, 0.20)',
-            },
-          },
-          '&:hover': {
-            borderRadius: '8px',
-          },
-          padding: '8px',
-          pl: 4,
-        }}
-        selected={activeKey === item.active}>
-      <Icon>
-        <SubIcon />
-        </Icon>
-        {renderLink ? 
-          renderLink(<ListItemText primary={title} primaryTypographyProps={{ fontSize: 16,fontWeight: 400 }}/>) : 
-          <Link href={link}>
-            <ListItemText primary={title} primaryTypographyProps={{ fontSize: 16,fontWeight: 400 }}/>
-          </Link>
-        }
-    </ListItemButton>
+      <StyledListItemButton selected={activeKey === item.active} href={link}>
+        <StyledListItemIcon>
+          <SubIcon />
+        </StyledListItemIcon>
+        {renderLink ? (
+          renderLink(<ListItemText primary={title} primaryTypographyProps={{ fontSize: 16, fontWeight: 400 }} />)
+        ) : (
+          <StyledLink href={link}>
+            <ListItemText primary={title} primaryTypographyProps={{ fontSize: 16, fontWeight: 400 }} />
+          </StyledLink>
+        )}
+      </StyledListItemButton>
     </List>
   )
 }
 
-const Link = styled('a')({
+const StyledListItemButton = styled(ListItemButton)(({ theme }) => ({
+  '&.Mui-selected': {
+    backgroundColor: 'rgba(50, 58, 67, 0.20)',
+    borderRadius: '8px',
+    '&:hover': {
+      backgroundColor: 'rgba(50, 58, 67, 0.20)',
+    },
+  },
+  '&:hover': {
+    borderRadius: '8px',
+  },
+  padding: '8px',
+  paddingLeft: theme.spacing(4),
+})) as typeof ListItemButton
+
+const StyledListItemIcon = styled(ListItemIcon)({
+  minWidth: '5px',
+  marginRight: '8px',
+  svg: {
+    width: '5px',
+  },
+})
+
+const StyledLink = styled('a')({
   width: '100%',
   color: 'white',
   textDecoration: 'none',
 })
-
-const Icon = styled(ListItemIcon)({
-  minWidth: '5px',
-  marginRight: '8px',
-  'svg' : {
-    width: '5px',
-  }
-})
-
 
 export default MenuItem
