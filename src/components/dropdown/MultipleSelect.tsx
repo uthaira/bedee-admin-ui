@@ -101,7 +101,7 @@ const MultipleSelect = (props: MultipleSelectProps) => {
                 my: '2px',
               }}
             >
-              <Mini text={option.name} color={Colors.gray7} />
+              <Mini text={option?.name || ''} color={Colors.gray7} />
               <IconButton
                 size="small"
                 sx={{ ml: 0.5, bgcolor: Colors.white }}
